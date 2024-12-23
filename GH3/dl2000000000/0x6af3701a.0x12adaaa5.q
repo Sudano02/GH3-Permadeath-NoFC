@@ -6864,7 +6864,7 @@ script Progression_TierComplete
 		if ($devil_finish = 0)
 			printf \{"FINISHED GAME"}
 			change \{end_credits = 0}
-			; Add code here to do stuff after beating the devil
+			
 			change \{progression_beat_game_last_song = 1}
 		endif
 		get_difficulty_text_nl difficulty = ($current_difficulty)
