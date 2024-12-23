@@ -6313,81 +6313,142 @@ script menu_manage_band_rename_band
 	ui_flow_manager_respond_to_action \{action = go_back}
 endscript
 
+GH3_Bonus_Songs = {
+	prefix = 'bonus'
+	num_tiers = 1
+	tier1 = {
+		Title = "Bonus songs"
+		songs = [
+			avalancha
+			bellyofashark
+			cantbesaved
+			citiesonflame
+			closer
+			dontholdback
+			downndirty
+			fcpremix
+			generationrock
+			gothatfar
+			helicopter
+			hierkommtalex
+			imintheband
+			impulse
+			inlove
+			mauvaisgarcon
+			metalheavylady
+			minuscelsius
+			monsters
+			mycurse
+			nothingformehere
+			prayeroftherefugee
+			radiosong
+			reptilia
+			ruby
+			sabotage
+			shebangsadrum
+			suckmykiss
+			takethislife
+			thewayitends
+			thrufireandflames
+		]
+		level = load_z_artdeco
+		defaultunlocked = 0
+	}
+}
+
 store_song_data = {
 	avalancha = {
-		price = 500
+		price = 0
 	}
 	bellyofashark = {
-		price = 500
+		price = 0
 	}
 	cantbesaved = {
-		price = 500
+		price = 0
+	}
+	citiesonflame = {
+		price = 0
 	}
 	closer = {
-		price = 500
+		price = 0
 	}
 	dontholdback = {
-		price = 500
+		price = 0
 	}
 	downndirty = {
-		price = 500
+		price = 0
 	}
 	fcpremix = {
-		price = 500
+		price = 0
 	}
 	generationrock = {
-		price = 500
+		price = 0
 	}
 	gothatfar = {
-		price = 500
+		price = 0
+	}
+	helicopter = {
+		price = 0
 	}
 	hierkommtalex = {
-		price = 500
+		price = 0
 	}
 	imintheband = {
-		price = 500
+		price = 0
 	}
 	impulse = {
-		price = 500
+		price = 0
 	}
 	inlove = {
-		price = 500
+		price = 0
 	}
 	mauvaisgarcon = {
-		price = 500
+		price = 0
 	}
 	metalheavylady = {
-		price = 500
+		price = 0
 	}
 	minuscelsius = {
-		price = 500
+		price = 0
+	}
+	monsters = {
+		price = 0
 	}
 	mycurse = {
-		price = 500
+		price = 0
 	}
 	nothingformehere = {
-		price = 500
+		price = 0
 	}
 	prayeroftherefugee = {
-		price = 500
+		price = 0
 	}
 	radiosong = {
-		price = 500
+		price = 0
+	}
+	reptilia = {
+		price = 0
 	}
 	ruby = {
-		price = 500
+		price = 0
+	}
+	sabotage = {
+		price = 0
 	}
 	shebangsadrum = {
-		price = 500
+		price = 0
+	}
+	suckmykiss = {
+		price = 0
 	}
 	takethislife = {
-		price = 500
+		price = 0
 	}
 	thewayitends = {
-		price = 500
+		price = 0
 	}
 	thrufireandflames = {
-		price = 500
+		price = 12000
 	}
 }
 Bonus_Songs_Info = [
@@ -6405,6 +6466,11 @@ Bonus_Songs_Info = [
 		item = cantbesaved
 		text = "Taken from Senses Fail's second full length album Still Searching.  The album's story is from the point of view of a character's stress and anxiety, including his battles with faith, alcohol, and depression."
 		album_cover = SensesFailStillSearching
+	}
+	{
+		item = citiesonflame
+		text = ""
+		album_cover = store_song_default
 	}
 	{
 		item = closer
@@ -6437,6 +6503,11 @@ Bonus_Songs_Info = [
 		album_cover = BretMichealsBandGoThatFar
 	}
 	{
+		item = helicopter
+		text = ""
+		album_cover = store_song_default
+	}
+	{
 		item = hierkommtalex
 		text = "Die Toten Hosen (which literally translates to 'The Dead Trousers') have been around for over 20 years.  The songs on their first album were mostly about having fun, but have since shifted their focus to more political and social issues."
 		album_cover = store_song_default
@@ -6459,7 +6530,7 @@ Bonus_Songs_Info = [
 	{
 		item = mauvaisgarcon
 		text = "Naast was formed in Joinville-le-Point in 2004.  The band originally was comprised of just two members, Gustave (guitar and vocals) and Nicholas (drums).  Members Clod (bass guitar, keyboard) and Laka (guitar) joined the band in 2005."
-		album_cover = store_song_default
+		album_cover = NaastAntichambre
 	}
 	{
 		item = metalheavylady
@@ -6469,6 +6540,11 @@ Bonus_Songs_Info = [
 	{
 		item = minuscelsius
 		text = "Backyard Babies are largely attributed with bringing sleaze rock to Sweden.  Hailing from Nassjo, Sweden, the band was formed in 1987, have released 5 studio albums, and have even won a Swedish Grammy."
+		album_cover = BackyardBabiesStockholmSyndrome
+	}
+	{
+		item = monsters
+		text = ""
 		album_cover = store_song_default
 	}
 	{
@@ -6484,11 +6560,16 @@ Bonus_Songs_Info = [
 	{
 		item = prayeroftherefugee
 		text = "The members of Rise Against are all vegetarians or vegans, and are active in bringing awareness to issues such as environmental degredation and animal cruelty."
-		album_cover = store_song_default
+		album_cover = RiseAgainstTheSuffererAndTheWitness
 	}
 	{
 		item = radiosong
 		text = "Superbus are a five-piece French pop-rock group.  They formed in 1999 after singer Jennifer Ayache returned to France from living in the U.S. to look for musicians.  In 2005 they won the Best French Act award at the MTV Europe Music Awards."
+		album_cover = SuperbusPopnGum
+	}
+	{
+		item = reptilia
+		text = ""
 		album_cover = store_song_default
 	}
 	{
@@ -6497,14 +6578,24 @@ Bonus_Songs_Info = [
 		album_cover = KaiserChiefsYoursTrulyAngry_Mob
 	}
 	{
+		item = sabotage
+		text = ""
+		album_cover = store_song_default
+	}
+	{
 		item = shebangsadrum
 		text = "Taken from the 1989 self-titled debut by The Stone Roses.  The album is regarded by many as one of the greatest British albums ever released and was a huge influence on the Britpop movement that followed in the 1990's."
 		album_cover = StoneRosesStoneRoses
 	}
 	{
+		item = suckmykiss
+		text = ""
+		album_cover = store_song_default
+	}
+	{
 		item = takethislife
 		text = "Formed in Gothenburg, Sweden in 1990, In Flames is one of the pioneers of what is now known as melodic death metal.  This song is taken from the album 'Come Clarity' which debuted at No. 1 on the Swedish charts."
-		album_cover = store_song_default
+		album_cover = InFlamesComeClarity
 	}
 	{
 		item = thewayitends
@@ -6514,9 +6605,10 @@ Bonus_Songs_Info = [
 	{
 		item = thrufireandflames
 		text = "DragonForce are a British power metal band from London. The band was formed in 1999 by guitarists Herman Li and Sam Totman, and are known for their long and fast guitar solos, fantasy-themed lyrics and retro video game-influenced sound."
-		album_cover = store_song_default
+		album_cover = DragonforceInhumanRampage
 	}
 ]
+
 script create_store_menu 
 	mark_unsafe_for_shutdown
 	spawnscriptnow \{menu_music_on}
