@@ -5562,3 +5562,515 @@ script create_cheats_menu
 		]}
 endscript
 beat_game_message_expert = "Wow. You've mastered Permadeath on expert -- Go start a band already! Take it to the next level with the \\c1%n\\c0!"
+
+new_band_flashing_char = "1"
+new_band_flashing_index = 0
+new_band_flashing_index_prev = 0
+new_band_index = 0
+max_band_characters = 2
+ebn_transitioning_back = 0
+default_band_characters = [
+	"1"
+	"2"
+	"3"
+	"4"
+	"5"
+	"6"
+	"7"
+	"8"
+	"9"
+	"10"
+	"11"
+	"12"
+	"13"
+	"14"
+	"15"
+	"16"
+	"17"
+	"18"
+	"19"
+	"20"
+	"21"
+	"22"
+	"23"
+	"24"
+	"25"
+	"26"
+	"27"
+	"28"
+	"29"
+	"30"
+	"31"
+	"32"
+	"33"
+	"34"
+	"35"
+	"36"
+	"37"
+	"38"
+	"39"
+	"40"
+	"41"
+	"42"
+	"43"
+	"44"
+	"45"
+	"46"
+	"47"
+	"48"
+	"49"
+	"50"
+	"51"
+	"52"
+	"53"
+	"54"
+	"55"
+	"56"
+	"57"
+	"58"
+	"59"
+	"60"
+	"61"
+	"62"
+	"63"
+	"64"
+	"65"
+	"66"
+	"67"
+	"68"
+	"69"
+	"70"
+	"71"
+	"72"
+	"73"
+	"74"
+	"75"
+	"76"
+	"77"
+	"78"
+	"79"
+	"80"
+	"81"
+	"82"
+	"83"
+	"84"
+	"85"
+	"86"
+	"87"
+	"88"
+	"89"
+	"90"
+	"91"
+	"92"
+	"93"
+	"94"
+	"95"
+	"96"
+	"97"
+	"98"
+	"99"
+	"100"
+]
+
+script create_enter_band_name_menu 
+	SetScreenElementProps \{id = root_window
+		event_handlers = [
+			{
+				pad_start
+				null_script
+			}
+		]
+		replace_handlers}
+	NetSessionFunc \{func = stats_init}
+	enter_band_name_reset_variables
+	rotation_angle = -2
+	CreateScreenElement \{type = ContainerElement
+		parent = root_window
+		id = ebn_container
+		Pos = (0.0, 0.0)}
+	CreateScreenElement \{type = SpriteElement
+		parent = ebn_container
+		id = menu_backdrop
+		texture = TopRockers_BG
+		rgba = [
+			255
+			255
+			255
+			255
+		]
+		Pos = (640.0, 360.0)
+		dims = (1280.0, 720.0)
+		just = [
+			center
+			center
+		]
+		z_priority = 0}
+	CreateScreenElement \{type = SpriteElement
+		parent = ebn_container
+		id = light_overlay
+		texture = Venue_Overlay
+		Pos = (640.0, 360.0)
+		dims = (1280.0, 720.0)
+		just = [
+			center
+			center
+		]
+		z_priority = 99}
+	CreateScreenElement \{type = SpriteElement
+		parent = ebn_container
+		id = ticket_image
+		texture = band_name_ticket
+		rgba = [
+			255
+			255
+			255
+			255
+		]
+		Pos = (640.0, 360.0)
+		dims = (1280.0, 720.0)
+		just = [
+			center
+			center
+		]
+		z_priority = 1}
+	CreateScreenElement {
+		type = SpriteElement
+		parent = ebn_container
+		id = random_image
+		texture = band_name_graphic03
+		rgba = [255 255 255 255]
+		Pos = (($enter_band_name_big_vals).right_side_img_pos)
+		dims = (($enter_band_name_big_vals).right_side_img_dims)
+		z_priority = 2
+	}
+	rand = 0
+	getrandomvalue \{name = rand
+		integer
+		a = 0
+		b = 2}
+	if (<rand> = 0)
+		SetScreenElementProps \{id = random_image
+			texture = band_name_graphic01}
+	elseif (<rand> = 1)
+		SetScreenElementProps \{id = random_image
+			texture = band_name_graphic02}
+	elseif (<rand> = 2)
+		SetScreenElementProps \{id = random_image
+			texture = band_name_graphic03}
+	endif
+	black = [70 10 10 255]
+	blue = [30 110 150 255]
+	nameColor = [180 70 35 255]
+	activeColor = [230 130 65 255]
+	CreateScreenElement {
+		type = TextElement
+		parent = ebn_container
+		font = text_a10_Large
+		text = "NUMBER OF LIVES"
+		id = ebn_header_text
+		Pos = (($enter_band_name_big_vals).header_pos)
+		rot_angle = <rotation_angle>
+		rgba = <black>
+		just = [center top]
+		Scale = (($enter_band_name_big_vals).header_scale)
+	}
+	CreateScreenElement {
+		type = TextElement
+		parent = ebn_container
+		font = text_a3
+		text = "THE LEGENDS"
+		id = ebn_tour_text
+		Pos = (($enter_band_name_big_vals).tour_pos)
+		rot_angle = <rotation_angle>
+		rgba = <black>
+		just = [center top]
+		Scale = (($enter_band_name_big_vals).tour_scale)
+	}
+	CreateScreenElement {
+		type = TextElement
+		parent = ebn_container
+		font = text_a3
+		text = "OF ROCK TOUR"
+		id = ebn_address_text
+		Pos = (($enter_band_name_big_vals).address_pos)
+		rot_angle = <rotation_angle>
+		rgba = <black>
+		just = [center top]
+		Scale = (($enter_band_name_big_vals).address_scale)
+	}
+	GetLocalSystemTime
+	if English
+		GetUpperCaseString (($us_month_names) [(<localsystemtime>.month)])
+		FormatText textname = date_text "%m %d, %y" m = (<uppercasestring>) d = (<localsystemtime>.dayofmonth) y = (<localsystemtime>.year)
+	else
+		GetUpperCaseString (($us_month_names) [(<localsystemtime>.month)])
+		FormatText textname = date_text "%d %m %y" d = (<localsystemtime>.dayofmonth) m = (<uppercasestring>) y = (<localsystemtime>.year)
+	endif
+	CreateScreenElement {
+		type = TextElement
+		parent = ebn_container
+		font = text_a3
+		text = <date_text>
+		id = ebn_date_text
+		Pos = (($enter_band_name_big_vals).date_pos)
+		rot_angle = <rotation_angle>
+		rgba = <black>
+		just = [center top]
+		Scale = (($enter_band_name_big_vals).date_scale)
+	}
+	CreateScreenElement {
+		type = TextElement
+		parent = ebn_container
+		font = text_a3
+		text = "SPONSORED BY:"
+		id = ebn_sponsor_text
+		Pos = (($enter_band_name_big_vals).sponsor_pos)
+		rot_angle = <rotation_angle>
+		rgba = <black>
+		just = [center top]
+		Scale = (($enter_band_name_big_vals).sponsor_scale)
+	}
+	CreateScreenElement {
+		type = SpriteElement
+		parent = ebn_container
+		id = logo_vault_image
+		texture = setlist_icon_generic
+		Pos = (($enter_band_name_big_vals).sponsor_pos + ($enter_band_name_big_vals).sponsor_offset)
+		dims = (($enter_band_name_big_vals).sponsor_dims)
+		rot_angle = <rotation_angle>
+		just = [center top]
+		Blend = subtract
+	}
+	CreateScreenElement {
+		type = ContainerElement
+		parent = ebn_container
+		id = band_name_text_container
+		rot_angle = <rotation_angle>
+	}
+	CreateScreenElement {
+		type = TextElement
+		parent = band_name_text_container
+		font = text_a3
+		Scale = (($enter_band_name_big_vals).text_scale)
+		rgba = <nameColor>
+		id = band_name_text
+		Pos = (($enter_band_name_big_vals).text_pos)
+		just = [center center]
+	}
+	CreateScreenElement {
+		type = TextElement
+		parent = band_name_text_container
+		font = text_a3
+		Scale = (($enter_band_name_big_vals).text_scale)
+		rgba = <activeColor>
+		text = "1"
+		id = band_name_entry_char
+		just = [center center]
+	}
+	CreateScreenElement {
+		type = SpriteElement
+		parent = band_name_text_container
+		id = ebn_marker
+		texture = band_name_underline
+		just = [center center]
+		event_handlers = [
+			{pad_up enter_band_name_change_character params = {up}}
+			{pad_down enter_band_name_change_character params = {down}}
+			{pad_choose band_advance_pointer}
+			{pad_back band_retreat_pointer}
+			{pad_start confirm_band_name}
+		]
+		rgba = <activeColor>
+		exclusive_device = ($primary_controller)
+	}
+	RunScriptOnScreenElement \{id = ebn_marker
+		blinker
+		params = {
+			id = ebn_marker
+			time = 0.5
+		}}
+	RunScriptOnScreenElement \{id = band_name_entry_char
+		blinker
+		params = {
+			id = band_name_entry_char
+			time = 0.5
+		}}
+	LaunchEvent \{type = focus
+		target = ebn_marker}
+	change \{ebn_transitioning_back = 0}
+	menu_ebn_update_marker
+	enter_band_name_reset_user_control_helpers
+endscript
+
+script band_advance_pointer 
+	if (($new_band_index + 1) < $max_band_characters)
+		SoundEvent \{event = ui_sfx_select}
+		SetArrayElement \{arrayName = new_band_name
+			globalarray
+			index = $new_band_index
+			newValue = $new_band_flashing_char}
+		change \{new_band_flashing_index_prev = $new_band_flashing_index}
+		change \{new_band_flashing_index = 0}
+		change \{new_band_flashing_char = "1"}
+		change new_band_index = ($new_band_index + 1)
+		menu_ebn_refresh_band_name
+		if (($new_band_index + 1) = $max_band_characters)
+			ebn_take_away_blinker
+		endif
+	endif
+endscript
+
+script enter_band_name_reset_variables 
+	change \{new_band_name = [
+			""
+			""
+			""
+			""
+			""
+			""
+			""
+			""
+			""
+			""
+			""
+			""
+			""
+			""
+			""
+			""
+			""
+			""
+			""
+			""
+		]}
+	change \{new_band_index = 0}
+	change \{default_band_indexes = [
+			0
+			0
+			0
+			0
+			0
+			0
+			0
+			0
+			0
+			0
+			0
+			0
+			0
+			0
+			0
+			0
+			0
+			0
+			0
+			0
+		]}
+	change \{new_band_flashing_char = "1"}
+	change \{new_band_flashing_index = 0}
+endscript
+
+script band_advance_pointer 
+	if (($new_band_index + 1) < $max_band_characters)
+		SoundEvent \{event = ui_sfx_select}
+		SetArrayElement \{arrayName = new_band_name
+			globalarray
+			index = $new_band_index
+			newValue = $new_band_flashing_char}
+		change \{new_band_flashing_index_prev = $new_band_flashing_index}
+		change \{new_band_flashing_index = 0}
+		change \{new_band_flashing_char = "1"}
+		change new_band_index = ($new_band_index + 1)
+		menu_ebn_refresh_band_name
+		if (($new_band_index + 1) = $max_band_characters)
+			ebn_take_away_blinker
+		endif
+	endif
+endscript
+
+script menu_ebn_get_band_name_text 
+	FormatText textname = band_name_text_string "%a%b%c%d%e%f%g%h%i%j%k%l%m%n%o%p%q%r%s%t" a = ($new_band_name [0]) b = ($new_band_name [1]) c = ($new_band_name [2]) d = ($new_band_name [3]) e = ($new_band_name [4]) f = ($new_band_name [5]) g = ($new_band_name [6]) h = ($new_band_name [7]) i = ($new_band_name [8]) j = ($new_band_name [9]) k = ($new_band_name [10]) l = ($new_band_name [11]) m = ($new_band_name [12]) n = ($new_band_name [13]) o = ($new_band_name [14]) p = ($new_band_name [15]) q = ($new_band_name [16]) r = ($new_band_name [17]) s = ($new_band_name [18]) t = ($new_band_name [19])
+	return band_name_text_string = <band_name_text_string>
+endscript
+
+script confirm_band_name 
+	if ($ebn_transitioning_back)
+		return
+	endif
+	num_spaces = 0
+	array_entry = 0
+	<valid> = 0
+	<need_unique> = 0
+	begin
+	if NOT ($new_band_name [<array_entry>] = "")
+		if NOT ($new_band_name [<array_entry>] = " ")
+			<valid> = 1
+			break
+		endif
+	endif
+	<array_entry> = (<array_entry> + 1)
+	repeat ($max_band_characters)
+	if (<valid> = 1)
+		<prev_band_index> = ($current_band - 1)
+		if (<prev_band_index> > 0)
+			begin
+			menu_ebn_get_band_name_text
+			StringRemoveTrailingWhitespace string = <band_name_text_string>
+			get_band_game_mode_name
+			FormatText checksumname = bandname_id 'band%i_info_%g' i = <prev_band_index> g = <game_mode_name>
+			GetGlobalTags <bandname_id> param = name
+			if (<name> = <new_string>)
+				<valid> = 0
+				<need_unique> = 1
+			endif
+			<prev_band_index> = (<prev_band_index> - 1)
+			repeat ($current_band - 1)
+		endif
+		<next_band_index> = ($current_band + 1)
+		if (<next_band_index> < 6)
+			begin
+			menu_ebn_get_band_name_text
+			StringRemoveTrailingWhitespace string = <band_name_text_string>
+			get_band_game_mode_name
+			FormatText checksumname = bandname_id 'band%i_info_%g' i = <next_band_index> g = <game_mode_name>
+			GetGlobalTags <bandname_id> param = name
+			if (<name> = <new_string>)
+				<valid> = 0
+				<need_unique> = 1
+			endif
+			<next_band_index> = (<next_band_index> + 1)
+			repeat (5 - $current_band)
+		endif
+	endif
+	if (<valid> = 0)
+		SoundEvent \{event = Menu_Warning_SFX}
+		enter_band_name_reset_variables
+		menu_ebn_refresh_band_name
+		menu_ebn_update_marker
+		if ScreenElementExists \{id = ebn_marker}
+			if (<need_unique> = 1)
+				create_alert_popup \{prev_menu_id = ebn_marker
+					alert = "The Band Name you entered already exists.  Please enter a different Band Name."}
+			else
+				create_alert_popup \{prev_menu_id = ebn_marker
+					alert = "You must enter a Band Name to proceed!"}
+			endif
+		endif
+	else
+		menu_ebn_get_band_name_text
+		StringRemoveTrailingWhitespace string = <band_name_text_string>
+		get_band_game_mode_name
+		FormatText checksumname = bandname_id 'band%i_info_%g' i = ($current_band) g = <game_mode_name>
+		GetTrueStartTime
+		FormatText checksumname = band_unique_id 'band%i_info_%g_%d' i = ($current_band) g = <game_mode_name> d = <starttime>
+		SetGlobalTags <bandname_id> params = {name = <new_string> band_unique_id = <band_unique_id>}
+		agora_update band_id = <band_unique_id> name = <new_string> new_band
+		StringToInteger \{new_string}
+		change permadeath_lives = <new_string>
+		if ($options_for_manage_band = 1)
+			ui_flow_manager_respond_to_action \{action = enter_band_name_for_manage_band}
+		else
+			ui_flow_manager_respond_to_action \{action = enter_band_name}
+		endif
+	endif
+endscript
