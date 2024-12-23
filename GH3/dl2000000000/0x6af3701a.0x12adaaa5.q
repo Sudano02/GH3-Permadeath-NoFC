@@ -5,6 +5,7 @@ g_anim_flame = 1
 
 permadeath_text = "Permadeath Mode"
 permadeath_lives = 3
+permadeath_lives_total = 3
 permadeath_fails = 0
 permadeath_toggle = 1
 permadeath_max_streak = 0
@@ -155,8 +156,36 @@ script setlist_show_helperbar \{text_option1 = "BONUS"
 	<i> = (<i> + 1)
 	repeat 3
 	if ($permadeath_toggle = 1)
+		lives_ratio = (($permadeath_lives * 1.0) / ($permadeath_lives_total * 1.0))
+		green_text = [0 190 0 255]
+		orange_text = [190 85 0 255]
+		red_text = [190 0 0 255]
+		colour_array = [0 0 0 255]
+		if (<lives_ratio> > 0.5)
+			t = ((<lives_ratio> - 0.5) * 2)
+			val1 = (((<green_text> [0]) * <t>) + ((<orange_text> [0]) * (1 - <t>)))
+			val2 = (((<green_text> [1]) * <t>) + ((<orange_text> [1]) * (1 - <t>)))
+			val3 = (((<green_text> [2]) * <t>) + ((<orange_text> [2]) * (1 - <t>)))
+			CastToInteger \{val1}
+			CastToInteger \{val2}
+			CastToInteger \{val3}
+			SetArrayElement arrayName = colour_array index = 0 newValue = (<val1>)
+			SetArrayElement arrayName = colour_array index = 1 newValue = (<val2>)
+			SetArrayElement arrayName = colour_array index = 2 newValue = (<val3>)
+		else
+			t = (<lives_ratio> * 2)
+			val1 = (((<orange_text> [0]) * <t>) + ((<red_text> [0]) * (1 - <t>)))
+			val2 = (((<orange_text> [1]) * <t>) + ((<red_text> [1]) * (1 - <t>)))
+			val3 = (((<orange_text> [2]) * <t>) + ((<red_text> [2]) * (1 - <t>)))
+			CastToInteger \{val1}
+			CastToInteger \{val2}
+			CastToInteger \{val3}
+			SetArrayElement arrayName = colour_array index = 0 newValue = (<val1>)
+			SetArrayElement arrayName = colour_array index = 1 newValue = (<val2>)
+			SetArrayElement arrayName = colour_array index = 2 newValue = (<val3>)
+		endif
 		FormatText textname = text "Permadeath Lives: %i" i = $permadeath_lives
-		displayText parent = user_control_container Scale = 1 text = <text>  rgba = [255 255 255 255] Pos = (870.0, 240.0) z = 50
+		displayText parent = user_control_container Scale = 1 text = <text>  rgba = <colour_array> Pos = (870.0, 240.0) z = 50
 		FormatText textname = text "Attempt #: %i" i = ($permadeath_fails + 1)
 		displayText parent = user_control_container Scale = 1 text = <text>  rgba = [255 255 255 255] Pos = (870.0, 280.0) z = 50
 		FormatText textname = text "Max Note Streak: %i" i = $permadeath_max_streak
@@ -164,6 +193,11 @@ script setlist_show_helperbar \{text_option1 = "BONUS"
 		FormatText textname = text "Max FC Count: %i" i = $permadeath_max_song_count
 		displayText parent = user_control_container Scale = 1 text = <text>  rgba = [255 255 255 255] Pos = (870.0, 360.0) z = 50
 	endif
+endscript
+
+script testing_scripts_do_not_use
+	FormatText textname = text "Colour Array: %i %j %k" i = <val1> j = <val2> k = <val3>
+	displayText parent = user_control_container Scale = 1 text = <text>  rgba = [255 255 255 255] Pos = (870.0, 200.0) z = 50
 endscript
 
 script intro_song_info 
@@ -5969,6 +6003,7 @@ script confirm_band_name
 		agora_update band_id = <band_unique_id> name = <new_string> new_band
 		StringToInteger \{new_string}
 		change permadeath_lives = <new_string>
+		change permadeath_lives_total = <new_string>
 		if ($options_for_manage_band = 1)
 			ui_flow_manager_respond_to_action \{action = enter_band_name_for_manage_band}
 		else
