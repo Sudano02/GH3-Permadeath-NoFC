@@ -6445,3 +6445,208 @@ endscript
 script menu_manage_band_rename_band 
 	ui_flow_manager_respond_to_action \{action = go_back}
 endscript
+
+store_song_data = {
+	avalancha = {
+		price = 500
+	}
+	bellyofashark = {
+		price = 500
+	}
+	cantbesaved = {
+		price = 500
+	}
+	closer = {
+		price = 500
+	}
+	dontholdback = {
+		price = 500
+	}
+	downndirty = {
+		price = 500
+	}
+	fcpremix = {
+		price = 500
+	}
+	generationrock = {
+		price = 500
+	}
+	gothatfar = {
+		price = 500
+	}
+	hierkommtalex = {
+		price = 500
+	}
+	imintheband = {
+		price = 500
+	}
+	impulse = {
+		price = 500
+	}
+	inlove = {
+		price = 500
+	}
+	mauvaisgarcon = {
+		price = 500
+	}
+	metalheavylady = {
+		price = 500
+	}
+	minuscelsius = {
+		price = 500
+	}
+	mycurse = {
+		price = 500
+	}
+	nothingformehere = {
+		price = 500
+	}
+	prayeroftherefugee = {
+		price = 500
+	}
+	radiosong = {
+		price = 500
+	}
+	ruby = {
+		price = 500
+	}
+	shebangsadrum = {
+		price = 500
+	}
+	takethislife = {
+		price = 500
+	}
+	thewayitends = {
+		price = 500
+	}
+	thrufireandflames = {
+		price = 500
+	}
+}
+Bonus_Songs_Info = [
+	{
+		item = avalancha
+		text = "Heroes del Silencio is a rock band from Zaragoza Spain.  After 10 years and numerous albums, the band broke up in 1997.  In 2007, as part of a 20-year anniversary celebration and 10 years after their break-up they are participating in a 10 concert world tour."
+		album_cover = HeroesDelSilencioAvalancha
+	}
+	{
+		item = bellyofashark
+		text = "The Gallows are a punk band from Watford, England that formed in 2005.  This killer track is taken off their debut album 'Orchestra of Wolves'"
+		album_cover = store_song_default
+	}
+	{
+		item = cantbesaved
+		text = "Taken from Senses Fail's second full length album Still Searching.  The album's story is from the point of view of a character's stress and anxiety, including his battles with faith, alcohol, and depression."
+		album_cover = SensesFailStillSearching
+	}
+	{
+		item = closer
+		text = "Lacuna Coil was formed in Milan Italy, and were originally called Sleep of Right.  They changed their name to Ethereal and signed to Century Media records in 1997.  They changed their name to Lacuna Coil when they discovered Ethereal was already taken."
+		album_cover = LacunaCoilKarmaCode
+	}
+	{
+		item = dontholdback
+		text = "This song is from The Sleeping's second studio album Questions and Answers on Victory Records.  The Sleeping formed in 2003 from the remains of Skycamefalling."
+		album_cover = TheSleepingQuestionsAndAnswers
+	}
+	{
+		item = downndirty
+		text = "Rising up out of the downtown shadows of a crumbling city of angels, The 'L.A. Slum Lords' set Guitar Hero 3 ablaze with a punishing molotov cocktail of rock revolution!"
+		album_cover = store_song_default
+	}
+	{
+		item = fcpremix
+		text = "This song is a remake of the song F.C.P.S.I.T.S.G. E.P.G.E.P.G.E.P. which originally appeared on their self-titled album."
+		album_cover = FallofTroyDoppelganger
+	}
+	{
+		item = generationrock
+		text = "Revolverheld is a rock band from Hamburg, Germany.  This song was their first single and released in June 2005, 3 months before the bands self-titled album."
+		album_cover = RevolverheldRevolverheld
+	}
+	{
+		item = gothatfar
+		text = "Bret Michaels, the former lead singer of the notorious glam metal band Poison is back with his own band.  Bret also did the animation performances of the lead vocalist in the game."
+		album_cover = BretMichealsBandGoThatFar
+	}
+	{
+		item = hierkommtalex
+		text = "Die Toten Hosen (which literally translates to 'The Dead Trousers') have been around for over 20 years.  The songs on their first album were mostly about having fun, but have since shifted their focus to more political and social issues."
+		album_cover = store_song_default
+	}
+	{
+		item = imintheband
+		text = "Taken from the sixth album from the Swedish rockers.  Lead vocalist/guitarist Nicke Andersson used to play drums for the death metal pioneers Entombed."
+		album_cover = store_song_default
+	}
+	{
+		item = impulse
+		text = "Big ups to film scoring major Zach Kamins and undisputed best THPS player, Andy 'THPS' Gentile, for collaborating on this song written specifically for Guitar Hero gameplay."
+		album_cover = endlesssporadic
+	}
+	{
+		item = inlove
+		text = "Scouts of St. Sebastian guitarist/vocalist Judita Wignall (formerly of The Halo Friendlies) performed motion capture performance for many of the female characters in the game and was the inspiration for Judy Nails."
+		album_cover = store_song_ScoutsStSebastian
+	}
+	{
+		item = mauvaisgarcon
+		text = "Naast was formed in Joinville-le-Point in 2004.  The band originally was comprised of just two members, Gustave (guitar and vocals) and Nicholas (drums).  Members Clod (bass guitar, keyboard) and Laka (guitar) joined the band in 2005."
+		album_cover = store_song_default
+	}
+	{
+		item = metalheavylady
+		text = "Lions are an Austin, TX based band that formed in August 2005.  Their music is influenced by 60's and 70's era hard rock with 90's era fever.  Lions create a blend of retro riffage, artful noise, melodic interludes and revolutionary attitude with a live show that has been described as 'furious' with a 'full-frontal assault' that will leave you half-deaf and disoriented."
+		album_cover = LionsLions
+	}
+	{
+		item = minuscelsius
+		text = "Backyard Babies are largely attributed with bringing sleaze rock to Sweden.  Hailing from Nassjo, Sweden, the band was formed in 1987, have released 5 studio albums, and have even won a Swedish Grammy."
+		album_cover = store_song_default
+	}
+	{
+		item = mycurse
+		text = "The first single off the album 'As Daylight Dies', this song went to number 21 on the mainstream rock chart.  In 2004, Killswitch Engage was nominated for a Best Metal Performance Grammy."
+		album_cover = KillswitchEngageAsDaylightDies
+	}
+	{
+		item = nothingformehere
+		text = "Dope was formed in 1997 by brothers Simon and Edsel Dope.  This song is from their much anticipated fifth studio album."
+		album_cover = Dope_PosterCover_edsel
+	}
+	{
+		item = prayeroftherefugee
+		text = "The members of Rise Against are all vegetarians or vegans, and are active in bringing awareness to issues such as environmental degredation and animal cruelty."
+		album_cover = store_song_default
+	}
+	{
+		item = radiosong
+		text = "Superbus are a five-piece French pop-rock group.  They formed in 1999 after singer Jennifer Ayache returned to France from living in the U.S. to look for musicians.  In 2005 they won the Best French Act award at the MTV Europe Music Awards."
+		album_cover = store_song_default
+	}
+	{
+		item = ruby
+		text = "Kaiser Chiefs were the most successful act at the 2006 Brit awards - winning 'Best Group', 'Best British Rock Act', and 'Best Live Act'"
+		album_cover = KaiserChiefsYoursTrulyAngry_Mob
+	}
+	{
+		item = shebangsadrum
+		text = "Taken from the 1989 self-titled debut by The Stone Roses.  The album is regarded by many as one of the greatest British albums ever released and was a huge influence on the Britpop movement that followed in the 1990's."
+		album_cover = StoneRosesStoneRoses
+	}
+	{
+		item = takethislife
+		text = "Formed in Gothenburg, Sweden in 1990, In Flames is one of the pioneers of what is now known as melodic death metal.  This song is taken from the album 'Come Clarity' which debuted at No. 1 on the Swedish charts."
+		album_cover = store_song_default
+	}
+	{
+		item = thewayitends
+		text = "Prototype was formed in 1994 from the remains of the L.A. thrash band Psychosis.  They take progressive/thrash metal to the next level with this track off their third album 'Continuum'"
+		album_cover = prototype_continuum_cover
+	}
+	{
+		item = thrufireandflames
+		text = "DragonForce are a British power metal band from London. The band was formed in 1999 by guitarists Herman Li and Sam Totman, and are known for their long and fast guitar solos, fantasy-themed lyrics and retro video game-influenced sound."
+		album_cover = store_song_default
+	}
+]
