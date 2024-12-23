@@ -6818,3 +6818,44 @@ script create_store_menu
 		z = 100}
 	mark_safe_for_shutdown
 endscript
+
+script Progression_TierComplete 
+	printf \{"Progression_TierComplete"}
+	get_progression_globals game_mode = ($game_mode)
+	setlist_prefix = ($<tier_global>.prefix)
+	FormatText checksumname = tiername '%ptier%i' p = <setlist_prefix> i = <tier>
+	SetGlobalTags <tiername> params = {complete = 1}
+	if GotParam \{finished_game}
+		if ($devil_finish = 0)
+			printf \{"FINISHED GAME"}
+			change \{end_credits = 0}
+			; Add code here to do stuff after beating the devil
+			change \{progression_beat_game_last_song = 1}
+		endif
+		get_difficulty_text_nl difficulty = ($current_difficulty)
+		FormatText checksumname = gametype_checksum '%p_%s' p = <setlist_prefix> s = <difficulty_text_nl>
+		SetGlobalTags <gametype_checksum> params = {complete = 1}
+		if ($game_mode = p1_career)
+			FormatText checksumname = bandname_id 'band%i_info_%g' i = ($current_band) g = 'p1_career'
+			FormatText checksumname = hendrix_checksum 'hendrix_achievement_%s' s = <difficulty_text_nl>
+			GetGlobalTags <bandname_id> param = <hendrix_checksum>
+			if ((<...>.<hendrix_checksum>) = 0)
+				SetGlobalTags \{achievement_info
+					params = {
+						hendrix_achievement_lefty_off = 1
+					}}
+			elseif ((<...>.<hendrix_checksum>) = 1)
+				SetGlobalTags \{achievement_info
+					params = {
+						hendrix_achievement_lefty_on = 1
+					}}
+			endif
+		endif
+	else
+		tier = (<tier> + 1)
+		Progression_UnlockTier tier = <tier>
+		FormatText checksumname = tiername 'tier%i' i = <tier>
+		Progression_UnlockVenue level_checksum = ($<tier_global>.<tiername>.level)
+	endif
+endscript
+
