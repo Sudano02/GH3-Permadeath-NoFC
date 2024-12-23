@@ -28,8 +28,8 @@ script create_signin_changed_menu
 	if ($permadeath_fails > 0)
 		FormatText textname = text "Uh oh!  You have run out of lives!  Unfortunately that means your progress has been reset.  Here's to attempt #%i" i = ($permadeath_fails + 1)
 		permadeath_popup_text = <text>
-		permadeath_continue = "RESET EVERYTHING :("
-		permadeath_title = "YA DUN GOOFED!"
+		permadeath_continue = Random (@ "RESET EVERYTHING :(" @ "KILL YOUR SAVE :O" @ "LOSE IT ALL :'(" )
+		permadeath_title = Random (@ "YA DUN GOOFED!" @ "WOMP WOMP" @ "OH NO!" @ "BIFFED IT")
 	endif
 	destroy_popup_warning_menu
 	create_popup_warning_menu {
