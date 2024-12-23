@@ -184,6 +184,9 @@ script setlist_show_helperbar \{text_option1 = "BONUS"
 			SetArrayElement arrayName = colour_array index = 1 newValue = (<val2>)
 			SetArrayElement arrayName = colour_array index = 2 newValue = (<val3>)
 		endif
+		if ($permadeath_lives = 1)
+			<colour_array> = <red_text>
+		endif
 		FormatText textname = text "Permadeath Lives: %i" i = $permadeath_lives
 		displayText parent = user_control_container Scale = 1 text = <text>  rgba = <colour_array> Pos = (870.0, 240.0) z = 50
 		FormatText textname = text "Attempt #: %i" i = ($permadeath_fails + 1)
