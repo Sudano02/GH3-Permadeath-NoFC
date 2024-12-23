@@ -6650,3 +6650,212 @@ Bonus_Songs_Info = [
 		album_cover = store_song_default
 	}
 ]
+script create_store_menu 
+	mark_unsafe_for_shutdown
+	spawnscriptnow \{menu_music_on}
+	change \{soundcheck_in_store = 1}
+	change \{generic_select_monitor_p1_changed = 0}
+	if ($store_view_cam_created = 0)
+		change store_saved_guitar_id = ($player1_status.instrument_id)
+		change \{structurename = player1_status
+			style = 1}
+		unload_band
+		destroy_bg_viewport
+		setup_bg_viewport
+		PlayIGCCam \{name = store_view_cam
+			viewport = bg_viewport
+			ControlScript = store_camera_script
+			Play_hold = 1}
+		change \{store_view_cam_created = 1}
+	endif
+	change \{target_store_camera_prop = main_store_menu}
+	setup_store_hub \{cash_pos = (-2000.0, -2000.0)}
+	store_camera_wait
+	SetScreenElementProps \{id = store_cash_text
+		Pos = (900.0, 505.0)}
+	hilite_pos = [
+		(897.0, 155.0)
+		(897.0, 197.0)
+		(897.0, 241.0)
+		(897.0, 284.0)
+		(897.0, 326.0)
+		(897.0, 370.0)
+		(897.0, 413.0)
+		(897.0, 456.0)
+	]
+	create_store_window_frame Pos = (900.0, 360.0) hilite_pos = (<hilite_pos> [0]) dims = (300.0, 512.0) hilite_dims = (270.0, 40.0)
+	back_handlers = [
+		{pad_up generic_menu_up_or_down_sound params = {up}}
+		{pad_down generic_menu_up_or_down_sound params = {down}}
+		{pad_back menu_store_go_back}
+	]
+	new_menu scrollid = ms_scroll vmenuid = ms_vmenu menu_pos = (775.0, 103.0) event_handlers = <back_handlers> z = 50 spacing = -20
+	change \{menu_focus_color = [
+			128
+			0
+			0
+			255
+		]}
+	change \{menu_unfocus_color = [
+			180
+			100
+			60
+			255
+		]}
+	text_params = {
+		parent = ms_vmenu
+		type = TextElement
+		font = ($store_menu_font)
+		rgba = ($menu_unfocus_color)
+		no_shadow
+	}
+	CreateScreenElement {
+		<text_params>
+		text = "GUITARS"
+		event_handlers = [
+			{focus menu_store_focus params = {hilite_pos = (<hilite_pos> [0])}}
+			{unfocus retail_menu_unfocus}
+			{pad_choose ui_flow_manager_respond_to_action params = {action = select_guitars}}
+			{pad_l3 store_debug_givebandcash}
+			{pad_left store_debug_givebandcash}
+		]
+	}
+	GetScreenElementDims id = <id>
+	if (<width> > 270)
+		SetScreenElementProps id = <id> Scale = 1
+		fit_text_in_rectangle id = <id> dims = (250.0, 60.0)
+	endif
+	CreateScreenElement {
+		<text_params>
+		text = "FINISHES"
+		event_handlers = [
+			{focus menu_store_focus params = {hilite_pos = (<hilite_pos> [1])}}
+			{unfocus retail_menu_unfocus}
+			{pad_choose ui_flow_manager_respond_to_action params = {action = select_finishes}}
+			{pad_l3 store_debug_givebandcash}
+		]
+	}
+	GetScreenElementDims id = <id>
+	if (<width> > 270)
+		SetScreenElementProps id = <id> Scale = 1
+		fit_text_in_rectangle id = <id> dims = (250.0, 60.0)
+	endif
+	CreateScreenElement {
+		<text_params>
+		text = "SONGS"
+		event_handlers = [
+			{focus menu_store_focus params = {hilite_pos = (<hilite_pos> [2])}}
+			{unfocus retail_menu_unfocus}
+			{pad_choose ui_flow_manager_respond_to_action params = {action = select_songs}}
+			{pad_l3 store_debug_givebandcash}
+		]
+	}
+	GetScreenElementDims id = <id>
+	if (<width> > 270)
+		SetScreenElementProps id = <id> Scale = 1
+		fit_text_in_rectangle id = <id> dims = (250.0, 60.0)
+	endif
+	CreateScreenElement {
+		<text_params>
+		text = "CHARACTERS"
+		event_handlers = [
+			{focus menu_store_focus params = {hilite_pos = (<hilite_pos> [3])}}
+			{unfocus retail_menu_unfocus}
+			{pad_choose ui_flow_manager_respond_to_action params = {action = select_characters}}
+			{pad_l3 store_debug_givebandcash}
+		]
+	}
+	GetScreenElementDims id = <id>
+	if (<width> > 270)
+		SetScreenElementProps id = <id> Scale = 1
+		fit_text_in_rectangle id = <id> dims = (250.0, 60.0)
+	endif
+	CreateScreenElement {
+		<text_params>
+		text = "OUTFITS"
+		event_handlers = [
+			{focus menu_store_focus params = {hilite_pos = (<hilite_pos> [4])}}
+			{unfocus retail_menu_unfocus}
+			{pad_choose ui_flow_manager_respond_to_action params = {action = select_outfits}}
+			{pad_l3 store_debug_givebandcash}
+		]
+	}
+	GetScreenElementDims id = <id>
+	if (<width> > 270)
+		SetScreenElementProps id = <id> Scale = 1
+		fit_text_in_rectangle id = <id> dims = (250.0, 60.0)
+	endif
+	CreateScreenElement {
+		<text_params>
+		text = "STYLES"
+		event_handlers = [
+			{focus menu_store_focus params = {hilite_pos = (<hilite_pos> [5])}}
+			{unfocus retail_menu_unfocus}
+			{pad_choose ui_flow_manager_respond_to_action params = {action = select_styles}}
+			{pad_l3 store_debug_givebandcash}
+		]
+	}
+	GetScreenElementDims id = <id>
+	if (<width> > 270)
+		SetScreenElementProps id = <id> Scale = 1
+		fit_text_in_rectangle id = <id> dims = (250.0, 60.0)
+	endif
+	last_hilite_index = 7
+	GetPlatform
+	show_videos = 1
+	if NOT English
+		if (<platform> = ps2 || <platform> = ps3)
+			<show_videos> = 0
+		endif
+	endif
+	if (<show_videos> = 1)
+		CreateScreenElement {
+			<text_params>
+			text = "VIDEOS"
+			event_handlers = [
+				{focus menu_store_focus params = {hilite_pos = (<hilite_pos> [6])}}
+				{unfocus retail_menu_unfocus}
+				{pad_choose ui_flow_manager_respond_to_action params = {action = select_videos}}
+				{pad_l3 store_debug_givebandcash}
+			]
+		}
+		GetScreenElementDims id = <id>
+		if (<width> > 270)
+			SetScreenElementProps id = <id> Scale = 1
+			fit_text_in_rectangle id = <id> dims = (250.0, 60.0)
+		endif
+	else
+		<last_hilite_index> = 6
+	endif
+	if (<platform> = xenon)
+		param_flags = {}
+		if NOT CheckForSignin \{local}
+			<param_flags> = {not_focusable rgba = [100 100 100 255]}
+		endif
+		CreateScreenElement {
+			<text_params>
+			text = "DOWNLOADS"
+			event_handlers = [
+				{focus menu_store_focus params = {hilite_pos = (<hilite_pos> [<last_hilite_index>])}}
+				{unfocus retail_menu_unfocus}
+			]
+			<param_flags>
+		}
+		GetScreenElementDims id = <id>
+		if (<width> > 270)
+			SetScreenElementProps id = <id> Scale = 1
+			fit_text_in_rectangle id = <id> dims = (250.0, 60.0)
+		endif
+	endif
+	clean_up_user_control_helpers
+	add_user_control_helper \{text = "SELECT"
+		button = green
+		z = 100}
+	add_user_control_helper \{text = "BACK"
+		button = red
+		z = 100}
+	add_user_control_helper \{text = "UP/DOWN"
+		button = strumbar
+		z = 100}
+	mark_safe_for_shutdown
+endscript
