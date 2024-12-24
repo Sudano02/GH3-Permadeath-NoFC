@@ -13,6 +13,7 @@ permadeath_max_song_count = 0
 
 script create_fail_song_menu 
 	change permadeath_lives = ($permadeath_lives - 1)
+	calculate_max_streak_song
 	if ($permadeath_lives > 0)
 		fail_song_menu_select_new_song
 	else
@@ -20,6 +21,33 @@ script create_fail_song_menu
 		change permadeath_fails = ($permadeath_fails + 1)
 		handle_signin_changed
 	endif
+endscript
+
+script calculate_max_streak_song 
+	p1_note_streak = ($player1_status.best_run)
+	song_checksum = ($current_song)
+	struct_add = { max_streak = <p1_note_streak> }
+	if StructureContains structure = ($gh3_songlist_props.<song_checksum>) max_streak
+		if (($gh3_songlist_props.<song_checksum>.max_streak) < <p1_note_streak>)
+			($gh3_songlist_props.<song_checksum>.max_streak) = <p1_note_streak>
+		endif
+	else
+		($gh3_songlist_props.<song_checksum>) = (($gh3_songlist_props.<song_checksum>) + <struct_add>)
+	endif
+endscript
+
+script calculate_max_streak_total
+	GetArraySize \{$gh3_songlist}
+	streak_count = 0
+	i = 0
+	begin
+	song_checksum = ($gh3_songlist [<i>])
+	if StructureContains structure = ($gh3_songlist_props.<song_checksum>) max_streak
+		<streak_count> = (<streak_count> + ($gh3_songlist_props.<song_checksum>.max_streak))
+	endif
+	<i> = (<i> + 1)
+	repeat <array_size>
+	change permadeath_max_streak = <streak_count>
 endscript
 
 script create_signin_changed_menu 
@@ -177,6 +205,7 @@ script setlist_show_helperbar \{text_option1 = "BONUS"
 			<i> = (<i> + 1)
 			repeat 3
 		endif
+		calculate_max_streak_total
 		FormatText textname = text "Permadeath Lives: %i" i = $permadeath_lives
 		displayText parent = user_control_container Scale = 1 text = <text>  rgba = <colour_array> Pos = (870.0, 240.0) z = 50
 		FormatText textname = text "Attempt #: %i" i = ($permadeath_fails + 1)
