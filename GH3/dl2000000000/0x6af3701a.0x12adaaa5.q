@@ -6542,7 +6542,7 @@ Bonus_Songs_Info = [
 	}
 	{
 		item = citiesonflame
-		text = ""
+		text = "Blue Oyster Cult is an American rock band formed on Long Island, New York, in the hamlet of Stony Brook, in 1967.  The band has sold 25 million records worldwide, including 7 million in the United States. The band's fusion of hard rock with psychedelia, and penchant for occult, fantastical and tongue-in-cheek lyrics, had a major influence on heavy metal music."
 		album_cover = store_song_default
 	}
 	{
@@ -6577,7 +6577,7 @@ Bonus_Songs_Info = [
 	}
 	{
 		item = helicopter
-		text = ""
+		text = "Bloc Party are an English rock band that was formed in London in 1999 by co-founders Kele Okereke and Russell Lissack.  Their brand of music, whilst rooted in rock, retains elements of other genres such as electronica and house music."
 		album_cover = store_song_default
 	}
 	{
@@ -6617,7 +6617,7 @@ Bonus_Songs_Info = [
 	}
 	{
 		item = monsters
-		text = ""
+		text = "Matchbox Romance is an American emo and post-hardcore band formed in 1997 in Poughkeepsie, New York.  The band blends emotional lyrics with powerful, melodic instrumentals, earning them a dedicated fanbase during the 2000s emo movement."
 		album_cover = store_song_default
 	}
 	{
@@ -6642,7 +6642,7 @@ Bonus_Songs_Info = [
 	}
 	{
 		item = reptilia
-		text = ""
+		text = "The Strokes are an iconic American rock band formed in 1998 in New York City, known for spearheading the garage rock revival of the early 2000s.  With their raw sound and cool, retro aesthetic, they gained worldwide acclaim with their debut album Is This It, which remains a cornerstone of indie rock."
 		album_cover = store_song_default
 	}
 	{
@@ -6652,7 +6652,7 @@ Bonus_Songs_Info = [
 	}
 	{
 		item = sabotage
-		text = ""
+		text = "The Beastie Boys are a groundbreaking American hip-hop group from New York City, blending rap, punk, and funk to create a unique and influential sound.  Emerging in the 1980s, they achieved legendary status with hits like “Sabotage” and “Intergalactic,” shaping the evolution of hip-hop and alternative music."
 		album_cover = store_song_default
 	}
 	{
@@ -6662,7 +6662,7 @@ Bonus_Songs_Info = [
 	}
 	{
 		item = suckmykiss
-		text = ""
+		text = "Red Hot Chili Peppers are a legendary American rock band formed in 1983 in Los Angeles, known for their energetic fusion of funk, punk, and alternative rock.  With iconic hits like “Californication” and “Under the Bridge,” they’ve become one of the best-selling bands in history, celebrated for their dynamic performances and evolving sound."
 		album_cover = store_song_default
 	}
 	{
