@@ -161,31 +161,21 @@ script setlist_show_helperbar \{text_option1 = "BONUS"
 		orange_text = [190 85 0 255]
 		red_text = [190 0 0 255]
 		colour_array = [0 0 0 255]
-		if (<lives_ratio> > 0.5)
-			t = ((<lives_ratio> - 0.5) * 2)
-			val1 = (((<green_text> [0]) * <t>) + ((<orange_text> [0]) * (1 - <t>)))
-			val2 = (((<green_text> [1]) * <t>) + ((<orange_text> [1]) * (1 - <t>)))
-			val3 = (((<green_text> [2]) * <t>) + ((<orange_text> [2]) * (1 - <t>)))
-			CastToInteger \{val1}
-			CastToInteger \{val2}
-			CastToInteger \{val3}
-			SetArrayElement arrayName = colour_array index = 0 newValue = (<val1>)
-			SetArrayElement arrayName = colour_array index = 1 newValue = (<val2>)
-			SetArrayElement arrayName = colour_array index = 2 newValue = (<val3>)
-		else
-			t = (<lives_ratio> * 2)
-			val1 = (((<orange_text> [0]) * <t>) + ((<red_text> [0]) * (1 - <t>)))
-			val2 = (((<orange_text> [1]) * <t>) + ((<red_text> [1]) * (1 - <t>)))
-			val3 = (((<orange_text> [2]) * <t>) + ((<red_text> [2]) * (1 - <t>)))
-			CastToInteger \{val1}
-			CastToInteger \{val2}
-			CastToInteger \{val3}
-			SetArrayElement arrayName = colour_array index = 0 newValue = (<val1>)
-			SetArrayElement arrayName = colour_array index = 1 newValue = (<val2>)
-			SetArrayElement arrayName = colour_array index = 2 newValue = (<val3>)
-		endif
 		if ($permadeath_lives = 1)
 			<colour_array> = <red_text>
+		else
+			i = 0
+			begin
+			if (<lives_ratio> > 0.5)
+				t = ((<lives_ratio> - 0.5) * 2)
+			else
+				t = (<lives_ratio> * 2)
+			endif
+			val = (((<green_text> [<i>]) * <t>) + ((<orange_text> [<i>]) * (1 - <t>)))
+			CastToInteger \{val}
+			SetArrayElement arrayName = colour_array index = <i> newValue = (<val>)
+			<i> = (<i> + 1)
+			repeat 3
 		endif
 		FormatText textname = text "Permadeath Lives: %i" i = $permadeath_lives
 		displayText parent = user_control_container Scale = 1 text = <text>  rgba = <colour_array> Pos = (870.0, 240.0) z = 50
