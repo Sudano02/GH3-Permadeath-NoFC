@@ -23,17 +23,25 @@ script create_fail_song_menu
 	endif
 endscript
 
+max_streaks = { 
+
+}
+
+songs_fcd = [
+]
+
 script calculate_max_streak_song 
 	p1_note_streak = ($player1_status.best_run)
 	song_checksum = ($current_song)
-	struct_add = { max_streak = <p1_note_streak> }
-	if StructureContains structure = ($gh3_songlist_props.<song_checksum>) max_streak
-		if (($gh3_songlist_props.<song_checksum>.max_streak) < <p1_note_streak>)
-			($gh3_songlist_props.<song_checksum>.max_streak) = <p1_note_streak>
+	max_streak_temp = ($max_streaks)
+	if StructureContains structure = <max_streak_temp> <song_checksum>
+		if ((<max_streak_temp>.<song_checksum>) < <p1_note_streak>)
+			AddParam name = <song_checksum> structure_name = max_streak_temp value = <p1_note_streak>
 		endif
 	else
-		($gh3_songlist_props.<song_checksum>) = (($gh3_songlist_props.<song_checksum>) + <struct_add>)
+		AddParam name = <song_checksum> structure_name = max_streak_temp value = <p1_note_streak>
 	endif
+	change max_streaks = <max_streak_temp>
 endscript
 
 script calculate_max_streak_total
@@ -42,12 +50,47 @@ script calculate_max_streak_total
 	i = 0
 	begin
 	song_checksum = ($gh3_songlist [<i>])
-	if StructureContains structure = ($gh3_songlist_props.<song_checksum>) max_streak
-		<streak_count> = (<streak_count> + ($gh3_songlist_props.<song_checksum>.max_streak))
+	if StructureContains structure = $max_streaks <song_checksum>
+		<streak_count> = (<streak_count> + ($max_streaks.<song_checksum>))
 	endif
 	<i> = (<i> + 1)
 	repeat <array_size>
 	change permadeath_max_streak = <streak_count>
+endscript
+
+script add_song_to_fc
+	song_checksum = ($current_song)
+	if NOT ArrayContains array = ($songs_fcd) contains = <song_checksum>
+		AddArrayElement array = $songs_fcd element = <song_checksum>
+	endif
+endscript
+
+script career_find_newspaper_successor 
+	unlock_guitar = ($progression_unlocked_guitar)
+	sponsored = ($progression_got_sponsored_last_song)
+	calculate_max_streak_song
+	add_song_to_fc
+	if ($player1_status.new_cash = 0)
+		got_cash = 0
+	else
+		got_cash = 1
+	endif
+	if ($is_network_game)
+		return \{flow_state = online_menu_fs}
+	elseif NOT (<unlock_guitar> = -1)
+		return \{flow_state = career_unlock_1_fs}
+	elseif (<sponsored>)
+		return \{flow_state = career_sponsored_fs}
+	elseif (<got_cash>)
+		return \{flow_state = career_cash_reward_fs}
+	else
+		GetGlobalTags \{user_options}
+		if (<autosave> = 1)
+			return \{flow_state = career_autosave_fs}
+		else
+			return \{flow_state = career_setlist_fs}
+		endif
+	endif
 endscript
 
 script create_signin_changed_menu 
@@ -192,14 +235,18 @@ script setlist_show_helperbar \{text_option1 = "BONUS"
 		if ($permadeath_lives = 1)
 			<colour_array> = <red_text>
 		else
-			i = 0
-			begin
+			colour1 = <green_text>
+			colour2 = <orange_text>
 			if (<lives_ratio> > 0.5)
 				t = ((<lives_ratio> - 0.5) * 2)
 			else
 				t = (<lives_ratio> * 2)
+				<colour1> = <orange_text>
+				<colour2> = <red_text>
 			endif
-			val = (((<green_text> [<i>]) * <t>) + ((<orange_text> [<i>]) * (1 - <t>)))
+			i = 0
+			begin
+			val = (((<colour1> [<i>]) * <t>) + ((<colour2> [<i>]) * (1 - <t>)))
 			CastToInteger \{val}
 			SetArrayElement arrayName = colour_array index = <i> newValue = (<val>)
 			<i> = (<i> + 1)
