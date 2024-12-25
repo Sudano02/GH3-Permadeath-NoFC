@@ -65,32 +65,103 @@ script add_song_to_fc
 	endif
 endscript
 
-script career_find_newspaper_successor 
-	unlock_guitar = ($progression_unlocked_guitar)
-	sponsored = ($progression_got_sponsored_last_song)
-	calculate_max_streak_song
-	add_song_to_fc
-	if ($player1_status.new_cash = 0)
-		got_cash = 0
-	else
-		got_cash = 1
-	endif
-	if ($is_network_game)
-		return \{flow_state = online_menu_fs}
-	elseif NOT (<unlock_guitar> = -1)
-		return \{flow_state = career_unlock_1_fs}
-	elseif (<sponsored>)
-		return \{flow_state = career_sponsored_fs}
-	elseif (<got_cash>)
-		return \{flow_state = career_cash_reward_fs}
-	else
-		GetGlobalTags \{user_options}
-		if (<autosave> = 1)
-			return \{flow_state = career_autosave_fs}
-		else
-			return \{flow_state = career_setlist_fs}
+script GuitarEvent_SongWon \{battle_win = 0}
+	if notcd
+		if ($output_gpu_log = 1)
+			if IsPS3
+				FormatText \{textname = filename
+					"%s_gpu_ps3"
+					s = $current_level
+					DontAssertForChecksums}
+			else
+				FormatText \{textname = filename
+					"%s_gpu"
+					s = $current_level
+					DontAssertForChecksums}
+			endif
+			TextOutputEnd output_text filename = <filename>
+		endif
+		if ($output_song_stats = 1)
+			FormatText \{textname = filename
+				"%s_stats"
+				s = $current_song
+				DontAssertForChecksums}
+			TextOutputStart
+			TextOutput \{text = "Player 1"}
+			FormatText textname = text "Score: %s" s = ($player1_status.Score) DontAssertForChecksums
+			TextOutput text = <text>
+			FormatText textname = text "Notes Hit: %n of %t" n = ($player1_status.notes_hit) t = ($player1_status.total_notes) DontAssertForChecksums
+			TextOutput text = <text>
+			FormatText textname = text "Best Run: %r" r = ($player1_status.best_run) DontAssertForChecksums
+			TextOutput text = <text>
+			FormatText textname = text "Max Notes: %m" m = ($player1_status.max_notes) DontAssertForChecksums
+			TextOutput text = <text>
+			FormatText textname = text "Base score: %b" b = ($player1_status.base_score) DontAssertForChecksums
+			TextOutput text = <text>
+			if (($player1_status.base_score) = 0)
+				FormatText \{textname = text
+					"Score Scale: n/a"}
+			else
+				FormatText textname = text "Score Scale: %s" s = (($player1_status.Score) / ($player1_status.base_score)) DontAssertForChecksums
+			endif
+			TextOutput text = <text>
+			if (($player1_status.total_notes) = 0)
+				FormatText \{textname = text
+					"Notes Hit Percentage: n/a"}
+			else
+				FormatText textname = text "Notes Hit Percentage: %s" s = ((($player1_status.notes_hit) / ($player1_status.total_notes)) * 100.0) DontAssertForChecksums
+			endif
+			TextOutput text = <text>
+			TextOutputEnd output_text filename = <filename>
 		endif
 	endif
+	if ($current_num_players = 2)
+		getsongtimems
+		if ($last_time_in_lead_player = 0)
+			change structurename = player1_status time_in_lead = ($player1_status.time_in_lead + <time> - $last_time_in_lead)
+		elseif ($last_time_in_lead_player = 1)
+			change structurename = player2_status time_in_lead = ($player2_status.time_in_lead + <time> - $last_time_in_lead)
+		endif
+		change \{last_time_in_lead_player = -1}
+	endif
+	if ($game_mode = p2_battle)
+		if NOT (<battle_win> = 1)
+			change \{save_current_powerups_p1 = $current_powerups_p1}
+			change \{save_current_powerups_p2 = $current_powerups_p2}
+			change \{current_powerups_p1 = [
+					0
+					0
+					0
+				]}
+			change \{current_powerups_p2 = [
+					0
+					0
+					0
+				]}
+			change structurename = player1_status save_num_powerups = ($player1_status.current_num_powerups)
+			change structurename = player2_status save_num_powerups = ($player2_status.current_num_powerups)
+			change \{structurename = player1_status
+				current_num_powerups = 0}
+			change \{structurename = player2_status
+				current_num_powerups = 0}
+			p1_health = ($player1_status.current_health)
+			p2_health = ($player2_status.current_health)
+			change structurename = player1_status save_health = <p1_health>
+			change structurename = player2_status save_health = <p2_health>
+			battlemode_killspawnedscripts
+			if ScreenElementExists \{id = battlemode_container}
+				DestroyScreenElement \{id = battlemode_container}
+			endif
+			change \{battle_sudden_death = 1}
+		else
+			battlemode_killspawnedscripts
+			change \{battle_sudden_death = 0}
+		endif
+	endif
+	calculate_max_streak_song
+	add_song_to_fc
+	KillSpawnedScript \{name = GuitarEvent_SongFailed_Spawned}
+	spawnscriptnow \{GuitarEvent_SongWon_Spawned}
 endscript
 
 script create_signin_changed_menu 
