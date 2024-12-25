@@ -47,15 +47,27 @@ endscript
 script calculate_max_streak_total
 	GetArraySize \{$gh3_songlist}
 	streak_count = 0
+	fc_count = 0
 	i = 0
 	begin
-	song_checksum = ($gh3_songlist [<i>])
+	get_songlist_checksum index = <i>
+	get_difficulty_text_nl { difficulty = ($current_difficulty) }
+	get_song_prefix song = <song_checksum>
+	FormatText checksumname = songname '%s_%d' s = <song_prefix> d = <difficulty_text_nl>
+	GetGlobalTags <songname>
+	if (<achievement_gold_star> = 1)
+		fc_count = (<fc_count> + 1)
+	endif
 	if StructureContains structure = $max_streaks <song_checksum>
 		<streak_count> = (<streak_count> + ($max_streaks.<song_checksum>))
 	endif
 	<i> = (<i> + 1)
 	repeat <array_size>
 	change permadeath_max_streak = <streak_count>
+	if (($permadeath_max_song_count) < <fc_count>)
+		change permadeath_max_song_count = <fc_count>
+	endif
+	change permadeath_current_song_count = <fc_count>
 endscript
 
 script add_song_to_fc
