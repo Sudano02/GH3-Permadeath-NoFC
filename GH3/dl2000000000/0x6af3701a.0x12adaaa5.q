@@ -10,6 +10,7 @@ permadeath_fails = 0
 permadeath_toggle = 1
 permadeath_max_streak = 0
 permadeath_max_song_count = 0
+permadeath_current_song_count = 0
 
 script create_fail_song_menu 
 	change permadeath_lives = ($permadeath_lives - 1)
@@ -207,7 +208,7 @@ script create_signin_changed_menu
 endscript
 
 script setlist_show_helperbar \{text_option1 = "BONUS"
-		text_option2 = "DOWNLOADS"
+		text_option2 = "STATISTICS"
 		button_option1 = "\\b7"
 		button_option2 = "\\b8"
 		spacing = 16}
@@ -289,7 +290,7 @@ script setlist_show_helperbar \{text_option1 = "BONUS"
 	endif
 	<i> = (<i> + 1)
 	repeat 5
-	tabs_text = ["setlist" "bonus" "downloads"]
+	tabs_text = ["setlist" "bonus" "statistics"]
 	setlist_text_positions = [(300.0, 70.0) (624.0, 102.0) (870.0, 120.0)]
 	download_text_positions = [(300.0, 70.0) (624.0, 102.0) (870.0, 160.0)]
 	buttons_text = ["\\b7" "\\b6" "\\b8"]
