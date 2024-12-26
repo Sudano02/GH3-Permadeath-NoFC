@@ -71,10 +71,57 @@ script calculate_max_streak_total
 	change permadeath_current_song_count = <fc_count>
 endscript
 
-script add_song_to_fc
-	song_checksum = ($current_song)
-	if NOT ArrayContains array = ($songs_fcd) contains = <song_checksum>
-		AddArrayElement array = $songs_fcd element = <song_checksum>
+script set_song_icon 
+	if NOT GotParam \{no_wait}
+		wait \{0.5
+			seconds}
+	endif
+	if NOT GotParam \{song}
+		<song> = ($target_setlist_songpreview)
+	endif
+	if (<song> = None && $current_tab = tab_setlist)
+		return
+	endif
+	if ($current_tab = tab_downloads)
+		return
+	endif
+	if ($current_tab = tab_setlist)
+		get_tier_from_song song = <song>
+		get_progression_globals game_mode = ($game_mode)
+		FormatText checksumname = tiername 'tier%d' d = <tier_number>
+		if StructureContains structure = ($<tier_global>.<tiername>) setlist_icon
+			song_icon = ($<tier_global>.<tiername>.setlist_icon)
+		else
+			song_icon = setlist_icon_generic
+		endif
+	elseif ($current_tab = tab_downloads)
+		song_icon = setlist_icon_download
+	else
+		song_icon = setlist_icon_generic
+	endif
+	mini_rot = RandomRange (-5.0, 5.0)
+	if ScreenElementExists \{id = sl_clipart}
+		SetScreenElementProps id = sl_clipart texture = <song_icon>
+		DoScreenElementMorph id = sl_clipart alpha = 1 time = 0.25 rot_angle = <mini_rot>
+	endif
+	if ScreenElementExists \{id = sl_clipart_shadow}
+		SetScreenElementProps id = sl_clipart_shadow texture = <song_icon>
+		DoScreenElementMorph id = sl_clipart_shadow alpha = 1 time = 0.25 rot_angle = <mini_rot>
+	endif
+	if ScreenElementExists \{id = sl_clip}
+		GetScreenElementProps \{id = sl_clip}
+		rot_clip_a = <rot_angle>
+		rot_clip_b = (<rot_clip_a> + 10)
+		SetScreenElementProps id = sl_clip rot_angle = <rot_clip_b>
+		DoScreenElementMorph id = sl_clip alpha = 1 rot_angle = <rot_clip_a> time = 0.25
+	endif
+	if NOT (<song> = None)
+		get_song_original_artist song = <song>
+		if ($we_have_songs = TRUE && <original_artist> = 0)
+			if ScreenElementExists \{id = sl_clipart}
+				GetScreenElementProps \{id = sl_clipart}
+			endif
+		endif
 	endif
 endscript
 
@@ -302,10 +349,17 @@ script setlist_show_helperbar \{text_option1 = "BONUS"
 	if ($current_tab = tab_downloads)
 		<button_text_pos> = (<download_button_positions> [<i>])
 	endif
+	calculate_max_streak_total
 	displayText parent = setlist_menu Scale = 1 text = (<buttons_text> [<i>]) rgba = [128 128 128 255] Pos = <button_text_pos> z = 50 font = buttonsxenon
 	tab_text_pos = (<setlist_text_positions> [<i>])
 	if ($current_tab = tab_downloads)
 		<tab_text_pos> = (<download_text_positions> [<i>])
+		FormatText textname = text "Attempt #: %i" i = ($permadeath_fails + 1)
+		displayText parent = user_control_container Scale = 1 text = <text>  rgba = [255 255 255 255] Pos = (300.0, 360.0) z = 50
+		FormatText textname = text "Max Note Streak: %i" i = $permadeath_max_streak
+		displayText parent = user_control_container Scale = 1 text = <text>  rgba = [255 255 255 255] Pos = (300.0, 400.0) z = 50
+		FormatText textname = text "Max FC Count: %i" i = $permadeath_max_song_count
+		displayText parent = user_control_container Scale = 1 text = <text>  rgba = [255 255 255 255] Pos = (300.0, 440.0) z = 50
 	endif
 	displayText parent = setlist_menu Scale = 1 text = (<tabs_text> [<i>]) rgba = [0 0 0 255] Pos = <tab_text_pos> z = 50 noshadow
 	<i> = (<i> + 1)
@@ -336,15 +390,10 @@ script setlist_show_helperbar \{text_option1 = "BONUS"
 			<i> = (<i> + 1)
 			repeat 3
 		endif
-		calculate_max_streak_total
+		
 		FormatText textname = text "Permadeath Lives: %i" i = $permadeath_lives
-		displayText parent = user_control_container Scale = 1 text = <text>  rgba = <colour_array> Pos = (870.0, 240.0) z = 50
-		FormatText textname = text "Attempt #: %i" i = ($permadeath_fails + 1)
-		displayText parent = user_control_container Scale = 1 text = <text>  rgba = [255 255 255 255] Pos = (870.0, 280.0) z = 50
-		FormatText textname = text "Max Note Streak: %i" i = $permadeath_max_streak
-		displayText parent = user_control_container Scale = 1 text = <text>  rgba = [255 255 255 255] Pos = (870.0, 320.0) z = 50
-		FormatText textname = text "Max FC Count: %i" i = $permadeath_max_song_count
-		displayText parent = user_control_container Scale = 1 text = <text>  rgba = [255 255 255 255] Pos = (870.0, 360.0) z = 50
+		displayText parent = user_control_container Scale = 1 text = <text>  rgba = <colour_array> Pos = (870.0, 80.0) z = 50
+
 	endif
 endscript
 
@@ -485,7 +534,7 @@ script create_sl_assets
 		displaySprite parent = setlist_menu tex = Setlist_Page1_Line_Red Pos = (320.0, 216.0) dims = (8.0, 6400.0) z = ($setlist_page1_z - 0.2)
 	endif
 	<text_pos> = (<title_pos> + (40.0, 54.0))
-	if ((GotParam tab_setlist) || (GotParam tab_bonus) || (GotParam tab_downloads))
+	if ((GotParam tab_setlist) || (GotParam tab_bonus) )
 		num_tiers = ($g_gh3_setlist.num_tiers)
 		<tier> = 0
 		change \{setlist_selection_index = 0}
@@ -644,7 +693,7 @@ script create_sl_assets
 		endif
 		repeat <num_tiers>
 	endif
-	if ((($game_mode = p1_career) || ($game_mode = p2_career)) && $is_demo_mode = 0)
+	if ((($game_mode = p1_career) || ($game_mode = p2_career)) && $is_demo_mode = 0 && (not ($current_tab = tab_downloads)))
 		get_progression_globals game_mode = ($game_mode)
 		summation_career_score tier_global = <tier_global>
 		FormatText textname = total_score_text "Career Score: %d" d = <career_score> usecommas
@@ -673,15 +722,26 @@ script create_sl_assets
 			left
 			top
 		]}
-	<clip_pos> = (160.0, 390.0)
-	displaySprite id = sl_clipart parent = sl_fixed Pos = <clip_pos> dims = (160.0, 160.0) z = ($setlist_text_z + 0.1) rgba = [200 200 200 255]
-	displaySprite id = sl_clipart_shadow parent = sl_fixed Pos = (<clip_pos> + (3.0, 3.0)) dims = (160.0, 160.0) z = ($setlist_text_z) rgba = [0 0 0 128]
-	<clip_pos> = (<clip_pos> + (15.0, 50.0))
-	displaySprite id = sl_clip parent = sl_fixed tex = Setlist_Clip just = [-0.5 -0.9] Pos = <clip_pos> dims = (141.0, 102.0) z = ($setlist_text_z + 0.2)
+	if ($current_tab = tab_downloads)
+		if ScreenElementExists \{sl_clipart}
+			DestroyScreenElement \{sl_clipart}
+		endif
+		if ScreenElementExists \{sl_clipart_shadow}
+			DestroyScreenElement \{sl_clipart_shadow}
+		endif
+		if ScreenElementExists \{sl_clip}
+			DestroyScreenElement \{sl_clip}
+		endif
+	else
+		<clip_pos> = (160.0, 390.0)
+		displaySprite id = sl_clipart parent = sl_fixed Pos = <clip_pos> dims = (160.0, 160.0) z = ($setlist_text_z + 0.1) rgba = [200 200 200 255]
+		displaySprite id = sl_clipart_shadow parent = sl_fixed Pos = (<clip_pos> + (3.0, 3.0)) dims = (160.0, 160.0) z = ($setlist_text_z) rgba = [0 0 0 128]
+		<clip_pos> = (<clip_pos> + (15.0, 50.0))
+		displaySprite id = sl_clip parent = sl_fixed tex = Setlist_Clip just = [-0.5 -0.9] Pos = <clip_pos> dims = (141.0, 102.0) z = ($setlist_text_z + 0.2)
+	endif
 	if ($current_tab = tab_setlist)
 		hilite_dims = (737.0, 80.0)
-	elseif ($current_tab = tab_downloads)
-		hilite_dims = (722.0, 80.0)
+
 	elseif ($current_tab = tab_bonus)
 		hilite_dims = (690.0, 80.0)
 	endif
