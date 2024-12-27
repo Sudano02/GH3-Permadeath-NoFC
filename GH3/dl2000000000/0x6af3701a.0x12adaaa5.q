@@ -7516,3 +7516,92 @@ script Progression_TierComplete
 	endif
 endscript
 
+battle_explanation_text = {
+	bossslash = {
+		image = battle_help_boss_bg_slash
+		Title = "SLASH WANTS TO BATTLE!"
+        bullets = [
+            {
+                text = "Battles play just like in the normal game."
+            }
+            {
+                text = "But if you’re DEFEATED, you’ll lose a LIFE!"
+            }
+            {
+                text = "Use POWER-UPS strategically to gain the upper hand."
+            }
+            {
+                text = "Lose all your lives, and it’s GAME OVER!"
+            }
+            {
+                text = "Good luck!"
+            }
+        ]
+		prompt = "Ready to Rock?"
+	}
+	bosstom = {
+		image = battle_help_boss_bg_morello
+		Title = "MORELLO CHALLENGES YOU!"
+        bullets = [
+            {
+                text = "Battles play just like in the normal game."
+            }
+            {
+                text = "But if you’re DEFEATED, you’ll lose a LIFE!"
+            }
+            {
+                text = "Use POWER-UPS strategically to gain the upper hand."
+            }
+            {
+                text = "Lose all your lives, and it’s GAME OVER!"
+            }
+            {
+                text = "Good luck!"
+            }
+        ]
+		prompt = "Ready to Rock?"
+	}
+	bossdevil = {
+		image = battle_help_boss_bg_satan
+		Title = "ALL RIGHT, THIS IS IT!"
+        bullets = [
+            {
+                text = "Battles play just like in the normal game."
+            }
+            {
+                text = "But if you’re DEFEATED, you’ll lose a LIFE!"
+            }
+            {
+                text = "Use POWER-UPS strategically to gain the upper hand."
+            }
+            {
+                text = "Lose all your lives, and it’s GAME OVER!"
+            }
+            {
+                text = "Good luck!"
+            }
+        ]
+		prompt = "Ready to Rock?"
+	}
+	generic = {
+		Title = "BATTLE MODE!"
+        bullets = [
+            {
+                text = "Battles play just like in the normal game."
+            }
+            {
+                text = "But if you’re DEFEATED, you’ll lose a LIFE!"
+            }
+            {
+                text = "Use POWER-UPS strategically to gain the upper hand."
+            }
+            {
+                text = "Lose all your lives, and it’s GAME OVER!"
+            }
+            {
+                text = "Good luck!"
+            }
+        ]
+		prompt = "Ready to Rock?"
+	}
+}
