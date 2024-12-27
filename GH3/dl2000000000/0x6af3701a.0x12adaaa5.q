@@ -355,11 +355,11 @@ script setlist_show_helperbar \{text_option1 = "BONUS"
 	if ($current_tab = tab_downloads)
 		<tab_text_pos> = (<download_text_positions> [<i>])
 		FormatText textname = text "Attempt #: %i" i = ($permadeath_fails + 1)
-		displayText parent = user_control_container Scale = 1 text = <text>  rgba = [255 255 255 255] Pos = (300.0, 360.0) z = 50
+		displayText parent = user_control_container Scale = 1 text = <text>  rgba = [255 255 255 255] Pos = (330.0, 360.0) z = 50
 		FormatText textname = text "Max Note Streak: %i" i = $permadeath_max_streak
-		displayText parent = user_control_container Scale = 1 text = <text>  rgba = [255 255 255 255] Pos = (300.0, 400.0) z = 50
+		displayText parent = user_control_container Scale = 1 text = <text>  rgba = [255 255 255 255] Pos = (330.0, 400.0) z = 50
 		FormatText textname = text "Max FC Count: %i" i = $permadeath_max_song_count
-		displayText parent = user_control_container Scale = 1 text = <text>  rgba = [255 255 255 255] Pos = (300.0, 440.0) z = 50
+		displayText parent = user_control_container Scale = 1 text = <text>  rgba = [255 255 255 255] Pos = (330.0, 440.0) z = 50
 	endif
 	displayText parent = setlist_menu Scale = 1 text = (<tabs_text> [<i>]) rgba = [0 0 0 255] Pos = <tab_text_pos> z = 50 noshadow
 	<i> = (<i> + 1)
