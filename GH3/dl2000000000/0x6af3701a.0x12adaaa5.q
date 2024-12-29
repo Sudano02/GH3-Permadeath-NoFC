@@ -225,14 +225,14 @@ script GuitarEvent_SongWon \{battle_win = 0}
 endscript
 
 script create_signin_changed_menu 
-	permadeath_popup_text = "Welcome to GH3 Permadeath!  Miss a note and reset to the very start of the game.  Saving is disabled.  Good Luck!"
-	permadeath_continue = "SUFFER"
-	permadeath_title = "PERMADEATH"
+	permadeath_popup_text = ($permadeath_startup_text)
+	permadeath_continue = ($permadeath_start)
+	permadeath_title = ($permadeath_title)
 	if ($permadeath_fails > 0)
-		FormatText textname = text "Uh oh!  You have run out of lives!  Unfortunately that means your progress has been reset.  Here's to attempt #%i" i = ($permadeath_fails + 1)
+		FormatText textname = text ($permadeath_fail_text) i = ($permadeath_fails + 1)
 		permadeath_popup_text = <text>
-		permadeath_continue = Random (@ "RESET EVERYTHING :(" @ "KILL YOUR SAVE :O" @ "LOSE IT ALL :'(" )
-		permadeath_title = Random (@ "YA DUN GOOFED!" @ "WOMP WOMP" @ "OH NO!" @ "BIFFED IT")
+		permadeath_continue = Random (@ ($permadeath_fail_continue_1) @ ($permadeath_fail_continue_2) @ ($permadeath_fail_continue_3) )
+		permadeath_title = Random (@ ($permadeath_fail_title_1) @ ($permadeath_fail_title_2) @ ($permadeath_fail_title_3) @ ($permadeath_fail_title_4) )
 	endif
 	destroy_popup_warning_menu
 	create_popup_warning_menu {
@@ -338,6 +338,7 @@ script setlist_show_helperbar \{text_option1 = "BONUS"
 	<i> = (<i> + 1)
 	repeat 5
 	tabs_text = ["setlist" "bonus" "statistics"]
+	SetArrayElement arrayName = tabs_text index = 2 newValue = ($permadeath_stat_full_small)
 	setlist_text_positions = [(300.0, 70.0) (624.0, 102.0) (870.0, 120.0)]
 	download_text_positions = [(300.0, 70.0) (624.0, 102.0) (870.0, 160.0)]
 	buttons_text = ["\\b7" "\\b6" "\\b8"]
@@ -354,11 +355,11 @@ script setlist_show_helperbar \{text_option1 = "BONUS"
 	tab_text_pos = (<setlist_text_positions> [<i>])
 	if ($current_tab = tab_downloads)
 		<tab_text_pos> = (<download_text_positions> [<i>])
-		FormatText textname = text "Attempt #: %i" i = ($permadeath_fails + 1)
+		FormatText textname = text ($permadeath_attempt_stat) i = ($permadeath_fails + 1)
 		displayText parent = user_control_container Scale = 1 text = <text>  rgba = [255 255 255 255] Pos = (330.0, 360.0) z = 50
-		FormatText textname = text "Max Note Streak: %i" i = $permadeath_max_streak
+		FormatText textname = text ($permadeath_max_streak_stat) i = $permadeath_max_streak
 		displayText parent = user_control_container Scale = 1 text = <text>  rgba = [255 255 255 255] Pos = (330.0, 400.0) z = 50
-		FormatText textname = text "Max FC Count: %i" i = $permadeath_max_song_count
+		FormatText textname = text ($permadeath_max_fc_count_stat) i = $permadeath_max_song_count
 		displayText parent = user_control_container Scale = 1 text = <text>  rgba = [255 255 255 255] Pos = (330.0, 440.0) z = 50
 	endif
 	displayText parent = setlist_menu Scale = 1 text = (<tabs_text> [<i>]) rgba = [0 0 0 255] Pos = <tab_text_pos> z = 50 noshadow
@@ -391,9 +392,8 @@ script setlist_show_helperbar \{text_option1 = "BONUS"
 			repeat 3
 		endif
 		
-		FormatText textname = text "Permadeath Lives: %i" i = $permadeath_lives
+		FormatText textname = text ($permadeath_lives_stat) i = $permadeath_lives
 		displayText parent = user_control_container Scale = 1 text = <text>  rgba = <colour_array> Pos = (870.0, 80.0) z = 50
-
 	endif
 endscript
 
@@ -500,7 +500,7 @@ script create_sl_assets
 	if GotParam \{tab_downloads}
 		displayText \{parent = setlist_menu
 			id = sl_text_1
-			text = "PERMADEATH STATS"
+			text = $permadeath_sl_text
 			font = text_a10
 			Scale = 2
 			Pos = (330.0, 220.0)
@@ -755,7 +755,7 @@ script create_sl_assets
 		setlist_show_helperbar {
 			Pos = (<bg_helper_pos> + (64.0, 4.0))
 			text_option1 = "SETLIST"
-			text_option2 = "STATISTICS"
+			text_option2 = ($permadeath_stat_full_big)
 			button_option1 = "\\b6"
 			button_option2 = "\\b8"
 		}
@@ -7522,19 +7522,19 @@ battle_explanation_text = {
 		Title = "SLASH WANTS TO BATTLE!"
         bullets = [
             {
-                text = "Battles play just like in the normal game."
+                text = $permadeath_boss_splash_1
             }
             {
-                text = "But if you’re DEFEATED, you’ll lose a LIFE!"
+                text = $permadeath_boss_splash_2
             }
             {
-                text = "Use POWER-UPS strategically to gain the upper hand."
+                text = $permadeath_boss_splash_3
             }
             {
-                text = "Lose all your lives, and it’s GAME OVER!"
+                text = $permadeath_boss_splash_4
             }
             {
-                text = "Good luck!"
+                text = $permadeath_boss_splash_5
             }
         ]
 		prompt = "Ready to Rock?"
@@ -7544,19 +7544,19 @@ battle_explanation_text = {
 		Title = "MORELLO CHALLENGES YOU!"
         bullets = [
             {
-                text = "Battles play just like in the normal game."
+                text = $permadeath_boss_splash_1
             }
             {
-                text = "But if you’re DEFEATED, you’ll lose a LIFE!"
+                text = $permadeath_boss_splash_2
             }
             {
-                text = "Use POWER-UPS strategically to gain the upper hand."
+                text = $permadeath_boss_splash_3
             }
             {
-                text = "Lose all your lives, and it’s GAME OVER!"
+                text = $permadeath_boss_splash_4
             }
             {
-                text = "Good luck!"
+                text = $permadeath_boss_splash_5
             }
         ]
 		prompt = "Ready to Rock?"
@@ -7566,19 +7566,19 @@ battle_explanation_text = {
 		Title = "ALL RIGHT, THIS IS IT!"
         bullets = [
             {
-                text = "Battles play just like in the normal game."
+                text = $permadeath_boss_splash_1
             }
             {
-                text = "But if you’re DEFEATED, you’ll lose a LIFE!"
+                text = $permadeath_boss_splash_2
             }
             {
-                text = "Use POWER-UPS strategically to gain the upper hand."
+                text = $permadeath_boss_splash_3
             }
             {
-                text = "Lose all your lives, and it’s GAME OVER!"
+                text = $permadeath_boss_splash_4
             }
             {
-                text = "Good luck!"
+                text = $permadeath_boss_splash_5
             }
         ]
 		prompt = "Ready to Rock?"
@@ -7587,19 +7587,19 @@ battle_explanation_text = {
 		Title = "BATTLE MODE!"
         bullets = [
             {
-                text = "Battles play just like in the normal game."
+                text = $permadeath_boss_splash_1
             }
             {
-                text = "But if you’re DEFEATED, you’ll lose a LIFE!"
+                text = $permadeath_boss_splash_2
             }
             {
-                text = "Use POWER-UPS strategically to gain the upper hand."
+                text = $permadeath_boss_splash_3
             }
             {
-                text = "Lose all your lives, and it’s GAME OVER!"
+                text = $permadeath_boss_splash_4
             }
             {
-                text = "Good luck!"
+                text = $permadeath_boss_splash_5
             }
         ]
 		prompt = "Ready to Rock?"

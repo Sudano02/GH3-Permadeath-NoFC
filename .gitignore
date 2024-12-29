@@ -5,5 +5,5 @@ GH3/compile.sh
 GH3/STFS/dl2000000000.pak.xen
 GH3/ps3.sh
 GH3/xbox.sh
-GH3/DL2000000000.PAK.PS3.EDAT
-GH3/DL2000000000.PAK.PS3
+GH3/*_strings.q
+*.PAK*
