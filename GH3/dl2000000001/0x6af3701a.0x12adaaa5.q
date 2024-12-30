@@ -255,7 +255,7 @@ script create_signin_changed_menu
 endscript
 
 script setlist_show_helperbar \{text_option1 = "BONUS"
-		text_option2 = "STATISTICS"
+		text_option2 = $permadeath_stat_full_big
 		button_option1 = "\\b7"
 		button_option2 = "\\b8"
 		spacing = 16}
