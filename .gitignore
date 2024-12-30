@@ -7,3 +7,6 @@ GH3/ps3.sh
 GH3/xbox.sh
 GH3/*_strings.q
 *.PAK*
+*.pak*
+*.xen
+!GH3/STFS/*

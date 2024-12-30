@@ -338,6 +338,8 @@ script setlist_show_helperbar \{text_option1 = "BONUS"
 	<i> = (<i> + 1)
 	repeat 5
 	tabs_text = ["setlist" "bonus" "statistics"]
+	SetArrayElement arrayName = tabs_text index = 0 newValue = ($sl_setlist_tab)
+	SetArrayElement arrayName = tabs_text index = 1 newValue = ($sl_bonus_tab)
 	SetArrayElement arrayName = tabs_text index = 2 newValue = ($permadeath_stat_full_small)
 	setlist_text_positions = [(300.0, 70.0) (624.0, 102.0) (870.0, 120.0)]
 	download_text_positions = [(300.0, 70.0) (624.0, 102.0) (870.0, 160.0)]
@@ -829,7 +831,7 @@ script intro_song_info
 				160
 				255
 			]
-			text = "COVERED BY"
+			text = $i_covered_by_text
 			z_priority = 5.0
 			alpha = 0
 			shadow
@@ -1378,7 +1380,7 @@ script create_main_menu
 		type = textelement
 		id = main_menu_career_text
 		parent = main_menu_text_container
-		text = "CAREER"
+		text = ($mm_career_text)
 		font = <main_menu_font>
 		pos = {(<career_text_off>) relative}
 		scale = (<career_text_scale>)
@@ -1399,7 +1401,7 @@ script create_main_menu
 		type = textelement
 		id = main_menu_coop_career_text
 		parent = main_menu_text_container
-		text = "CO-OP CAREER"
+		text = ($mm_coop_career_text)
 		font = <main_menu_font>
 		pos = {(<coop_career_text_off>) relative}
 		scale = (<coop_career_text_scale>)
@@ -1421,7 +1423,7 @@ script create_main_menu
 		id = main_menu_quickplay_text
 		parent = main_menu_text_container
 		font = <main_menu_font>
-		text = "QUICKPLAY"
+		text = ($mm_quickplay_text)
 		font_spacing = 0
 		pos = {(<quickplay_text_off>) relative}
 		scale = (<quickplay_text_scale>)
@@ -1443,7 +1445,7 @@ script create_main_menu
 		id = main_menu_multiplayer_text
 		parent = main_menu_text_container
 		font = <main_menu_font>
-		text = "MULTIPLAYER"
+		text = ($mm_multiplayer_text)
 		font_spacing = 1
 		pos = {(<multiplayer_text_off>) relative}
 		scale = (<multiplayer_text_scale>)
@@ -1475,7 +1477,7 @@ script create_main_menu
 		id = main_menu_training_text
 		parent = main_menu_text_container
 		font = <main_menu_font>
-		text = "TRAINING"
+		text = ($mm_training_text)
 		font_spacing = 0
 		pos = {(<training_text_off>) relative}
 		scale = (<training_text_scale>)
@@ -1527,7 +1529,7 @@ script create_main_menu
 			id = main_menu_leaderboards_text
 			parent = main_menu_text_container
 			font = <main_menu_font>
-			text = "ONLINE"
+			text = ($mm_online_text)
 			font_spacing = 0
 			pos = {(<leaderboards_text_off>) relative}
 			scale = (<leaderboards_text_scale>)
@@ -1550,7 +1552,7 @@ script create_main_menu
 		id = main_menu_options_text
 		parent = main_menu_text_container
 		font = <main_menu_font>
-		text = "OPTIONS"
+		text = ($mm_options_text)
 		font_spacing = 0
 		pos = {(<options_text_off>) relative}
 		scale = (<options_text_scale>)
@@ -6289,7 +6291,7 @@ script create_enter_band_name_menu
 		type = TextElement
 		parent = ebn_container
 		font = text_a10_Large
-		text = "NUMBER OF LIVES"
+		text = ($permadeath_lives_screen_title)
 		id = ebn_header_text
 		Pos = (($enter_band_name_big_vals).header_pos)
 		rot_angle = <rotation_angle>

@@ -57,3 +57,18 @@ permadeath_boss_splash_4 = "¡Si pierdes todas tus vidas, SE ACABÓ!"
 permadeath_boss_splash_5 = "¡Buena suerte!"
 
 permadeath_lives_screen_title = "NÚMERO DE VIDAS"
+
+mm_career_text = "CARRERA"
+mm_coop_career_text = "CARRERA COOP."
+mm_quickplay_text = "PART. RÁPIDA"
+mm_multiplayer_text = "MULTIJUGADOR"
+mm_training_text = "ENSAYO"
+mm_xbox_live_text = "XBOX LIVE"
+mm_online_text = "EN LÍNEA"
+mm_options_text = "OPCIONES"
+mm_debug_menu_text = "DEBUG MENU"
+
+sl_setlist_tab = "repertorio"
+sl_bonus_tab = "temas extra"
+
+i_covered_by_text = "VERSIONADO POR"
