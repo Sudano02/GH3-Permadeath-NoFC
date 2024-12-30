@@ -58,6 +58,10 @@ permadeath_boss_splash_5 = "¡Buena suerte!"
 
 permadeath_lives_screen_title = "NÚMERO DE VIDAS"
 
+text_button_updown = "ARRIBA/ABAJO"
+text_button_select = "SELECCIONAR"
+text_button_back = "VOLVER"
+
 mm_career_text = "CARRERA"
 mm_coop_career_text = "CARRERA COOP."
 mm_quickplay_text = "PART. RÁPIDA"

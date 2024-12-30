@@ -267,6 +267,9 @@ script setlist_show_helperbar \{text_option1 = "BONUS"
 		"SELECT"
 		"BACK"
 	]
+	SetArrayElement arrayName = text_options index = 0 newValue = ($text_button_updown)
+	SetArrayElement arrayName = text_options index = 1 newValue = ($text_button_select)
+	SetArrayElement arrayName = text_options index = 2 newValue = ($text_button_back)
 	button_options = [
 		"\\bb"
 		"\\m0"
@@ -754,18 +757,23 @@ script create_sl_assets
 	if ($current_tab = tab_setlist)
 		setlist_show_helperbar Pos = (<bg_helper_pos> + (64.0, 4.0))
 	elseif ($current_tab = tab_bonus)
+		GetUpperCaseString ($sl_setlist_tab)
 		setlist_show_helperbar {
 			Pos = (<bg_helper_pos> + (64.0, 4.0))
-			text_option1 = "SETLIST"
+			text_option1 = <uppercasestring>
 			text_option2 = ($permadeath_stat_full_big)
 			button_option1 = "\\b6"
 			button_option2 = "\\b8"
 		}
 	else
+		GetUpperCaseString ($sl_setlist_tab)
+		sl_text_big = <uppercasestring>
+		GetUpperCaseString ($sl_bonus_tab)
+		bonus_big = <uppercasestring>
 		setlist_show_helperbar {
 			Pos = (<bg_helper_pos> + (64.0, 4.0))
-			text_option1 = "SETLIST"
-			text_option2 = "BONUS"
+			text_option1 = <sl_text_big>
+			text_option2 = <bonus_big>
 			button_option1 = "\\b6"
 			button_option2 = "\\b7"
 		}
@@ -1867,10 +1875,10 @@ script create_main_menu
 			180
 			255
 		]}
-	add_user_control_helper \{text = "SELECT"
+	add_user_control_helper \{text = $text_button_select
 		button = green
 		z = 100}
-	add_user_control_helper \{text = "UP/DOWN"
+	add_user_control_helper \{text = $text_button_updown
 		button = strumbar
 		z = 100}
 	if NOT ($invite_controller = -1)
@@ -2480,10 +2488,10 @@ script create_pause_menu \{player = 1
 			}
 			getScreenElementDims id = <id>
 			fit_text_in_rectangle id = <id> dims = ((300.0, 0.0) + <height> * (0.0, 1.0)) only_if_larger_x = 1 start_x_scale = (<text_scale>.(1.0, 0.0)) start_y_scale = (<text_scale>.(0.0, 1.0))
-			add_user_control_helper \{text = "SELECT"
+			add_user_control_helper \{text = $text_button_select
 				button = green
 				z = 100000}
-			add_user_control_helper \{text = "UP/DOWN"
+			add_user_control_helper \{text = $text_button_updown
 				button = strumbar
 				z = 100000}
 		else
@@ -2664,10 +2672,10 @@ script create_pause_menu \{player = 1
 					exclusive_device = <player_device>
 				}
 			endif
-			add_user_control_helper \{text = "SELECT"
+			add_user_control_helper \{text = $text_button_select
 				button = green
 				z = 100000}
-			add_user_control_helper \{text = "UP/DOWN"
+			add_user_control_helper \{text = $text_button_updown
 				button = strumbar
 				z = 100000}
 		endif
@@ -2819,13 +2827,13 @@ script create_pause_menu \{player = 1
 		}
 		getScreenElementDims \{id = pause_options_lefty}
 		<id> :setprops pos = (<width> * (0.5, 0.0) + (22.0, 0.0))
-		add_user_control_helper \{text = "SELECT"
+		add_user_control_helper \{text = $text_button_select
 			button = green
 			z = 100000}
-		add_user_control_helper \{text = "BACK"
+		add_user_control_helper \{text = $text_button_back
 			button = red
 			z = 100000}
-		add_user_control_helper \{text = "UP/DOWN"
+		add_user_control_helper \{text = $text_button_updown
 			button = strumbar
 			z = 100000}
 	endif
@@ -6064,13 +6072,13 @@ script create_cheats_menu
 			180
 			255
 		]}
-	add_user_control_helper \{text = "SELECT"
+	add_user_control_helper \{text = $text_button_select
 		button = green
 		z = 100}
-	add_user_control_helper \{text = "BACK"
+	add_user_control_helper \{text = $text_button_back
 		button = red
 		z = 100}
-	add_user_control_helper \{text = "UP/DOWN"
+	add_user_control_helper \{text = $text_button_updown
 		button = strumbar
 		z = 100}
 	change \{entering_cheat = 0}
@@ -6795,13 +6803,13 @@ script create_choose_band_menu
 	endif
 	<band_index> = (<band_index> + 1)
 	repeat <loop_count>
-	add_user_control_helper \{text = "SELECT"
+	add_user_control_helper \{text = $text_button_select
 		button = green
 		z = 100}
-	add_user_control_helper \{text = "BACK"
+	add_user_control_helper \{text = $text_button_back
 		button = red
 		z = 100}
-	add_user_control_helper \{text = "UP/DOWN"
+	add_user_control_helper \{text = $text_button_updown
 		button = strumbar
 		z = 100}
 endscript
@@ -6957,13 +6965,13 @@ script create_manage_band_menu
 			{pad_choose menu_manage_band_rename_band}
 		]
 	}
-	add_user_control_helper \{text = "SELECT"
+	add_user_control_helper \{text = $text_button_select
 		button = green
 		z = 100}
-	add_user_control_helper \{text = "BACK"
+	add_user_control_helper \{text = $text_button_back
 		button = red
 		z = 100}
-	add_user_control_helper \{text = "UP/DOWN"
+	add_user_control_helper \{text = $text_button_updown
 		button = strumbar
 		z = 100}
 endscript
@@ -7466,13 +7474,13 @@ script create_store_menu
 		endif
 	endif
 	clean_up_user_control_helpers
-	add_user_control_helper \{text = "SELECT"
+	add_user_control_helper \{text = $text_button_select
 		button = green
 		z = 100}
-	add_user_control_helper \{text = "BACK"
+	add_user_control_helper \{text = $text_button_back
 		button = red
 		z = 100}
-	add_user_control_helper \{text = "UP/DOWN"
+	add_user_control_helper \{text = $text_button_updown
 		button = strumbar
 		z = 100}
 	mark_safe_for_shutdown

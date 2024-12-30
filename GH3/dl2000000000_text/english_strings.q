@@ -29,6 +29,10 @@ permadeath_boss_splash_4 = "Lose all your lives, and it’s GAME OVER!"
 permadeath_boss_splash_5 = "Good luck!"
 permadeath_lives_screen_title = "NUMBER OF LIVES"
 
+text_button_select = "SELECT"
+text_button_back = "BACK"
+text_button_updown = "UP/DOWN"
+
 mm_career_text = "CAREER"
 mm_coop_career_text = "CO-OP CAREER"
 mm_quickplay_text = "QUICKPLAY"

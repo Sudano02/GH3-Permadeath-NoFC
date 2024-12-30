@@ -11,10 +11,10 @@ permadeath_fail_text = "Oh oh! Hai esaurito le vite! Sfortunatamente questo sign
 permadeath_fail_continue_1 = "RESETTA TUTTO :("
 permadeath_fail_continue_2 = "ELIMINA IL TUO SALVATAGGIO :O"
 permadeath_fail_continue_3 = "PERDI TUTTO :'("
-permadeath_fail_title_1 = "SEI FOTTUTO!"
+permadeath_fail_title_1 = "HAI FATTO UNO SBAGLIO"
 permadeath_fail_title_2 = "WOMP WOMP"
 permadeath_fail_title_3 = "OH NO!"
-permadeath_fail_title_4 = "COLPITO"
+permadeath_fail_title_4 = "L'HAI FATTA GROSSA"
 permadeath_stat_full_big = "STATISTICHE"
 permadeath_stat_full_small = "statistiche"
 permadeath_attempt_stat = "Tentativo n. %i"
@@ -28,6 +28,10 @@ permadeath_boss_splash_3 = "Usa i POWER-UP in modo strategico per ottenere un va
 permadeath_boss_splash_4 = "Perdi tutte le tue vite, e sarà GAME OVER!"
 permadeath_boss_splash_5 = "Buona fortuna!"
 permadeath_lives_screen_title = "NUMERO DI VITE"
+
+text_button_updown = "SU/GIÙ"
+text_button_select = " SELEZIONA"
+text_button_back = " INDIETRO"
 
 mm_career_text = "CARRIERA"
 mm_coop_career_text = "CARRIERA COOPERAT."
