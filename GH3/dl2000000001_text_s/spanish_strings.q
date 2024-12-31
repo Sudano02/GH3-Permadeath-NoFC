@@ -1,61 +1,59 @@
 citiesonflame_store_text = "Blue Oyster Cult es una banda Americana de rock de Long Island, Nueva York, de la villa de Stony Brook, formada en 1967. La banda ha vendido 25 millones de discos en todo el mundo, incluyendo 7 millones en los Estados Unidos. Combinan rock pesado con elementos psicodélicos y letra inspirada por la brujería con un poco de humor. Fueron una inspiración tremenda a las bandas metaleras."
-
 helicopter_store_text = "Bloc Party es una banda Inglesa de rock formada por Kele Okereke y Russell Lissack en Londres en 1999. Aún con raíces rockeras, combinan elementos de otros géneros como House y Electrónica."
-
 monsters_store_text = "Matchbox Romance es una banda Americana de emo y post-hardcore. Se formaron en 1997 en la ciudad de Poughkeepsie, Nueva York. La banda combina elementos de letra emocional con instrumentales melódicos y poderosos. Su música atrajo a fans dedicados durante el movimiento emo de los 2000."
-
 sabotage_store_text = "Los Beastie Boys son un grupo innovador de Nueva York. Combinaron hip-hop con rap, punk y funk para crear un sonido muy único e influyente. Salieron de los 80s y alcanzaron un estatus legendario con temazos como 'Sabotage' y 'Intergalactic,' dejando su marca en el desarrollo de música alternativa y hip-hop."
-
 suckmykiss_store_text = "Red Hot Chili Peppers es una banda legendaria de Los Angeles. Formada en 1983, son conocidos por su mezcla energética de funk, punk y rock alternativo. Con temas como 'Californication' y 'Under the Bridge', se hicieron una banda legendaria en la historia de rock. Son celebradas por su sonido dinámico y su comportamiento 'interesante' en los escenarios."
-
 reptilia_store_text = "The Strokes son una banda icónica de la ciudad de Nueva York formada en 1998. Son conocidos por dejar un impacto tremendo en la escena de garage rock nuevo de los 2000. Con su sonido puro y su estética retro, lograron ser una banda celebrada mundialmente, con su álbum debut, Is This It, siendo uno de los más importantes del rock indie."
 
+avalancha_store_text = "Heroes del Silencio is a rock band from Zaragoza Spain.  After 10 years and numerous albums, the band broke up in 1997.  In 2007, as part of a 20-year anniversary celebration and 10 years after their break-up they are participating in a 10 concert world tour."
+bellyofashark_store_text = "The Gallows are a punk band from Watford, England that formed in 2005.  This killer track is taken off their debut album 'Orchestra of Wolves'"
+cantbesaved_store_text = "Taken from Senses Fail's second full length album Still Searching.  The album's story is from the point of view of a character's stress and anxiety, including his battles with faith, alcohol, and depression."
+closer_store_text = "Lacuna Coil was formed in Milan Italy, and were originally called Sleep of Right.  They changed their name to Ethereal and signed to Century Media records in 1997.  They changed their name to Lacuna Coil when they discovered Ethereal was already taken."
+dontholdback_store_text = "This song is from The Sleeping's second studio album Questions and Answers on Victory Records.  The Sleeping formed in 2003 from the remains of Skycamefalling."
+downndirty_store_text = "Rising up out of the downtown shadows of a crumbling city of angels, The 'L.A. Slum Lords' set Guitar Hero 3 ablaze with a punishing molotov cocktail of rock revolution!"
+fcpremix_store_text = "This song is a remake of the song F.C.P.S.I.T.S.G. E.P.G.E.P.G.E.P. which originally appeared on their self-titled album."
+generationrock_store_text = "Revolverheld is a rock band from Hamburg, Germany.  This song was their first single and released in June 2005, 3 months before the bands self-titled album."
+gothatfar_store_text = "Bret Michaels, the former lead singer of the notorious glam metal band Poison is back with his own band.  Bret also did the animation performances of the lead vocalist in the game."
+hierkommtalex_store_text = "Die Toten Hosen (which literally translates to 'The Dead Trousers') have been around for over 20 years.  The songs on their first album were mostly about having fun, but have since shifted their focus to more political and social issues."
+imintheband_store_text = "Taken from the sixth album from the Swedish rockers.  Lead vocalist/guitarist Nicke Andersson used to play drums for the death metal pioneers Entombed."
+impulse_store_text = "Big ups to film scoring major Zach Kamins and undisputed best THPS player, Andy 'THPS' Gentile, for collaborating on this song written specifically for Guitar Hero gameplay."
+inlove_store_text = "Scouts of St. Sebastian guitarist/vocalist Judita Wignall (formerly of The Halo Friendlies) performed motion capture performance for many of the female characters in the game and was the inspiration for Judy Nails."
+mauvaisgarcon_store_text = "Naast was formed in Joinville-le-Point in 2004.  The band originally was comprised of just two members, Gustave (guitar and vocals) and Nicholas (drums).  Members Clod (bass guitar, keyboard) and Laka (guitar) joined the band in 2005."
+metalheavylady_store_text = "Lions are an Austin, TX based band that formed in August 2005.  Their music is influenced by 60's and 70's era hard rock with 90's era fever.  Lions create a blend of retro riffage, artful noise, melodic interludes and revolutionary attitude with a live show that has been described as 'furious' with a 'full-frontal assault' that will leave you half-deaf and disoriented."
+minuscelsius_store_text = "Backyard Babies are largely attributed with bringing sleaze rock to Sweden.  Hailing from Nassjo, Sweden, the band was formed in 1987, have released 5 studio albums, and have even won a Swedish Grammy."
+mycurse_store_text = "The first single off the album 'As Daylight Dies', this song went to number 21 on the mainstream rock chart.  In 2004, Killswitch Engage was nominated for a Best Metal Performance Grammy."
+nothingformehere_store_text = "Dope was formed in 1997 by brothers Simon and Edsel Dope.  This song is from their much anticipated fifth studio album."
+prayeroftherefugee_store_text = "The members of Rise Against are all vegetarians or vegans, and are active in bringing awareness to issues such as environmental degredation and animal cruelty."
+radiosong_store_text = "Superbus are a five-piece French pop-rock group.  They formed in 1999 after singer Jennifer Ayache returned to France from living in the U.S. to look for musicians.  In 2005 they won the Best French Act award at the MTV Europe Music Awards."
+ruby_store_text = "Kaiser Chiefs were the most successful act at the 2006 Brit awards - winning 'Best Group', 'Best British Rock Act', and 'Best Live Act'"
+shebangsadrum_store_text = "Taken from the 1989 self-titled debut by The Stone Roses.  The album is regarded by many as one of the greatest British albums ever released and was a huge influence on the Britpop movement that followed in the 1990's."
+takethislife_store_text = "Formed in Gothenburg, Sweden in 1990, In Flames is one of the pioneers of what is now known as melodic death metal.  This song is taken from the album 'Come Clarity' which debuted at No. 1 on the Swedish charts."
+thewayitends_store_text = "Prototype was formed in 1994 from the remains of the L.A. thrash band Psychosis.  They take progressive/thrash metal to the next level with this track off their third album 'Continuum'"
+thrufireandflames_store_text = "Dragonforce are known for their epic choral singing, and ultra-fast twin-guitar harmonies.  Buy this song only if you aren't afraid of your hands going numb after you try and play it!"
+
 permadeath_startup_text = "¡Bienvenido a GH3 Permadeath! Si no clavas una nota, el juego borrará tu partida. Igualmente, no podrás guardar. ¡Buena suerte!"
-
 permadeath_start = "SUFRIR"
-
 permadeath_title = "PERMADEATH"
-
 permadeath_fail_text = "¡Oh no! ¡Te quedaste sin vidas! Tu progreso se va a borrar. Vuela alto, intento #%i o7."
-
 permadeath_fail_continue_1 = "BORRAR TODO :("
-
 permadeath_fail_continue_2 = "DESINTEGRAR TU PARTIDA :O"
-
 permadeath_fail_continue_3 = "PERDERLO TODO :'("
-
 permadeath_fail_title_1 = "¡YA VALIÓ!"
-
 permadeath_fail_title_2 = "FUE SIN QUERER QUERIENDO"
-
 permadeath_fail_title_3 = "¡AY NO!"
-
 permadeath_fail_title_4 = "VAS MAL"
-
 permadeath_stat_full_big = "ESTADÍSTICAS"
-
 permadeath_stat_full_small = "estadísticas"
-
 permadeath_attempt_stat = "Intento #: %i"
-
 permadeath_max_streak_stat = "Racha de notas máxima: %i"
-
 permadeath_max_fc_count_stat = "Racha de FCs máxima: %i"
-
 permadeath_lives_stat = "Vidas de Permadeath: %i"
-
 permadeath_sl_text = "ESTADÍSTICAS DE PERMADEATH"
-
 permadeath_boss_splash_1 = "Las batallas son como en el juego normal."
-
 permadeath_boss_splash_2 = "¡Pero si PIERDES, perderás una VIDA!"
-
 permadeath_boss_splash_3 = "Usa los PODERES con estrategia para ganar ventaja."
-
 permadeath_boss_splash_4 = "¡Si pierdes todas tus vidas, SE ACABÓ!"
-
 permadeath_boss_splash_5 = "¡Buena suerte!"
-
 permadeath_lives_screen_title = "NÚMERO DE VIDAS"
 
 text_button_updown = "ARRIBA/ABAJO"
@@ -75,4 +73,13 @@ mm_debug_menu_text = "DEBUG MENU"
 sl_setlist_tab = "repertorio"
 sl_bonus_tab = "temas extra"
 
+store_guitars_text = "GUITARS"
+store_finishes_text = "FINISHES"
+store_songs_text = "SONGS"
+store_characters_text = "CHARACTERS"
+store_outfits_text = "OUTFITS"
+store_styles_text = "STYLES"
+store_videos_text = "VIDEOS"
+
 i_covered_by_text = "VERSIONADO POR"
+awesomeness_detection = "DETECCIÓN DE DOMINIO"

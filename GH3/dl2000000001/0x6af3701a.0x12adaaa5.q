@@ -7121,157 +7121,157 @@ store_song_data = {
 Bonus_Songs_Info = [
 	{
 		item = avalancha
-		text = "Heroes del Silencio is a rock band from Zaragoza Spain.  After 10 years and numerous albums, the band broke up in 1997.  In 2007, as part of a 20-year anniversary celebration and 10 years after their break-up they are participating in a 10 concert world tour."
+		text = $avalancha_store_text
 		album_cover = HeroesDelSilencioAvalancha
 	}
 	{
 		item = bellyofashark
-		text = "The Gallows are a punk band from Watford, England that formed in 2005.  This killer track is taken off their debut album 'Orchestra of Wolves'"
+		text = $bellyofashark_store_text
 		album_cover = store_song_default
 	}
 	{
 		item = cantbesaved
-		text = "Taken from Senses Fail's second full length album Still Searching.  The album's story is from the point of view of a character's stress and anxiety, including his battles with faith, alcohol, and depression."
+		text = $cantbesaved_store_text
 		album_cover = SensesFailStillSearching
 	}
 	{
 		item = citiesonflame
-		text = "Blue Oyster Cult is an American rock band formed on Long Island, New York, in the hamlet of Stony Brook, in 1967.  The band has sold 25 million records worldwide, including 7 million in the United States. The band's fusion of hard rock with psychedelia, and penchant for occult, fantastical and tongue-in-cheek lyrics, had a major influence on heavy metal music."
+		text = $citiesonflame_store_text
 		album_cover = store_song_default
 	}
 	{
 		item = closer
-		text = "Lacuna Coil was formed in Milan Italy, and were originally called Sleep of Right.  They changed their name to Ethereal and signed to Century Media records in 1997.  They changed their name to Lacuna Coil when they discovered Ethereal was already taken."
+		text = $closer_store_text
 		album_cover = LacunaCoilKarmaCode
 	}
 	{
 		item = dontholdback
-		text = "This song is from The Sleeping's second studio album Questions and Answers on Victory Records.  The Sleeping formed in 2003 from the remains of Skycamefalling."
+		text = $dontholdback_store_text
 		album_cover = TheSleepingQuestionsAndAnswers
 	}
 	{
 		item = downndirty
-		text = "Rising up out of the downtown shadows of a crumbling city of angels, The 'L.A. Slum Lords' set Guitar Hero 3 ablaze with a punishing molotov cocktail of rock revolution!"
+		text = $downndirty_store_text
 		album_cover = store_song_default
 	}
 	{
 		item = fcpremix
-		text = "This song is a remake of the song F.C.P.S.I.T.S.G. E.P.G.E.P.G.E.P. which originally appeared on their self-titled album."
+		text = $fcpremix_store_text
 		album_cover = FallofTroyDoppelganger
 	}
 	{
 		item = generationrock
-		text = "Revolverheld is a rock band from Hamburg, Germany.  This song was their first single and released in June 2005, 3 months before the bands self-titled album."
+		text = $generationrock_store_text
 		album_cover = RevolverheldRevolverheld
 	}
 	{
 		item = gothatfar
-		text = "Bret Michaels, the former lead singer of the notorious glam metal band Poison is back with his own band.  Bret also did the animation performances of the lead vocalist in the game."
+		text = $gothatfar_store_text
 		album_cover = BretMichealsBandGoThatFar
 	}
 	{
 		item = helicopter
-		text = "Bloc Party are an English rock band that was formed in London in 1999 by co-founders Kele Okereke and Russell Lissack.  Their brand of music, whilst rooted in rock, retains elements of other genres such as electronica and house music."
+		text = $helicopter_store_text
 		album_cover = store_song_default
 	}
 	{
 		item = hierkommtalex
-		text = "Die Toten Hosen (which literally translates to 'The Dead Trousers') have been around for over 20 years.  The songs on their first album were mostly about having fun, but have since shifted their focus to more political and social issues."
+		text = $hierkommtalex_store_text
 		album_cover = store_song_default
 	}
 	{
 		item = imintheband
-		text = "Taken from the sixth album from the Swedish rockers.  Lead vocalist/guitarist Nicke Andersson used to play drums for the death metal pioneers Entombed."
+		text = $imintheband_store_text
 		album_cover = store_song_default
 	}
 	{
 		item = impulse
-		text = "Big ups to film scoring major Zach Kamins and undisputed best THPS player, Andy 'THPS' Gentile, for collaborating on this song written specifically for Guitar Hero gameplay."
+		text = $impulse_store_text
 		album_cover = endlesssporadic
 	}
 	{
 		item = inlove
-		text = "Scouts of St. Sebastian guitarist/vocalist Judita Wignall (formerly of The Halo Friendlies) performed motion capture performance for many of the female characters in the game and was the inspiration for Judy Nails."
+		text = $inlove_store_text
 		album_cover = store_song_ScoutsStSebastian
 	}
 	{
 		item = mauvaisgarcon
-		text = "Naast was formed in Joinville-le-Point in 2004.  The band originally was comprised of just two members, Gustave (guitar and vocals) and Nicholas (drums).  Members Clod (bass guitar, keyboard) and Laka (guitar) joined the band in 2005."
+		text = $mauvaisgarcon_store_text
 		album_cover = NaastAntichambre
 	}
 	{
 		item = metalheavylady
-		text = "Lions are an Austin, TX based band that formed in August 2005.  Their music is influenced by 60's and 70's era hard rock with 90's era fever.  Lions create a blend of retro riffage, artful noise, melodic interludes and revolutionary attitude with a live show that has been described as 'furious' with a 'full-frontal assault' that will leave you half-deaf and disoriented."
+		text = $metalheavylady_store_text
 		album_cover = LionsLions
 	}
 	{
 		item = minuscelsius
-		text = "Backyard Babies are largely attributed with bringing sleaze rock to Sweden.  Hailing from Nassjo, Sweden, the band was formed in 1987, have released 5 studio albums, and have even won a Swedish Grammy."
+		text = $minuscelsius_store_text
 		album_cover = BackyardBabiesStockholmSyndrome
 	}
 	{
 		item = monsters
-		text = "Matchbox Romance is an American emo and post-hardcore band formed in 1997 in Poughkeepsie, New York.  The band blends emotional lyrics with powerful, melodic instrumentals, earning them a dedicated fanbase during the 2000s emo movement."
+		text = $monsters_store_text
 		album_cover = store_song_default
 	}
 	{
 		item = mycurse
-		text = "The first single off the album 'As Daylight Dies', this song went to number 21 on the mainstream rock chart.  In 2004, Killswitch Engage was nominated for a Best Metal Performance Grammy."
+		text = $mycurse_store_text
 		album_cover = KillswitchEngageAsDaylightDies
 	}
 	{
 		item = nothingformehere
-		text = "Dope was formed in 1997 by brothers Simon and Edsel Dope.  This song is from their much anticipated fifth studio album."
+		text = $nothingformehere_store_text
 		album_cover = Dope_PosterCover_edsel
 	}
 	{
 		item = prayeroftherefugee
-		text = "The members of Rise Against are all vegetarians or vegans, and are active in bringing awareness to issues such as environmental degredation and animal cruelty."
+		text = $prayeroftherefugee_store_text
 		album_cover = RiseAgainstTheSuffererAndTheWitness
 	}
 	{
 		item = radiosong
-		text = "Superbus are a five-piece French pop-rock group.  They formed in 1999 after singer Jennifer Ayache returned to France from living in the U.S. to look for musicians.  In 2005 they won the Best French Act award at the MTV Europe Music Awards."
+		text = $radiosong_store_text
 		album_cover = SuperbusPopnGum
 	}
 	{
 		item = reptilia
-		text = "The Strokes are an iconic American rock band formed in 1998 in New York City, known for spearheading the garage rock revival of the early 2000s.  With their raw sound and cool, retro aesthetic, they gained worldwide acclaim with their debut album Is This It, which remains a cornerstone of indie rock."
+		text = $reptilia_store_text
 		album_cover = store_song_default
 	}
 	{
 		item = ruby
-		text = "Kaiser Chiefs were the most successful act at the 2006 Brit awards - winning 'Best Group', 'Best British Rock Act', and 'Best Live Act'"
+		text = $ruby_store_text
 		album_cover = KaiserChiefsYoursTrulyAngry_Mob
 	}
 	{
 		item = sabotage
-		text = "The Beastie Boys are a groundbreaking American hip-hop group from New York City, blending rap, punk, and funk to create a unique and influential sound.  Emerging in the 1980s, they achieved legendary status with hits like “Sabotage” and “Intergalactic,” shaping the evolution of hip-hop and alternative music."
+		text = $sabotage_store_text
 		album_cover = store_song_default
 	}
 	{
 		item = shebangsadrum
-		text = "Taken from the 1989 self-titled debut by The Stone Roses.  The album is regarded by many as one of the greatest British albums ever released and was a huge influence on the Britpop movement that followed in the 1990's."
+		text = $shebangsadrum_store_text
 		album_cover = StoneRosesStoneRoses
 	}
 	{
 		item = suckmykiss
-		text = "Red Hot Chili Peppers are a legendary American rock band formed in 1983 in Los Angeles, known for their energetic fusion of funk, punk, and alternative rock.  With iconic hits like “Californication” and “Under the Bridge,” they’ve become one of the best-selling bands in history, celebrated for their dynamic performances and evolving sound."
+		text = $suckmykiss_store_text
 		album_cover = store_song_default
 	}
 	{
 		item = takethislife
-		text = "Formed in Gothenburg, Sweden in 1990, In Flames is one of the pioneers of what is now known as melodic death metal.  This song is taken from the album 'Come Clarity' which debuted at No. 1 on the Swedish charts."
+		text = $takethislife_store_text
 		album_cover = InFlamesComeClarity
 	}
 	{
 		item = thewayitends
-		text = "Prototype was formed in 1994 from the remains of the L.A. thrash band Psychosis.  They take progressive/thrash metal to the next level with this track off their third album 'Continuum'"
+		text = $thewayitends_store_text
 		album_cover = prototype_continuum_cover
 	}
 	{
 		item = thrufireandflames
-		text = "DragonForce are a British power metal band from London. The band was formed in 1999 by guitarists Herman Li and Sam Totman, and are known for their long and fast guitar solos, fantasy-themed lyrics and retro video game-influenced sound."
+		text = $thrufireandflames_store_text
 		album_cover = DragonforceInhumanRampage
 	}
 ]
@@ -7337,7 +7337,7 @@ script create_store_menu
 	}
 	CreateScreenElement {
 		<text_params>
-		text = "GUITARS"
+		text = ($store_guitars_text)
 		event_handlers = [
 			{focus menu_store_focus params = {hilite_pos = (<hilite_pos> [0])}}
 			{unfocus retail_menu_unfocus}
@@ -7353,7 +7353,7 @@ script create_store_menu
 	endif
 	CreateScreenElement {
 		<text_params>
-		text = "FINISHES"
+		text = ($store_finishes_text)
 		event_handlers = [
 			{focus menu_store_focus params = {hilite_pos = (<hilite_pos> [1])}}
 			{unfocus retail_menu_unfocus}
@@ -7368,7 +7368,7 @@ script create_store_menu
 	endif
 	CreateScreenElement {
 		<text_params>
-		text = "SONGS"
+		text = ($store_songs_text)
 		event_handlers = [
 			{focus menu_store_focus params = {hilite_pos = (<hilite_pos> [2])}}
 			{unfocus retail_menu_unfocus}
@@ -7383,7 +7383,7 @@ script create_store_menu
 	endif
 	CreateScreenElement {
 		<text_params>
-		text = "CHARACTERS"
+		text = ($store_characters_text)
 		event_handlers = [
 			{focus menu_store_focus params = {hilite_pos = (<hilite_pos> [3])}}
 			{unfocus retail_menu_unfocus}
@@ -7398,7 +7398,7 @@ script create_store_menu
 	endif
 	CreateScreenElement {
 		<text_params>
-		text = "OUTFITS"
+		text = ($store_outfits_text)
 		event_handlers = [
 			{focus menu_store_focus params = {hilite_pos = (<hilite_pos> [4])}}
 			{unfocus retail_menu_unfocus}
@@ -7413,7 +7413,7 @@ script create_store_menu
 	endif
 	CreateScreenElement {
 		<text_params>
-		text = "STYLES"
+		text = ($store_styles_text)
 		event_handlers = [
 			{focus menu_store_focus params = {hilite_pos = (<hilite_pos> [5])}}
 			{unfocus retail_menu_unfocus}
@@ -7437,7 +7437,7 @@ script create_store_menu
 	if (<show_videos> = 1)
 		CreateScreenElement {
 			<text_params>
-			text = "VIDEOS"
+			text = ($store_videos_text)
 			event_handlers = [
 				{focus menu_store_focus params = {hilite_pos = (<hilite_pos> [6])}}
 				{unfocus retail_menu_unfocus}
@@ -7460,7 +7460,7 @@ script create_store_menu
 		endif
 		CreateScreenElement {
 			<text_params>
-			text = "PERMADEATH STATS"
+			text = ($awesomeness_detection)
 			event_handlers = [
 				{focus menu_store_focus params = {hilite_pos = (<hilite_pos> [<last_hilite_index>])}}
 				{unfocus retail_menu_unfocus}
