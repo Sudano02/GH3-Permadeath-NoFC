@@ -7508,7 +7508,14 @@ script Progression_TierComplete
 		if ($devil_finish = 0)
 			printf \{"FINISHED GAME"}
 			change \{end_credits = 0}
-			
+			if NOT ($progression_beat_game_last_song = 1)
+				if ($current_song = bossdevil)
+					get_current_band_info
+					GetGlobalTags <band_info>
+					<cash> = (<cash> + 3722000)
+					SetGlobalTags <band_info> params = {cash = <cash>}
+				endif
+			endif
 			change \{progression_beat_game_last_song = 1}
 		endif
 		get_difficulty_text_nl difficulty = ($current_difficulty)
