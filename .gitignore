@@ -6,8 +6,11 @@ GH3/STFS/dl2000000000.pak.xen
 GH3/ps3.sh
 GH3/xbox.sh
 GH3/*_strings.q
+*.bat
+*.pkg
 *.PAK*
 *.pak*
 *.xen
+!GH3/pkg*/*
 !GH3/STFS/*
 GH3/compile all to RPCS3.bat
