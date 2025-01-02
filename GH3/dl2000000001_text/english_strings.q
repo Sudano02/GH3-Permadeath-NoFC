@@ -29,6 +29,7 @@ ruby_store_text = "Kaiser Chiefs were the most successful act at the 2006 Brit a
 shebangsadrum_store_text = "Taken from the 1989 self-titled debut by The Stone Roses.  The album is regarded by many as one of the greatest British albums ever released and was a huge influence on the Britpop movement that followed in the 1990's."
 takethislife_store_text = "Formed in Gothenburg, Sweden in 1990, In Flames is one of the pioneers of what is now known as melodic death metal.  This song is taken from the album 'Come Clarity' which debuted at No. 1 on the Swedish charts."
 thewayitends_store_text = "Prototype was formed in 1994 from the remains of the L.A. thrash band Psychosis.  They take progressive/thrash metal to the next level with this track off their third album 'Continuum'"
+
 thrufireandflames_store_text = "Dragonforce are known for their epic choral singing, and ultra-fast twin-guitar harmonies.  Buy this song only if you aren't afraid of your hands going numb after you try and play it!"
 
 permadeath_startup_text = "Welcome to GH3 Permadeath!  Miss a note and reset to the very start of the game.  Saving is disabled.  Good Luck!"
