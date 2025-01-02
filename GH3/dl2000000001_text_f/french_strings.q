@@ -84,3 +84,9 @@ store_videos_text = "VIDEOS"
 
 i_covered_by_text = "ILLUSTRÉ PAR"
 awesomeness_detection = "DÉTECTION DE GÉNIE"
+
+slash_battle_title_text = "SLASH VEUT UN DUEL AVEC TOI !"
+morello_battle_title_text = "MORELLO TE MET AU DÉFI !"
+lou_battle_title_text = "ATTENTION, ÇA VA COMMENCER !"
+battle_mode_title_text = "MODE DUEL !"
+ready_to_rock_text = "Prêt pour le rock ?"

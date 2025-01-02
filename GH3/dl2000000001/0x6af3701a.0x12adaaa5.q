@@ -7584,7 +7584,7 @@ endscript
 battle_explanation_text = {
 	bossslash = {
 		image = battle_help_boss_bg_slash
-		Title = "SLASH WANTS TO BATTLE!"
+		Title = $slash_battle_title_text
         bullets = [
             {
                 text = $permadeath_boss_splash_1
@@ -7602,11 +7602,11 @@ battle_explanation_text = {
                 text = $permadeath_boss_splash_5
             }
         ]
-		prompt = "Ready to Rock?"
+		prompt = $ready_to_rock_text
 	}
 	bosstom = {
 		image = battle_help_boss_bg_morello
-		Title = "MORELLO CHALLENGES YOU!"
+		Title = $morello_battle_title_text
         bullets = [
             {
                 text = $permadeath_boss_splash_1
@@ -7624,11 +7624,11 @@ battle_explanation_text = {
                 text = $permadeath_boss_splash_5
             }
         ]
-		prompt = "Ready to Rock?"
+		prompt = $ready_to_rock_text
 	}
 	bossdevil = {
 		image = battle_help_boss_bg_satan
-		Title = "ALL RIGHT, THIS IS IT!"
+		Title = $lou_battle_title_text
         bullets = [
             {
                 text = $permadeath_boss_splash_1
@@ -7646,10 +7646,10 @@ battle_explanation_text = {
                 text = $permadeath_boss_splash_5
             }
         ]
-		prompt = "Ready to Rock?"
+		prompt = $ready_to_rock_text
 	}
 	generic = {
-		Title = "BATTLE MODE!"
+		Title = $battle_mode_title_text
         bullets = [
             {
                 text = $permadeath_boss_splash_1
@@ -7667,6 +7667,6 @@ battle_explanation_text = {
                 text = $permadeath_boss_splash_5
             }
         ]
-		prompt = "Ready to Rock?"
+		prompt = $ready_to_rock_text
 	}
 }

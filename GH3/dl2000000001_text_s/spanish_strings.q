@@ -84,3 +84,9 @@ store_videos_text = "VIDEOS"
 
 i_covered_by_text = "VERSIONADO POR"
 awesomeness_detection = "DETECCIÓN DE DOMINIO"
+
+slash_battle_title_text = "¡SLASH ESTÁ SEDIENTO DE GUERRA!"
+morello_battle_title_text = "¡MORELLO TE RETA!"
+lou_battle_title_text = "¡VALOR Y AL TORO!"
+battle_mode_title_text = "¡MODO GUERRA!"
+ready_to_rock_text = "¿Listo para rockanrolear?"

@@ -84,3 +84,9 @@ store_videos_text = "VIDEOS"
 
 i_covered_by_text = "COVERVERSION VON"
 awesomeness_detection = "GENIALITÄTSERKENNUNG"
+
+slash_battle_title_text = "SLASH WILL KÄMPFEN!"
+morello_battle_title_text = "MORELLO FORDERT DICH HERAUS!"
+lou_battle_title_text = "OKAY, DAS IST ES!"
+battle_mode_title_text = "BATTLE-MODUS!"
+ready_to_rock_text = "Bist Du bereit zu rocken?"

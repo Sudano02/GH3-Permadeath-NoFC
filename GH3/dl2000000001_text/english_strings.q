@@ -84,3 +84,9 @@ store_videos_text = "VIDEOS"
 
 i_covered_by_text = "COVERED BY"
 awesomeness_detection = "AWESOMENESS DETECTION"
+
+slash_battle_title_text = "SLASH WANTS TO BATTLE!"
+morello_battle_title_text = "MORELLO CHALLENGES YOU!"
+lou_battle_title_text = "ALL RIGHT, THIS IS IT!"
+battle_mode_title_text = "BATTLE MODE!"
+ready_to_rock_text = "Ready to Rock?"

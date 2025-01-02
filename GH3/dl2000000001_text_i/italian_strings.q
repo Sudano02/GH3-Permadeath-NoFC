@@ -84,3 +84,9 @@ store_videos_text = "VIDEOS"
 
 i_covered_by_text = "COVER DI:"
 awesomeness_detection = "INDIVIDUAZ. FENOMENO"
+
+slash_battle_title_text = "SLASH VUOLE COMBATTERE!"
+morello_battle_title_text = "MORELLO TI SFIDA!"
+lou_battle_title_text = "BENE, CI SIAMO!"
+battle_mode_title_text = "MODALITÀ BATTAGLIA!"
+ready_to_rock_text = "Pronto per un po' di rock?"
