@@ -362,7 +362,7 @@ script setlist_show_helperbar \{text_option1 = "BONUS"
 		<tab_text_pos> = (<download_text_positions> [<i>])
 		FormatText textname = text ($permadeath_attempt_stat) i = ($permadeath_fails + 1)
 		displayText parent = user_control_container Scale = 1 text = <text>  rgba = [255 255 255 255] Pos = (330.0, 360.0) z = 50
-		FormatText textname = text ($permadeath_max_streak_stat) i = $permadeath_max_streak
+		FormatText textname = text ($permadeath_max_streak_stat) i = $permadeath_max_streak usecommas
 		displayText parent = user_control_container Scale = 1 text = <text>  rgba = [255 255 255 255] Pos = (330.0, 400.0) z = 50
 		FormatText textname = text ($permadeath_max_fc_count_stat) i = $permadeath_max_song_count
 		displayText parent = user_control_container Scale = 1 text = <text>  rgba = [255 255 255 255] Pos = (330.0, 440.0) z = 50
@@ -7025,7 +7025,7 @@ GH3_Bonus_Songs = {
 
 script set_store_purchase_price \{price = 0}
 	if ScreenElementExists \{id = store_price_tag_text}
-		FormatText textname = price_text "$%d" d = (<price>)
+		FormatText textname = price_text "$%d" d = (<price>) usecommas
 		store_price_tag_text :setprops text = <price_text>
 		store_price_tag_text :settags tag_price = <price>
 		SetScreenElementProps \{id = store_price_tag_text
