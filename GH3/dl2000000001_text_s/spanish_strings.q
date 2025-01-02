@@ -30,7 +30,7 @@ shebangsadrum_store_text = "Tema extraído del disco homónimo, The Stone Roses,
 takethislife_store_text = "Nacido en la ciudad sueca de Gotemburgo en 1990, el grupo In Flames fue uno de los pioneros de lo que hoy se conoce como death metal melódico. Este tema es del álbum 'Come Clarity', que se aupó al número 1 de las listas suecas desde su lanzamiento."
 thewayitends_store_text = "Prototype se formaron en 1994 a partir de las cenizas de la banda de thrash metal de L.A. Psychosis. Llevan el thrash metal y progresivo al siguiente nivel con este tema extraído de su tercer álbum 'Continuum'."
 
-thrufireandflames_store_text = "Dragonforce are known for their epic choral singing, and ultra-fast twin-guitar harmonies.  Buy this song only if you aren't afraid of your hands going numb after you try and play it!"
+thrufireandflames_store_text = "Dragonforce es una banda conocida por sus coros épicos y sus armonías de guitarras gemelas ultra rápidas. ¡Compra esta canción sólo si no tienes miedo de que se te acalambren las manos por tocarla!"
 
 permadeath_startup_text = "¡Bienvenido a GH3 Permadeath! Si no clavas una nota, el juego borrará tu partida. Igualmente, no podrás guardar. ¡Buena suerte!"
 permadeath_start = "SUFRIR"
