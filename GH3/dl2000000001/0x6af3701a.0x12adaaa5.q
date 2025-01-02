@@ -11,6 +11,7 @@ permadeath_toggle = 1
 permadeath_max_streak = 0
 permadeath_max_song_count = 0
 permadeath_current_song_count = 0
+ttfaf_money = 3722000
 
 script create_fail_song_menu 
 	change permadeath_lives = ($permadeath_lives - 1)
@@ -7127,7 +7128,7 @@ store_song_data = {
 		price = 500
 	}
 	thrufireandflames = {
-		price = 3722000
+		price = $ttfaf_money
 	}
 }
 Bonus_Songs_Info = [
@@ -7498,6 +7499,40 @@ script create_store_menu
 	mark_safe_for_shutdown
 endscript
 
+script ShowTTFAFcash
+	FormatText textname = text "Career Complete! $%i added to wallet." i = $ttfaf_money usecommas
+	if ScreenElementExists id = <ttfaf_unlocked>
+		DestroyScreenElement id = <ttfaf_unlocked>
+	endif
+	CreateScreenElement {
+		type = TextElement
+		id = <ttfaf_unlocked>
+		parent = root_window
+		Pos = (634.0, 580.0)
+		text = <text>
+		font = text_a11
+		Scale = 0.8
+		rgba = [255 255 255 255]
+		just = [center bottom]
+		z_priority = 500
+		shadow
+		shadow_offs = (1.0, 1.0)
+		shadow_rgba = [0 0 0 255]
+	}
+	wait \{3
+		seconds}
+	if ScreenElementExists id = <ttfaf_unlocked>
+		DoScreenElementMorph {
+			id = <ttfaf_unlocked>
+			alpha = 0
+			time = 1
+		}
+	wait \{1
+		second}
+	DestroyScreenElement id = <ttfaf_unlocked>
+	endif
+endscript
+
 script Progression_TierComplete 
 	printf \{"Progression_TierComplete"}
 	get_progression_globals game_mode = ($game_mode)
@@ -7512,8 +7547,9 @@ script Progression_TierComplete
 				if ($current_song = bossdevil)
 					get_current_band_info
 					GetGlobalTags <band_info>
-					<cash> = (<cash> + 3722000)
+					<cash> = (<cash> + ($ttfaf_money))
 					SetGlobalTags <band_info> params = {cash = <cash>}
+					spawnscriptnow \{ShowTTFAFcash}
 				endif
 			endif
 			change \{progression_beat_game_last_song = 1}
