@@ -7025,97 +7025,97 @@ GH3_Bonus_Songs = {
 
 store_song_data = {
 	avalancha = {
-		price = 0
+		price = 500
 	}
 	bellyofashark = {
-		price = 0
+		price = 500
 	}
 	cantbesaved = {
-		price = 0
+		price = 500
 	}
 	citiesonflame = {
-		price = 0
+		price = 500
 	}
 	closer = {
-		price = 0
+		price = 500
 	}
 	dontholdback = {
-		price = 0
+		price = 500
 	}
 	downndirty = {
-		price = 0
+		price = 500
 	}
 	fcpremix = {
-		price = 0
+		price = 500
 	}
 	generationrock = {
-		price = 0
+		price = 500
 	}
 	gothatfar = {
-		price = 0
+		price = 500
 	}
 	helicopter = {
-		price = 0
+		price = 500
 	}
 	hierkommtalex = {
-		price = 0
+		price = 500
 	}
 	imintheband = {
-		price = 0
+		price = 500
 	}
 	impulse = {
-		price = 0
+		price = 500
 	}
 	inlove = {
-		price = 0
+		price = 500
 	}
 	mauvaisgarcon = {
-		price = 0
+		price = 500
 	}
 	metalheavylady = {
-		price = 0
+		price = 500
 	}
 	minuscelsius = {
-		price = 0
+		price = 500
 	}
 	monsters = {
-		price = 0
+		price = 500
 	}
 	mycurse = {
-		price = 0
+		price = 500
 	}
 	nothingformehere = {
-		price = 0
+		price = 500
 	}
 	prayeroftherefugee = {
-		price = 0
+		price = 500
 	}
 	radiosong = {
-		price = 0
+		price = 500
 	}
 	reptilia = {
-		price = 0
+		price = 500
 	}
 	ruby = {
-		price = 0
+		price = 500
 	}
 	sabotage = {
-		price = 0
+		price = 500
 	}
 	shebangsadrum = {
-		price = 0
+		price = 500
 	}
 	suckmykiss = {
-		price = 0
+		price = 500
 	}
 	takethislife = {
-		price = 0
+		price = 500
 	}
 	thewayitends = {
-		price = 0
+		price = 500
 	}
 	thrufireandflames = {
-		price = 12000
+		price = 3722000
 	}
 }
 Bonus_Songs_Info = [
