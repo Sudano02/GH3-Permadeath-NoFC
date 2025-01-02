@@ -7023,6 +7023,18 @@ GH3_Bonus_Songs = {
 	}
 }
 
+script set_store_purchase_price \{price = 0}
+	if ScreenElementExists \{id = store_price_tag_text}
+		FormatText textname = price_text "$%d" d = (<price>)
+		store_price_tag_text :setprops text = <price_text>
+		store_price_tag_text :settags tag_price = <price>
+		SetScreenElementProps \{id = store_price_tag_text
+			Scale = 1}
+		fit_text_in_rectangle \{id = store_price_tag_text
+			dims = (150.0, 90.0)}
+	endif
+endscript
+
 store_song_data = {
 	avalancha = {
 		price = 500
