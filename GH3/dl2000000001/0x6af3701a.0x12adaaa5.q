@@ -53,15 +53,18 @@ script calculate_max_streak_total
 	i = 0
 	begin
 	get_songlist_checksum index = <i>
-	get_difficulty_text_nl { difficulty = ($current_difficulty) }
-	get_song_prefix song = <song_checksum>
-	FormatText checksumname = songname '%s_%d' s = <song_prefix> d = <difficulty_text_nl>
-	GetGlobalTags <songname>
-	if (<achievement_gold_star> = 1)
-		fc_count = (<fc_count> + 1)
-	endif
-	if StructureContains structure = $max_streaks <song_checksum>
-		<streak_count> = (<streak_count> + ($max_streaks.<song_checksum>))
+	get_song_struct song = <song_checksum>
+	if NOT StructureContains structure = <song_struct> boss
+		get_difficulty_text_nl { difficulty = ($current_difficulty) }
+		get_song_prefix song = <song_checksum>
+		FormatText checksumname = songname '%s_%d' s = <song_prefix> d = <difficulty_text_nl>
+		GetGlobalTags <songname>
+		if (<achievement_gold_star> = 1)
+			fc_count = (<fc_count> + 1)
+		endif
+		if StructureContains structure = $max_streaks <song_checksum>
+			<streak_count> = (<streak_count> + ($max_streaks.<song_checksum>))
+		endif
 	endif
 	<i> = (<i> + 1)
 	repeat <array_size>
