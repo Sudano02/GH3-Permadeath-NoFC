@@ -4307,7 +4307,7 @@ script create_store_menu
 endscript
 
 script ShowTTFAFcash
-	FormatText textname = text "Career Complete! $%i added to wallet." i = $ttfaf_money usecommas
+	FormatText textname = text ($ttfaf_money_earned) i = $ttfaf_money usecommas
 	FormatText \{checksumname = ttfaf_unlocked
 		'ttfaf_unlocked'}
 	if ScreenElementExists id = <ttfaf_unlocked>

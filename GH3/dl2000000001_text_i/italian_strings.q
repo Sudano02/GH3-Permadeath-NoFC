@@ -90,3 +90,5 @@ morello_battle_title_text = "MORELLO TI SFIDA!"
 lou_battle_title_text = "BENE, CI SIAMO!"
 battle_mode_title_text = "MODALITÀ BATTAGLIA!"
 ready_to_rock_text = "Pronto per un po' di rock?"
+
+ttfaf_money_earned = "Career Complete! $%i added to wallet."
