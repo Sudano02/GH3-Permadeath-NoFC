@@ -4305,14 +4305,16 @@ endscript
 
 script ShowTTFAFcash
 	FormatText textname = text "Career Complete! $%i added to wallet." i = $ttfaf_money usecommas
+	FormatText \{checksumname = ttfaf_unlocked
+		'ttfaf_unlocked'}
 	if ScreenElementExists id = <ttfaf_unlocked>
 		DestroyScreenElement id = <ttfaf_unlocked>
 	endif
 	CreateScreenElement {
 		type = TextElement
 		id = <ttfaf_unlocked>
-		parent = root_window
-		Pos = (634.0, 580.0)
+		parent = yourock_text
+		Pos = (634.0, 620.0)
 		text = <text>
 		font = text_a11
 		Scale = 0.8
@@ -4337,6 +4339,14 @@ script ShowTTFAFcash
 	endif
 endscript
 
+script EarnTtfafMoney
+	get_current_band_info
+	GetGlobalTags <band_info>
+	<cash> = (<cash> + ($ttfaf_money))
+	SetGlobalTags <band_info> params = {cash = <cash>}
+	spawnscriptnow \{ShowTTFAFcash}
+endscript
+
 script Progression_TierComplete 
 	printf \{"Progression_TierComplete"}
 	get_progression_globals game_mode = ($game_mode)
@@ -4349,11 +4359,7 @@ script Progression_TierComplete
 			change \{end_credits = 0}
 			if NOT ($progression_beat_game_last_song = 1)
 				if ($current_song = bossdevil)
-					get_current_band_info
-					GetGlobalTags <band_info>
-					<cash> = (<cash> + ($ttfaf_money))
-					SetGlobalTags <band_info> params = {cash = <cash>}
-					spawnscriptnow \{ShowTTFAFcash}
+					EarnTtfafMoney
 				endif
 			endif
 			change \{progression_beat_game_last_song = 1}
