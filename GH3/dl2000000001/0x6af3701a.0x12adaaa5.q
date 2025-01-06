@@ -2395,28 +2395,28 @@ Common_SongLost_Transition = {
 	EndWithDefaultCamera
 }
 
-health_change_bad_easy = -5
+health_change_bad_easy = -5.0
 health_change_good_easy = 0.029
 health_change_star_easy = 0
 health_change_bad_battle_easy = -0.053
 health_change_good_battle_easy = 0.029
 health_change_bad_boss_easy = -0.04
 health_change_good_boss_easy = 0.029
-health_change_bad_medium = -5
+health_change_bad_medium = -5.0
 health_change_good_medium = 0.0145
 health_change_star_medium = 0
 health_change_bad_battle_medium = -0.0267
 health_change_good_battle_medium = 0.0145
 health_change_bad_boss_medium = -0.02
 health_change_good_boss_medium = 0.02
-health_change_bad_hard = -5
+health_change_bad_hard = -5.0
 health_change_good_hard = 0.013499999
 health_change_star_hard = 0
 health_change_bad_battle_hard = -0.0374
 health_change_good_battle_hard = 0.013499999
 health_change_bad_boss_hard = -0.0267
 health_change_good_boss_hard = 0.017499998
-health_change_bad_expert = -5
+health_change_bad_expert = -5.0
 health_change_good_expert = 0.012
 health_change_star_expert = 0
 health_change_bad_battle_expert = -0.048
@@ -2902,7 +2902,7 @@ script create_cheats_menu
 		]}
 endscript
 
-beat_game_message_expert = "Wow. You've mastered Permadeath on expert -- Go start a band already! Take it to the next level with the \\c1%n\\c0!"
+
 
 new_band_flashing_char = "1"
 new_band_flashing_index = 0
