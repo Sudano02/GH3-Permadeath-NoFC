@@ -57,6 +57,21 @@ permadeath_boss_splash_4 = "Perds toutes tes vies, et c'est GAME OVER!"
 permadeath_boss_splash_5 = "Bonne chance!"
 permadeath_lives_screen_title = "NOMBRE DE VIES"
 
+ttfaf_money_earned = "Career Complete! $%i added to wallet."
+
+beat_game_title = "\\c6YOU BEAT LOU ON \\c0%d\\c6!\\c0 WITHOUT ANY MISSES!"
+beat_game_message_expert = "Wow. You've beaten Lou on expert without any misses! With the cash you found in Lou's Inferno, you now have the exact amount of cash to purchase \\c1Through the Fire and Flames\\c0!\\nWe love that song, don't we? Have at it, and maybe there'll be a reward after finishing all Bonus Songs ;)"
+
+beat_permadeath_title = "\\c6YOU BEAT PERMADEATH ON \\c0%d\\c6!\\c0"
+beat_permadeath_message_expert = "Wow. You've mastered Permadeath on expert -- That's a lot of notes that flew by! %i to be exact! Feel free to just \\c1%n\\c0 now..."
+
+permadeath_disabled_text = "Permadeath Mode has now been disabled. Feel free to relive your glory, you champ!"
+
+def_easy_text = "FACILE"
+def_medium_text = "MOYEN"
+def_hard_text = "DIFFICILE"
+def_expert_text = "EXPERT"
+
 text_button_updown = "HAUT/BAS"
 text_button_select = "CHOISIR"
 text_button_back = "RETOUR"
@@ -90,5 +105,3 @@ morello_battle_title_text = "MORELLO TE MET AU DÉFI !"
 lou_battle_title_text = "ATTENTION, ÇA VA COMMENCER !"
 battle_mode_title_text = "MODE DUEL !"
 ready_to_rock_text = "Prêt pour le rock ?"
-
-ttfaf_money_earned = "Career Complete! $%i added to wallet."
