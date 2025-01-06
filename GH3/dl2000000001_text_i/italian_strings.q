@@ -59,13 +59,13 @@ permadeath_lives_screen_title = "NUMERO DI VITE"
 
 ttfaf_money_earned = "Carriera Completata! $%i aggiunti al portafoglio."
 
-beat_game_title = "\\c6YOU BEAT LOU ON \\c0%d\\c6 WITHOUT ANY MISSES!"
-beat_game_message_expert = "Wow. You've beaten Lou on expert without any misses! With the cash you found in Lou's Inferno, you now have the exact amount of cash to purchase \\c1Through the Fire and Flames\\c0!\\nWe love that song, don't we? Have at it, and maybe there'll be a reward after finishing all Bonus Songs..."
+beat_game_title = "\\c6HAI SCONFITTO LOU IN \\c0%d\\c6 SENZA SBAGLIARE!"  
+beat_game_message_expert = "Wow. Hai sconfitto Lou in esperto senza commettere errori! Con i soldi trovati nel Lou's Inferno, ora hai esattamente la somma necessaria per acquistare \\c1Through the Fire and Flames\\c0!\\nAdoriamo quella canzone, vero? Vai e giocatela, magari ci sarà una ricompensa dopo aver completato tutte le Canzoni Bonus..."
 
-beat_permadeath_title = "\\c6YOU BEAT PERMADEATH ON \\c0%d\\c6!\\c0"
-beat_permadeath_message_expert = "Wow. You've mastered Permadeath on expert -- That's a lot of notes that flew by! %i to be exact! Feel free to just \\c1%n\\c0 now..."
+beat_permadeath_title = "\\c6HAI COMPLETATO PERMADEATH IN \\c0%d\\c6!\\c0"  
+beat_permadeath_message_expert = "Wow. Hai dominato permadeath in esperto -- Sono molte le note che hai suonato! Per l'esattezza %i! Ora sentiti libero di \\c1%n\\c0..."  
 
-permadeath_disabled_text = "Lives will no longer decrease for this difficulty. Time to relive your glory, you champ!"
+permadeath_disabled_text = "Le vite non diminuiranno più per questa difficoltà. È ora di rivivere la tua gloria, campione!"
 
 def_easy_text = "FACILE"
 def_medium_text = "MEDIO"
