@@ -3825,11 +3825,36 @@ GH3_Bonus_Songs = {
 			takethislife
 			thewayitends
 			thrufireandflames
+			dlc1504750512
 		]
 		level = load_z_artdeco
 		defaultunlocked = 0
 	}
 }
+
+script issongavailable \{for_bonus = 0}
+	if ($is_network_game = 1)
+		if is_song_downloaded song_checksum = <song>
+			GetGlobalTags <song>
+			if (<available_on_other_client> = 1)
+				return \{TRUE}
+			endif
+		endif
+	else
+		if NOT is_song_downloaded song_checksum = <song>
+			return \{FALSE}
+		endif
+		if (<for_bonus> = 1)
+			GetGlobalTags <song> param = unlocked
+		else
+			GetGlobalTags <song_checksum> param = unlocked
+		endif
+		if (<unlocked> = 1)
+			return \{TRUE}
+		endif
+	endif
+	return \{FALSE}
+endscript
 
 script set_store_purchase_price \{price = 0}
 	if ScreenElementExists \{id = store_price_tag_text}
@@ -4362,6 +4387,7 @@ script Progression_TierComplete
 			change \{end_credits = 0}
 			if NOT ($progression_beat_game_last_song = 1)
 				if ($current_song = bossdevil)
+					change \{end_credits = 1}
 					EarnTtfafMoney
 				endif
 			endif
@@ -4393,6 +4419,7 @@ script Progression_TierComplete
 		Progression_UnlockVenue level_checksum = ($<tier_global>.<tiername>.level)
 	endif
 endscript
+
 
 battle_explanation_text = {
 	bossslash = {
