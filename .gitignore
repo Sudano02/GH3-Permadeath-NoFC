@@ -11,6 +11,6 @@ GH3/*_strings.q
 *.PAK*
 *.pak*
 *.xen
-!GH3/pkg*/*
+!GH3/PKG*/*
 !GH3/STFS/*
 GH3/compile all to RPCS3.bat
