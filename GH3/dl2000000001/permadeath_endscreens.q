@@ -1,4 +1,5 @@
 fcd_all_songs_last_song = 0
+force_credits = 0
 
 script career_check_for_beat_game 
 	if ($progression_beat_game_last_song = 1)
@@ -21,6 +22,140 @@ permadeath_fgfc_fs = {
 		}
 	]
 }
+
+script create_beat_game_menu 
+	create_menu_backdrop \{texture = Beat_Game_BG}
+	menu_font = fontgrid_title_gh3
+	get_current_band_info
+	GetGlobalTags <band_info> param = name
+	band_name = <name>
+	FormatText textname = band_name_text "%s" s = <band_name>
+	difficulty_text = ($def_expert_text)
+	next_difficulty_text = "PRECISION MODE CHEAT"
+	<difficulty> = ($current_difficulty)
+	if ($game_mode = p2_career)
+		<index1> = ($difficulty_list_props.($current_difficulty).index)
+		<index2> = ($difficulty_list_props.($current_difficulty2).index)
+		if (<index2> < <index1>)
+			<difficulty> = ($current_difficulty2)
+		endif
+	endif
+	switch (<difficulty>)
+		case easy
+		<difficulty_text> = ($def_easy_text)
+		next_difficulty = medium
+		<next_difficulty_text> = ($def_medium_text)
+		case medium
+		<difficulty_text> = ($def_medium_text)
+		next_difficulty = hard
+		<next_difficulty_text> = ($def_hard_text)
+		case hard
+		<difficulty_text> = ($def_hard_text)
+		next_difficulty = expert
+		<next_difficulty_text> = ($def_expert_text)
+	endswitch
+	CreateScreenElement \{type = ContainerElement
+		parent = root_window
+		id = beat_game_container
+		Pos = (0.0, 0.0)
+		just = [
+			left
+			top
+		]}
+	CreateScreenElement {
+		type = TextElement
+		parent = beat_game_container
+		id = bgs_band_name
+		just = [center top]
+		font = <menu_font>
+		text = <band_name_text>
+		Scale = 1.38
+		rgba = [140 70 70 255]
+		Pos = (640.0, 366.0)
+	}
+	GetScreenElementDims \{id = bgs_band_name}
+	if (<width> > 300)
+		fit_text_in_rectangle \{id = bgs_band_name
+			dims = (1060.0, 130.0)
+			Pos = (640.0, 366.0)}
+	endif
+	FormatText textname = title_text $beat_game_title d = <difficulty_text>
+	CreateScreenElement {
+		type = TextElement
+		parent = beat_game_container
+		id = bgs_under_title
+		just = [left top]
+		font = <menu_font>
+		text = <title_text>
+		Scale = 1.0
+		rgba = [250 245 145 255]
+	}
+	fit_text_in_rectangle \{id = bgs_under_title
+		dims = (700.0, 65.0)
+		Pos = (300.0, 428.0)}
+	if (<difficulty> = expert)
+		FormatText textname = motivation_text ($beat_game_message_expert) n = <next_difficulty_text>
+	else
+		FormatText textname = motivation_text ($beat_game_message) n = <next_difficulty_text>
+	endif
+	CreateScreenElement {
+		type = TextBlockElement
+		parent = beat_game_container
+		font = text_a4
+		text = <motivation_text>
+		dims = (1100.0, 700.0)
+		Pos = (640.0, 468.0)
+		rgba = [250 245 145 255]
+		just = [center top]
+		internal_just = [center top]
+		Scale = 0.7
+		z_priority = 3
+	}
+	button_font = buttonsxenon
+	displaySprite \{id = bgs_black_banner
+		parent = beat_game_container
+		tex = white
+		Pos = (0.0, -2.0)
+		dims = (1240.0, 100.0)
+		rgba = [
+			0
+			0
+			0
+			255
+		]
+		z = -2}
+	CreateScreenElement {
+		type = TextElement
+		parent = beat_game_container
+		id = continue_text
+		Scale = 1.0
+		Pos = (40.0, 20.0)
+		font = ($cash_reward_font)
+		rgba = [0 0 0 255]
+		just = [left center]
+		event_handlers = [
+			{pad_choose ui_flow_manager_respond_to_action params = {action = continue}}
+		]
+	}
+	spawnscriptnow scroll_band_name params = {band_text = <band_name_text>}
+	LaunchEvent \{type = focus
+		target = continue_text}
+	change \{user_control_pill_text_color = [
+			0
+			0
+			0
+			255
+		]}
+	change \{user_control_pill_color = [
+			180
+			180
+			180
+			255
+		]}
+	add_user_control_helper \{text = "CONTINUE"
+		button = green
+		z = 100}
+endscript
 
 script create_beat_permadeath_menu 
 	calculate_max_streak_song
@@ -173,16 +308,16 @@ script create_beat_permadeath_menu
 endscript
 
 PD_Bonus_NumSongToProgress = {
-	easy = 1
-	medium = 1
-	hard = 1
-	expert = 1
+	easy = 31
+	medium = 31
+	hard = 31
+	expert = 31
 }
 
 
 script Permadeath_CheckBonusSongComplete 
 	printf \{"Progression_CheckSongComplete"}
-	get_progression_globals game_mode = ($game_mode)
+	get_progression_globals game_mode = ($game_mode) bonus
 	songlist = <tier_global>
 	progression_getdifficulty
 	songs_required = (<numsongstoprogress>.<difficulty>)
@@ -209,7 +344,16 @@ endscript
 
 script Permadeath_BonusComplete
 	change \{fcd_all_songs_last_song = 1}
-	if ($current_difficulty = expert)
+	difficulty = ($current_difficulty)
+	if (<difficulty> = easy)
+		change \{permadeath_disabled_easy = 1}
+	elseif (<difficulty> = medium)
+		change \{permadeath_disabled_medium = 1}
+	elseif (<difficulty> = hard)
+		change \{permadeath_disabled_hard = 1}
+	elseif (<difficulty> = expert)
+		change \{permadeath_disabled_expert = 1}
+		change \{force_credits = 1}
 		change \{end_credits = 1}
 		FormatText \{checksumname = bonus_song_checksum
 			'%p_song%i_tier%s'
@@ -1791,7 +1935,7 @@ script GuitarEvent_SongWon_Spawned
 		if ScreenElementExists \{id = yourock_text}
 			DestroyScreenElement \{id = yourock_text}
 		endif
-	elseif ($end_credits = 1 && $current_song = thrufireandflames)
+	elseif ($end_credits = 1 && $current_song = thrufireandflames && force_credits = 0)
 		destroy_menu \{menu_id = yourock_text}
 		destroy_menu \{menu_id = yourock_text_2}
 		change \{end_credits = 0}
@@ -1801,6 +1945,7 @@ script GuitarEvent_SongWon_Spawned
 		destroy_menu \{menu_id = yourock_text}
 		destroy_menu \{menu_id = yourock_text_2}
 		change \{end_credits = 0}
+		change \{force_credits = 0}
 		career_song_ended_select_quit
 		start_flow_manager \{flow_state = career_credits_autosave_fs}
 	elseif ($devil_finish = 1)

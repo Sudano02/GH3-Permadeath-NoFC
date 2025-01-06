@@ -11,10 +11,30 @@ permadeath_toggle = 1
 permadeath_max_streak = 0
 permadeath_max_song_count = 0
 permadeath_current_song_count = 0
+default_song_price = 500
 ttfaf_money = 3722000
 
+permadeath_disabled_easy = 0
+permadeath_disabled_medium = 0
+permadeath_disabled_hard = 0
+permadeath_disabled_expert = 0
+lose_a_life = TRUE
+
 script create_fail_song_menu 
-	change permadeath_lives = ($permadeath_lives - 1)
+	difficulty = ($current_difficulty)
+	change \{lose_a_life = TRUE}
+	if (<difficulty> = easy && permadeath_disabled_easy = 1)
+		change \{lose_a_life = FALSE}
+	elseif (<difficulty> = medium && permadeath_disabled_medium = 1)
+		change \{lose_a_life = FALSE}
+	elseif (<difficulty> = hard && permadeath_disabled_hard = 1)
+		change \{lose_a_life = FALSE}
+	elseif (<difficulty> = expert && permadeath_disabled_expert = 1)
+		change \{lose_a_life = FALSE}
+	endif
+	if ($lose_a_life = TRUE)
+		change permadeath_lives = ($permadeath_lives - 1)
+	endif
 	calculate_max_streak_song
 	if ($permadeath_lives > 0)
 		fail_song_menu_select_new_song
@@ -24,6 +44,7 @@ script create_fail_song_menu
 		handle_signin_changed
 	endif
 endscript
+
 
 max_streaks = { 
 
@@ -400,7 +421,6 @@ script setlist_show_helperbar \{text_option1 = "BONUS"
 			<i> = (<i> + 1)
 			repeat 3
 		endif
-		
 		FormatText textname = text ($permadeath_lives_stat) i = $permadeath_lives
 		displayText parent = user_control_container Scale = 1 text = <text>  rgba = <colour_array> Pos = (870.0, 80.0) z = 50
 	endif
@@ -3825,7 +3845,7 @@ GH3_Bonus_Songs = {
 			takethislife
 			thewayitends
 			thrufireandflames
-			dlc1504750512
+			slowridefull
 		]
 		level = load_z_artdeco
 		defaultunlocked = 0
@@ -3870,94 +3890,94 @@ endscript
 
 store_song_data = {
 	avalancha = {
-		price = 500
+		price = $default_song_price
 	}
 	bellyofashark = {
-		price = 500
+		price = $default_song_price
 	}
 	cantbesaved = {
-		price = 500
+		price = $default_song_price
 	}
 	citiesonflame = {
-		price = 500
+		price = $default_song_price
 	}
 	closer = {
-		price = 500
+		price = $default_song_price
 	}
 	dontholdback = {
-		price = 500
+		price = $default_song_price
 	}
 	downndirty = {
-		price = 500
+		price = $default_song_price
 	}
 	fcpremix = {
-		price = 500
+		price = $default_song_price
 	}
 	generationrock = {
-		price = 500
+		price = $default_song_price
 	}
 	gothatfar = {
-		price = 500
+		price = $default_song_price
 	}
 	helicopter = {
-		price = 500
+		price = $default_song_price
 	}
 	hierkommtalex = {
-		price = 500
+		price = $default_song_price
 	}
 	imintheband = {
-		price = 500
+		price = $default_song_price
 	}
 	impulse = {
-		price = 500
+		price = $default_song_price
 	}
 	inlove = {
-		price = 500
+		price = $default_song_price
 	}
 	mauvaisgarcon = {
-		price = 500
+		price = $default_song_price
 	}
 	metalheavylady = {
-		price = 500
+		price = $default_song_price
 	}
 	minuscelsius = {
-		price = 500
+		price = $default_song_price
 	}
 	monsters = {
-		price = 500
+		price = $default_song_price
 	}
 	mycurse = {
-		price = 500
+		price = $default_song_price
 	}
 	nothingformehere = {
-		price = 500
+		price = $default_song_price
 	}
 	prayeroftherefugee = {
-		price = 500
+		price = $default_song_price
 	}
 	radiosong = {
-		price = 500
+		price = $default_song_price
 	}
 	reptilia = {
-		price = 500
+		price = $default_song_price
 	}
 	ruby = {
-		price = 500
+		price = $default_song_price
 	}
 	sabotage = {
-		price = 500
+		price = $default_song_price
 	}
 	shebangsadrum = {
-		price = 500
+		price = $default_song_price
 	}
 	suckmykiss = {
-		price = 500
+		price = $default_song_price
 	}
 	takethislife = {
-		price = 500
+		price = $default_song_price
 	}
 	thewayitends = {
-		price = 500
+		price = $default_song_price
 	}
 	thrufireandflames = {
 		price = $ttfaf_money
