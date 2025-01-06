@@ -11,6 +11,7 @@ GH3/*_strings.q
 *.PAK*
 *.pak*
 *.xen
-!GH3/PKG*/*
 !GH3/STFS/*
+!GH3/PKG/USRDIR/GH3 PERMADEATH PATCH/*
+!GH3/PKG_PAL/USRDIR/GH3 PERMADEATH PATCH/*
 GH3/compile all to RPCS3.bat
