@@ -37,7 +37,7 @@ GH3_Bonus_Songs = {
 	prefix = 'bonus'
 	num_tiers = 1
 	tier1 = {
-		Title = "Bonus songs"
+		Title = $sl_bonus_tier
 		songs = [
 			avalancha
 			bellyofashark
@@ -1099,7 +1099,7 @@ script create_sl_assets
 	if GotParam \{tab_bonus}
 		displayText \{parent = setlist_menu
 			id = sl_text_1
-			text = "BONUS SONGS"
+			text = $sl_bonus_tier_big
 			font = text_a10
 			Scale = 2
 			Pos = (330.0, 220.0)
@@ -1214,10 +1214,10 @@ script create_sl_assets
 							if Progression_IsBossSong tier_global = $g_gh3_setlist tier = <tier> song = ($g_gh3_setlist.<tier_checksum>.songs [<song_count>])
 								if (<Score> = 1)
 									FormatText \{textname = score_text
-										"WUSSED OUT"}
+										$sl_wussed_out}
 								else
 									FormatText \{textname = score_text
-										"BATTLE WON"}
+										$sl_battle_won}
 								endif
 							else
 								FormatText textname = score_text "%d" d = <Score> usecommas
@@ -1259,13 +1259,13 @@ script create_sl_assets
 					GetGlobalTags <tiername> param = encore_unlocked
 					if (<encore_unlocked> = 1)
 						FormatText \{textname = completeText
-							"Beat encore song to continue"}
+							$sl_beat_encore}
 					elseif (<boss_unlocked> = 1)
 						FormatText \{textname = completeText
-							"Beat boss song to continue"}
+							$sl_beat_boss}
 					else
 						GetGlobalTags <tiername> param = num_songs_to_progress
-						FormatText textname = completeText "Beat %d of %p songs to continue" d = <num_songs_to_progress> p = <num_songs_unlocked>
+						FormatText textname = completeText ($sl_beat_songs) d = <num_songs_to_progress> p = <num_songs_unlocked>
 					endif
 					displayText parent = setlist_menu Scale = (0.6, 0.6) text = <completeText> Pos = (<text_pos> + (160.0, 0.0)) z = $setlist_text_z rgba = [30 30 30 255] noshadow
 				endif
@@ -1276,7 +1276,7 @@ script create_sl_assets
 	if ((($game_mode = p1_career) || ($game_mode = p2_career)) && $is_demo_mode = 0 && (not ($current_tab = tab_downloads)))
 		get_progression_globals game_mode = ($game_mode)
 		summation_career_score tier_global = <tier_global>
-		FormatText textname = total_score_text "Career Score: %d" d = <career_score> usecommas
+		FormatText textname = total_score_text ($sl_career_score) d = <career_score> usecommas
 		displayText {
 			parent = setlist_menu
 			Scale = 0.7
@@ -2203,17 +2203,17 @@ script create_pause_menu \{player = 1
 		else
 			if (<for_options> = 0)
 				if (<for_practice> = 1)
-					<pause_player_text> = "PAUSED"
+					<pause_player_text> = ($pause_paused_text)
 				else
 					if NOT isSinglePlayerGame
-						formattext textname = pause_player_text "P%d PAUSED" d = <player>
+						formattext textname = pause_player_text ($pause_player_paused_text) d = <player>
 					else
-						<pause_player_text> = "PAUSED"
+						<pause_player_text> = ($pause_paused_text)
 					endif
 				endif
 				pause_player_scale = (0.6, 0.75)
 			else
-				pause_player_text = "OPTIONS"
+				pause_player_text = ($mm_options_text)
 				pause_player_scale = (0.75, 0.75)
 			endif
 		endif
@@ -2309,7 +2309,7 @@ script create_pause_menu \{player = 1
 				scale = <text_scale>
 				rgba = [210 130 0 250]
 				id = pause_resume
-				text = "RESUME"
+				text = ($pause_resume_text)
 				just = [center top]
 				shadow
 				shadow_offs = (3.0, 3.0)
@@ -2333,7 +2333,7 @@ script create_pause_menu \{player = 1
 				font = fontgrid_title_gh3
 				scale = <text_scale>
 				rgba = [210 130 0 250]
-				text = "RESTART"
+				text = ($pause_restart_text)
 				id = pause_restart
 				just = [center top]
 				shadow
@@ -2358,7 +2358,7 @@ script create_pause_menu \{player = 1
 				font = fontgrid_title_gh3
 				scale = <text_scale>
 				rgba = [210 130 0 250]
-				text = "OPTIONS"
+				text = ($mm_options_text)
 				id = pause_options
 				just = [center top]
 				shadow
@@ -2383,7 +2383,7 @@ script create_pause_menu \{player = 1
 				font = fontgrid_title_gh3
 				scale = <text_scale>
 				rgba = [210 130 0 250]
-				text = "CHANGE SPEED"
+				text = ($pause_change_speed_text)
 				id = pause_change_speed
 				just = [center top]
 				shadow
@@ -2408,7 +2408,7 @@ script create_pause_menu \{player = 1
 				font = fontgrid_title_gh3
 				scale = <text_scale>
 				rgba = [210 130 0 250]
-				text = "CHANGE SECTION"
+				text = ($pause_change_section_text)
 				id = pause_change_section
 				just = [center top]
 				shadow
@@ -2434,7 +2434,7 @@ script create_pause_menu \{player = 1
 					font = fontgrid_title_gh3
 					scale = <text_scale>
 					rgba = [210 130 0 250]
-					text = "NEW SONG"
+					text = ($pause_new_song_text)
 					id = pause_new_song
 					just = [center top]
 					shadow
@@ -2460,7 +2460,7 @@ script create_pause_menu \{player = 1
 				font = fontgrid_title_gh3
 				scale = <text_scale>
 				rgba = [210 130 0 250]
-				text = "QUIT"
+				text = ($pause_quit_text)
 				id = pause_quit
 				just = [center top]
 				shadow
@@ -2497,7 +2497,7 @@ script create_pause_menu \{player = 1
 				font = fontgrid_title_gh3
 				scale = <text_scale>
 				rgba = [210 130 0 250]
-				text = "RESUME"
+				text = ($pause_resume_text)
 				id = pause_resume
 				just = [center top]
 				shadow
@@ -2524,7 +2524,7 @@ script create_pause_menu \{player = 1
 						font = fontgrid_title_gh3
 						scale = <text_scale>
 						rgba = [210 130 0 250]
-						text = "RESTART"
+						text = ($pause_restart_text)
 						id = pause_restart
 						just = [center top]
 						shadow
@@ -2555,7 +2555,7 @@ script create_pause_menu \{player = 1
 							font = fontgrid_title_gh3
 							scale = <text_scale>
 							rgba = [210 130 0 250]
-							text = "PRACTICE"
+							text = ($pause_practice_text)
 							id = pause_practice
 							just = [center top]
 							shadow
@@ -2581,7 +2581,7 @@ script create_pause_menu \{player = 1
 						font = fontgrid_title_gh3
 						scale = <text_scale>
 						rgba = [210 130 0 250]
-						text = "OPTIONS"
+						text = ($mm_options_text)
 						id = pause_options
 						just = [center top]
 						shadow
@@ -2619,7 +2619,7 @@ script create_pause_menu \{player = 1
 				font = fontgrid_title_gh3
 				scale = <text_scale>
 				rgba = [210 130 0 250]
-				text = "QUIT"
+				text = ($pause_quit_text)
 				id = pause_quit
 				just = [center top]
 				shadow
@@ -2645,7 +2645,7 @@ script create_pause_menu \{player = 1
 					font = fontgrid_title_gh3
 					scale = <text_scale>
 					rgba = [210 130 0 250]
-					text = "DEBUG MENU"
+					text = ($mm_debug_menu_text)
 					id = pause_debug_menu
 					just = [center top]
 					shadow
@@ -2681,7 +2681,7 @@ script create_pause_menu \{player = 1
 			font = fontgrid_title_gh3
 			scale = <text_scale>
 			rgba = [210 130 0 250]
-			text = "SET AUDIO"
+			text = ($options_set_audio_text)
 			id = options_audio
 			just = [center center]
 			shadow
@@ -2709,7 +2709,7 @@ script create_pause_menu \{player = 1
 			font = fontgrid_title_gh3
 			scale = <text_scale>
 			rgba = [210 130 0 250]
-			text = "CALIBRATE LAG"
+			text = ($options_calibrate_lag_text)
 			id = options_calibrate_lag
 			just = [center center]
 			shadow
@@ -2738,7 +2738,7 @@ script create_pause_menu \{player = 1
 				font = fontgrid_title_gh3
 				scale = <text_scale>
 				rgba = [210 130 0 250]
-				text = "CALIBRATE WHAMMY"
+				text = ($options_calibrate_whammy_text)
 				id = options_calibrate_whammy
 				just = [center center]
 				shadow
@@ -2751,12 +2751,12 @@ script create_pause_menu \{player = 1
 			fit_text_in_rectangle id = <id> dims = (<fit_dims> + <height> * (0.0, 1.0)) only_if_larger_x = 1 start_x_scale = (<text_scale>.(1.0, 0.0)) start_y_scale = (<text_scale>.(0.0, 1.0))
 		endif
 		if isSinglePlayerGame
-			lefty_flip_text = "LEFTY FLIP:"
+			lefty_flip_text = ($options_lefty_flip_text)
 		else
 			if (<player> = 1)
-				lefty_flip_text = "P1 LEFTY FLIP:"
+				lefty_flip_text = ($options_lefty_flip_p1_text)
 			else
-				lefty_flip_text = "P2 LEFTY FLIP:"
+				lefty_flip_text = ($options_lefty_flip_p2_text)
 			endif
 		endif
 		createscreenelement {
@@ -2823,7 +2823,7 @@ script create_pause_menu \{player = 1
 	if ($is_network_game = 0)
 		if NOT isSinglePlayerGame
 			if (<for_practice> = 0)
-				formattext textname = player_paused_text "PLAYER %d PAUSED. ONLY PLAYER %d OPTIONS ARE AVAILABLE." d = <player>
+				formattext textname = player_paused_text ($pause_player_paused_text_extended) d = <player>
 				displaySprite {
 					parent = pause_menu_frame_container
 					id = pause_helper_text_bg
@@ -4326,7 +4326,6 @@ script Progression_TierComplete
 			change \{end_credits = 0}
 			if NOT ($progression_beat_game_last_song = 1)
 				if ($current_song = bossdevil)
-					change \{end_credits = 1}
 					EarnTtfafMoney
 				endif
 			endif
