@@ -1,2 +1,15 @@
 # NS-GH-Permadeath
 Permadeath mods for Neversoft Guitar Hero games
+
+## What is Permadeath?
+Inspired by a mod for Guitar Hero II by jnack, permadeath forces you to Full Combo (FC) every song in a row. If you miss one note, your progress will be deleted and you have to start over. 
+
+Please note that this patch does _not_ touch your save file. It will not overwrite or delete your save progress. However, as with any kind of mod, caution is urged and you should back up your save regardless.
+
+## Installation Instructions
+
+### Xbox 360
+Simply place the patch in your DLC folder. Any DLC or customs currently installed will be ignored by the patch. To play them again, simply delete or move the Permadeath patch.
+
+### PS3/RPCS3
+Grab your region's PKG file (NTSC or PAL) and install the permadeath patch. Any DLC or customs currently installed will be ignored by the patch. To play them again, simply delete or move the Permadeath patch.
