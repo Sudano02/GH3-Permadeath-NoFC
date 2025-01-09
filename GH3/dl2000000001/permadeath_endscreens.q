@@ -166,7 +166,7 @@ script create_beat_permadeath_menu
 			180
 			255
 		]}
-	add_user_control_helper \{text = "CONTINUE"
+	add_user_control_helper \{text = $text_button_continue
 		button = green
 		z = 100}
 endscript

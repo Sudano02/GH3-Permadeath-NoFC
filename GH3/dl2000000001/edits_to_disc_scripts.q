@@ -2982,7 +2982,7 @@ script create_cheats_menu
 				right
 				center
 			]
-			text = "CHEATS"
+			text = $cheats_cheats_text
 			scale = 1.5
 			rgba = [
 				240
@@ -3042,17 +3042,17 @@ script create_cheats_menu
 		getplatform
 		switch <platform>
 			case xenon
-			warning = "WARNING: Some active cheats do not work in career modes and online."
-			warning_cont = "Also, achievement unlocking and leaderboard posts are turned off."
+			warning = ($cheats_warning)
+			warning_cont = ($cheats_warning_cont_360)
 			case ps3
-			warning = "WARNING: Some active cheats do not work in career modes and online."
-			warning_cont = "Also, leaderboard posts are turned off."
+			warning = ($cheats_warning)
+			warning_cont = ($cheats_warning_cont)
 			case ps2
-			warning = "WARNING: Some active cheats do not work in career modes."
+			warning = ($cheats_warning_ps2)
 			warning_cont = ""
 			default
-			warning = "WARNING: Some active cheats do not work in career modes and online."
-			warning_cont = "Also, leaderboard posts are turned off."
+			warning = ($cheats_warning)
+			warning_cont = ($cheats_warning_cont)
 		endswitch
 		formattext textname = warning_text "%a %b" a = <warning> b = <warning_cont>
 		createscreenelement {
@@ -3116,15 +3116,15 @@ script create_cheats_menu
 	text_params = {parent = cheats_vmenu type = textelement font = text_a3 rgba = [255 245 225 255] z_priority = 50 rot_angle = 0 scale = 1}
 	text_params2 = {parent = cheats_vmenu type = textelement font = text_a5 rgba = [255 245 225 255] z_priority = 50 rot_angle = 0 scale = 0.63}
 	GetGlobalTags \{user_options}
-	<text> = "locked"
+	<text> = ($cheats_locked)
 	if (<unlock_Cheat_NoFail> > 0)
 		if ($cheat_nofail = 1)
-			formattext textname = text "%c : ON" c = ($guitar_hero_cheats [3].name_text)
+			formattext textname = text ($cheats_turned_on) c = ($guitar_hero_cheats [3].name_text)
 		else
 			if ($cheat_nofail < 0)
 				change \{cheat_nofail = 2}
 			endif
-			formattext textname = text "%c : OFF" c = ($guitar_hero_cheats [3].name_text)
+			formattext textname = text ($cheats_turned_off) c = ($guitar_hero_cheats [3].name_text)
 		endif
 	endif
 	createscreenelement {
@@ -3136,15 +3136,15 @@ script create_cheats_menu
 			{pad_choose toggle_cheat params = {cheat = cheat_nofail id = Cheat_NoFail_Text index = 3}}
 		]
 	}
-	<text> = "locked"
+	<text> = ($cheats_locked)
 	if (<unlock_Cheat_AirGuitar> > 0)
 		if ($Cheat_AirGuitar = 1)
-			formattext textname = text "%c : ON" c = ($guitar_hero_cheats [0].name_text)
+			formattext textname = text ($cheats_turned_on) c = ($guitar_hero_cheats [0].name_text)
 		else
 			if ($Cheat_AirGuitar < 0)
 				change \{Cheat_AirGuitar = 2}
 			endif
-			formattext textname = text "%c : OFF" c = ($guitar_hero_cheats [0].name_text)
+			formattext textname = text ($cheats_turned_off) c = ($guitar_hero_cheats [0].name_text)
 		endif
 	endif
 	createscreenelement {
@@ -3156,16 +3156,16 @@ script create_cheats_menu
 			{pad_choose toggle_cheat params = {cheat = Cheat_AirGuitar id = Cheat_AirGuitar_Text index = 0}}
 		]
 	}
-	<text> = "locked"
+	<text> = ($cheats_locked)
 	if (<unlock_Cheat_Hyperspeed> > 0)
 		if ($Cheat_Hyperspeed > 0)
-			formattext textname = text "%c : ON" c = ($guitar_hero_cheats [2].name_text)
+			formattext textname = text ($cheats_turned_on) c = ($guitar_hero_cheats [2].name_text)
 			formattext textname = text "%c, %d" c = <text> d = ($Cheat_Hyperspeed)
 		else
 			if ($Cheat_Hyperspeed < 0)
 				change \{Cheat_Hyperspeed = 0}
 			endif
-			formattext textname = text "%c : OFF" c = ($guitar_hero_cheats [2].name_text)
+			formattext textname = text ($cheats_turned_off) c = ($guitar_hero_cheats [2].name_text)
 		endif
 	endif
 	createscreenelement {
@@ -3177,15 +3177,15 @@ script create_cheats_menu
 			{pad_choose toggle_hyperspeed params = {cheat = Cheat_Hyperspeed id = Cheat_Hyperspeed_Text index = 2}}
 		]
 	}
-	<text> = "locked"
+	<text> = ($cheats_locked)
 	if (<unlock_Cheat_PerformanceMode> > 0)
 		if ($cheat_performancemode = 1)
-			formattext textname = text "%c : ON" c = ($guitar_hero_cheats [1].name_text)
+			formattext textname = text ($cheats_turned_on) c = ($guitar_hero_cheats [1].name_text)
 		else
 			if ($cheat_performancemode < 0)
 				change \{cheat_performancemode = 2}
 			endif
-			formattext textname = text "%c : OFF" c = ($guitar_hero_cheats [1].name_text)
+			formattext textname = text ($cheats_turned_off) c = ($guitar_hero_cheats [1].name_text)
 		endif
 	endif
 	createscreenelement {
@@ -3197,15 +3197,15 @@ script create_cheats_menu
 			{pad_choose toggle_cheat params = {cheat = cheat_performancemode id = Cheat_PerformanceMode_Text index = 1}}
 		]
 	}
-	<text> = "locked"
+	<text> = ($cheats_locked)
 	if (<unlock_Cheat_EasyExpert> > 0)
 		if ($cheat_easyexpert = 1)
-			formattext textname = text "%c : ON" c = ($guitar_hero_cheats [4].name_text)
+			formattext textname = text ($cheats_turned_on) c = ($guitar_hero_cheats [4].name_text)
 		else
 			if ($cheat_easyexpert < 0)
 				change \{cheat_easyexpert = 2}
 			endif
-			formattext textname = text "%c : OFF" c = ($guitar_hero_cheats [4].name_text)
+			formattext textname = text ($cheats_turned_off) c = ($guitar_hero_cheats [4].name_text)
 		endif
 	endif
 	createscreenelement {
@@ -3217,15 +3217,15 @@ script create_cheats_menu
 			{pad_choose toggle_cheat params = {cheat = cheat_easyexpert id = Cheat_EasyExpert_Text index = 4}}
 		]
 	}
-	<text> = "locked"
+	<text> = ($cheats_locked)
 	if (<unlock_Cheat_PrecisionMode> > 0)
 		if ($Cheat_PrecisionMode = 1)
-			formattext textname = text "%c : ON" c = ($guitar_hero_cheats [5].name_text)
+			formattext textname = text ($cheats_turned_on) c = ($guitar_hero_cheats [5].name_text)
 		else
 			if ($Cheat_PrecisionMode < 0)
 				change \{Cheat_PrecisionMode = 2}
 			endif
-			formattext textname = text "%c : OFF" c = ($guitar_hero_cheats [5].name_text)
+			formattext textname = text ($cheats_turned_off) c = ($guitar_hero_cheats [5].name_text)
 		endif
 	endif
 	createscreenelement {
@@ -3237,15 +3237,15 @@ script create_cheats_menu
 			{pad_choose toggle_cheat params = {cheat = Cheat_PrecisionMode id = Cheat_PrecisionMode_Text index = 5}}
 		]
 	}
-	<text> = "locked"
+	<text> = ($cheats_locked)
 	if (<unlock_Cheat_BretMichaels> > 0)
 		if ($Cheat_BretMichaels = 1)
-			formattext textname = text "%c : ON" c = ($guitar_hero_cheats [6].name_text)
+			formattext textname = text ($cheats_turned_on) c = ($guitar_hero_cheats [6].name_text)
 		else
 			if ($Cheat_BretMichaels < 0)
 				change \{Cheat_BretMichaels = 2}
 			endif
-			formattext textname = text "%c : OFF" c = ($guitar_hero_cheats [6].name_text)
+			formattext textname = text ($cheats_turned_off) c = ($guitar_hero_cheats [6].name_text)
 		endif
 	endif
 	createscreenelement {
@@ -3817,14 +3817,13 @@ script create_choose_band_menu
 			center
 		]
 		z_priority = 2}
-	choose_band_text = "CHOOSE BAND"
 	CreateScreenElement {
 		type = TextElement
 		parent = big_blue_box
 		just = [RIGHT bottom]
 		font = text_a10_Large
 		rgba = [105 50 35 255]
-		text = <choose_band_text>
+		text = ($choose_band_text)
 		Scale = 1.75
 	}
 	fit_text_in_rectangle id = <id> dims = (850.0, 200.0) Pos = (510.0, 75.0)
@@ -3853,7 +3852,7 @@ script create_choose_band_menu
 	<loop_count> = 1
 	band_index = 1
 	begin
-	band_name = "- NEW BAND -"
+	band_name = ($new_band_name)
 	get_band_game_mode_name
 	FormatText checksumname = bandname_id 'band%i_info_%g' i = <band_index> g = <game_mode_name>
 	GetGlobalTags <bandname_id> param = name
@@ -3983,7 +3982,7 @@ script create_manage_band_menu
 		Pos = <manage_band_pos>
 		font = text_a10_Large
 		rgba = [90 25 5 255]
-		text = "MANAGE BAND"
+		text = ($manage_band_text)
 		Scale = 1.75
 		z_priority = 3
 		rot_angle = -2
@@ -4032,7 +4031,7 @@ script create_manage_band_menu
 		type = TextElement
 		font = ($choose_band_menu_font)
 		rgba = ($menu_unfocus_color)
-		text = "GO BACK"
+		text = ($text_button_back)
 		just = [center top]
 	}
 	CreateScreenElement {

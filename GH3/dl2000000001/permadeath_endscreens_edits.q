@@ -1198,7 +1198,7 @@ script create_beat_game_menu
 			180
 			255
 		]}
-	add_user_control_helper \{text = "CONTINUE"
+	add_user_control_helper \{text = $text_button_continue
 		button = green
 		z = 100}
 endscript
@@ -1388,7 +1388,7 @@ script GuitarEvent_SongWon_Spawned
 	rock_legend = 0
 	fit_dims = (350.0, 0.0)
 	if ($battle_sudden_death = 1)
-		winner_text = "Sudden Death!"
+		winner_text = ($win_text_sudden_death)
 		winner_space_between = (65.0, 0.0)
 		winner_scale = 1.8
 	else
@@ -1396,10 +1396,10 @@ script GuitarEvent_SongWon_Spawned
 			p1_health = ($player1_status.current_health)
 			p2_health = ($player2_status.current_health)
 			if (<p2_health> > <p1_health>)
-				winner = "Two"
+				winner = ($number_text_two)
 				SoundEvent \{event = UI_2ndPlayerWins_SFX}
 			else
-				winner = "One"
+				winner = ($number_text_one)
 				SoundEvent \{event = UI_1stPlayerWins_SFX}
 			endif
 			if ($is_network_game)
@@ -1412,7 +1412,7 @@ script GuitarEvent_SongWon_Spawned
 				FormatText textname = winner_text <name>
 				<text_pos> = (640.0, 240.0)
 			else
-				FormatText textname = winner_text "Player %s Rocks!" s = <winner>
+				FormatText textname = winner_text ($player_x_rocks) s = <winner>
 			endif
 			winner_space_between = (50.0, 0.0)
 			winner_scale = 1.5
@@ -1420,17 +1420,17 @@ script GuitarEvent_SongWon_Spawned
 			p1_score = ($player1_status.Score)
 			p2_score = ($player2_status.Score)
 			if (<p2_score> > <p1_score>)
-				winner = "Two"
+				winner = ($number_text_two)
 				SoundEvent \{event = UI_2ndPlayerWins_SFX}
 			elseif (<p1_score> > <p2_score>)
-				winner = "One"
+				winner = ($number_text_one)
 				SoundEvent \{event = UI_1stPlayerWins_SFX}
 			else
 				<tie> = TRUE
 				SoundEvent \{event = You_Rock_End_SFX}
 			endif
 			if (<tie> = TRUE)
-				winner_text = "TIE!"
+				winner_text = ($winner_text_tie)
 				winner_space_between = (15.0, 0.0)
 				winner_scale = 0.5
 				fit_dims = (100.0, 0.0)
@@ -1445,25 +1445,25 @@ script GuitarEvent_SongWon_Spawned
 					FormatText textname = winner_text <name>
 					<text_pos> = (640.0, 240.0)
 				else
-					FormatText textname = winner_text "Player %s Rocks!" s = <winner>
+					FormatText textname = winner_text ($player_x_rocks) s = <winner>
 				endif
 				winner_space_between = (50.0, 0.0)
 				winner_scale = 1.5
 			endif
 		else
-			winner_text = "You Rock!"
+			winner_text = ($win_text_you_rock)
 			winner_space_between = (40.0, 0.0)
 			fit_dims = (350.0, 0.0)
 			winner_scale = 1.0
 		endif
 		if ($devil_finish = 1)
-			winner_text = "Now Finish Him!"
+			winner_text = ($win_text_finish_him)
 			winner_space_between = (55.0, 0.0)
 			winner_scale = 1.8
 		endif
 		if ($current_song = bossdevil && $devil_finish = 0)
 			<rock_legend> = 1
-			winner_text = "YOU'RE A"
+			winner_text = ($win_text_rock_legend_1)
 			<text_pos> = (800.0, 300.0)
 			winner_space_between = (40.0, 0.0)
 			winner_scale = 1.1
@@ -1495,7 +1495,7 @@ script GuitarEvent_SongWon_Spawned
 	if (<rock_legend> = 1)
 		split_text_into_array_elements {
 			id = yourock_text_legend
-			text = "ROCK LEGEND!"
+			text = ($win_text_rock_legend_2)
 			text_pos = (800.0, 420.0)
 			space_between = <winner_space_between>
 			fit_dims = (200.0, 0.0)
@@ -1515,7 +1515,7 @@ script GuitarEvent_SongWon_Spawned
 		if NOT ($game_mode = p2_coop)
 			split_text_into_array_elements {
 				id = yourock_text_2
-				text = "Rocks!"
+				text = ($player_text_rocks)
 				text_pos = (640.0, 380.0)
 				fit_dims = <fit_dims>
 				space_between = <winner_space_between>
