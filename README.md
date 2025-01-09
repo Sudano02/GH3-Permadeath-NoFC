@@ -9,7 +9,7 @@ Please note that this patch does _not_ touch your save file. It will not overwri
 ## Installation Instructions
 
 ### Xbox 360
-Simply place the patch in your DLC folder. Any DLC or customs currently installed will be ignored by the patch. To play them again, simply delete or move the Permadeath patch.
+Simply place the patch in your DLC folder (`/Hdd1/Content/0000000000000000/415607F7/00000002`). Any DLC or customs currently installed will be ignored by the patch. To play them again, simply delete or move the Permadeath patch.
 
 ### PS3/RPCS3
 Grab your region's PKG file (NTSC or PAL) and install the permadeath patch. Any DLC or customs currently installed will be ignored by the patch. To play them again, simply delete or move the Permadeath patch.
