@@ -13,3 +13,12 @@ Simply place the patch in your DLC folder (`/Hdd1/Content/0000000000000000/41560
 
 ### PS3/RPCS3
 Grab your region's PKG file (NTSC or PAL) and install the permadeath patch. Any DLC or customs currently installed will be ignored by the patch. To play them again, simply delete or move the Permadeath patch.
+
+## Compilation Instructions
+
+If you want to edit the permadeath scripts and make your own version. Do the following steps:
+- Compile each `dl2000000001` folder with Honeycomb using the `pak compile -g gh3` command and your console
+- Copy the pak files into the STFS or PKG folders, depending on your console of choice
+- Using the Onyx CLI, perform either the STFS or PKG command
+-   For 360, the command is `onyx stfs {STFS folder} --to {save_path}`
+-   For PS3, the command is `onyx pkg {PKG Folder} {Content-ID} {PKG Folder} --to {save_path}.pkg`
