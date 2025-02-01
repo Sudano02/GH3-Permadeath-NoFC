@@ -83,12 +83,6 @@ script randomize_main_setlist
 		num_tiers = 8
 		initial_movie = 'singleplayer_01'
 	}
-	num_random = ($number_randomized)
-	if (<num_random> = 0)
-		change normal_setlist = ($GH3_Career_Songs)
-	endif
-	<num_random> = <num_random> + 1
-	change number_randomized = <num_random>
 	random_career = ($GH3_Career_Songs)
 	<i> = 0
 	tier_num = 1
