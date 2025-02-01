@@ -35,6 +35,14 @@ thrufireandflames_store_text = "Dragonforce sind bekannt für deren epischen Cho
 permadeath_startup_text = "Willkommen bei GH3 Permadeath!  Ein Fehler und das komplette Spiel wird zurückgesetzt.  Speichern ist deaktiviert.  Viel Glück!"
 permadeath_start = "LEIDEN"
 permadeath_title = "PERMADEATH"
+
+songs_practiced_title = "Songs practiced:"
+permadeath_title_random = "PERMADEATH (RANDOMISIERT)"
+setlist_randomized_text = "SETLISTE RANDOMISIERT"
+randomize_setlist_text = "SETLISTE RANDOMISIEREN"
+randomize_word_text = "RANDOMISIEREN"
+randomize_warning_text = "You are about to randomize your main setlist! Once randomized, you cannot revert unless you restart the game. The randomized setlist will persist through all attempts this session."
+
 permadeath_fail_text = "Meine Güte!  Dir sind die Leben ausgegangen!  Das bedeutet leider, dass dein Fortschritt zurückgesetzt wurde.  Macht nichts, alle guten Dinge sind %i"
 permadeath_fail_continue_1 = "ALLES ZURÜCKSETZEN :("
 permadeath_fail_continue_2 = "SPIELSTAND PLATTMACHEN :O"
@@ -60,12 +68,12 @@ permadeath_lives_screen_title = "ANZAHL DER LEBEN"
 ttfaf_money_earned = "Karriere Abgeschlossen! $%i wurden zu deinem Konto hinzugefügt."
 
 beat_game_title = "\\c6DU HAST LOU AUF \\c0%d\\c6 OHNE FEHLER GESCHLAGEN!"
-beat_game_message_expert = "Wow. Du hast Lou auf Profi ohne einen Fehler geschlagen! Mit dem Geld, welches du in Lous Inferno gefunden hast, besitzt du jetzt die genaue Menge Geld um \\c1Through the Fire and Flames\\c0\\n zu kaufen! Wir lieben dieses Lied, nicht? Vielleicht gibt es sogar eine Belohnung wenn man alle Bonussongs schafft..."
+beat_game_message_expert = "Wow. Lou ohne Fehler auf Profi geschlagen? Respekt. Mit dem Geld, welches du in Lous Inferno gefunden hast, besitzt du jetzt die genaue Menge Geld um \\c1Through the Fire and Flames\\c0 zu kaufen! Wir lieben dieses Lied, nicht? Vielleicht gibt es sogar eine Belohnung wenn man alle Bonussongs schafft..."
 
-beat_permadeath_title = "\\c6DU HAST PERMADEATH AUF \\c0%d\\c6\\c0 GESCHLAGEN!"
+beat_permadeath_title = "\\c6DU HAST PERMADEATH AUF \\c0%d\\c6 GESCHLAGEN!"
 beat_permadeath_message_expert = "Wow. Du hast Permadeath auf Profi geschafft -- Eine ganze Menge Noten sind an dir vorbeigeflogen! %i um genau zu sein! Zögere nicht, es jetzt langsam anzugehen. Just \\c1'Take It Easy'\\c0..."
 
-permadeath_disabled_text = "Deine Leben werden nicht mehr verringert auf dieser Schwierigkeit. Zeit deinen Ruhm nochmal zu erleben, du Meister!"
+permadeath_disabled_text = "Deine Leben werden nicht mehr verringert auf dieser Schwierigkeit.\\nZeit deinen Ruhm nochmal zu erleben, du Meister!"
 
 def_easy_text = "LEICHT"
 def_medium_text = "MITTEL"
@@ -90,6 +98,9 @@ mm_debug_menu_text = "DEBUG MENÜ"
 choose_band_text = "BAND WÄHLEN"
 new_band_name = "- NEUE BAND -"
 manage_band_text = "Band managen"
+band_legends_text_1 = "DIE LEGENDEN"
+band_legends_text_2 = "DER ROCKTOURNEE"
+band_sponsored_text = "GESPONSERT VON:"
 
 pause_paused_text = "PAUSE"
 pause_player_paused_text = "S%d PAUSE"

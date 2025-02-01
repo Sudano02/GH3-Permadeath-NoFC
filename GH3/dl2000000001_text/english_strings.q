@@ -33,8 +33,16 @@ thewayitends_store_text = "Prototype was formed in 1994 from the remains of the 
 thrufireandflames_store_text = "Dragonforce are known for their epic choral singing, and ultra-fast twin-guitar harmonies.  Buy this song only if you aren't afraid of your hands going numb after you try and play it!"
 
 permadeath_startup_text = "Welcome to GH3 Permadeath!  Miss a note and reset to the very start of the game.  Saving is disabled.  Good Luck!"
+
 permadeath_start = "SUFFER"
 permadeath_title = "PERMADEATH"
+songs_practiced_title = "Songs practiced:"
+permadeath_title_random = "PERMADEATH (RANDOMIZED)"
+setlist_randomized_text = "SETLIST RANDOMIZED"
+randomize_setlist_text = "RANDOMIZE SETLIST"
+randomize_word_text = "RANDOMIZE"
+randomize_warning_text = "You are about to randomize your main setlist! Once randomized, you cannot revert unless you restart the game. The randomized setlist will persist through all attempts this session."
+
 permadeath_fail_text = "Uh oh!  You have run out of lives!  Unfortunately that means your progress has been reset.  Here's to attempt #%i"
 permadeath_fail_continue_1 = "RESET EVERYTHING :("
 permadeath_fail_continue_2 = "KILL YOUR SAVE :O"
@@ -57,12 +65,12 @@ permadeath_boss_splash_4 = "Lose all your lives, and it's GAME OVER!"
 permadeath_boss_splash_5 = "Good luck!"
 permadeath_lives_screen_title = "NUMBER OF LIVES"
 
-ttfaf_money_earned = "Career Complete! $%i added to wallet."
+ttfaf_money_earned = "Career Complete! $%i added to your wallet."
 
 beat_game_title = "\\c6YOU BEAT LOU ON \\c0%d\\c6 WITHOUT ANY MISSES!"
 beat_game_message_expert = "Wow. You've beaten Lou on expert without any misses! With the cash you found in Lou's Inferno, you now have the exact amount of cash to purchase \\c1Through the Fire and Flames\\c0!\\nWe love that song, don't we? Have at it, and maybe there'll be a reward after finishing all Bonus Songs..."
 
-beat_permadeath_title = "\\c6YOU BEAT PERMADEATH ON \\c0%d\\c6!\\c0"
+beat_permadeath_title = "\\c6YOU BEAT PERMADEATH ON \\c0%d\\c6!"
 beat_permadeath_message_expert = "Wow. You've mastered Permadeath on expert -- That's a lot of notes that flew by! %i to be exact! Feel free to just \\c1%n\\c0 now..."
 
 permadeath_disabled_text = "Lives will no longer decrease for this difficulty. Time to relive your glory, you champ!"
@@ -90,6 +98,9 @@ mm_debug_menu_text = "DEBUG MENU"
 choose_band_text = "CHOOSE BAND"
 new_band_name = "- NEW BAND -"
 manage_band_text = "MANAGE BAND"
+band_legends_text_1 = "THE LEGENDS"
+band_legends_text_2 = "OF ROCK TOUR"
+band_sponsored_text = "SPONSORED BY:"
 
 pause_paused_text = "PAUSED"
 pause_player_paused_text = "P%d PAUSED"

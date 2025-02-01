@@ -35,6 +35,13 @@ thrufireandflames_store_text = "DragonForce sont connus pour leur chant épique 
 permadeath_startup_text = "Bienvenue dans le mode Permadeath de GH3! Rate une note et tu recommenceras ta partie au tout début. La sauvegarde est désactivée. Bonne chance!"
 permadeath_start = "SOUFFRE"
 permadeath_title = "PERMADEATH"
+songs_practiced_title = "Chansons pratiquées:"
+permadeath_title_random = "PERMADEATH (ALÉATOIRE)"
+setlist_randomized_text = "SETLIST ALÉATOIRE"
+randomize_setlist_text = "MÉLANGER LA SETLIST"
+randomize_word_text = "MÉLANGER"
+randomize_warning_text = "Tu t'apprêtes à mélanger la setlist! Une fois mélangée, tu ne pourras pas revenir en arrière, à moins que tu redémarres le jeu. La setlist aléatoire sera la même pour toutes tes tentatives durant cette session."
+
 permadeath_fail_text = "Mince!  Tu n'as plus de vies! Malheureusement, cela veut dire que ta progression a été supprimée.  Bon courage pour la tentative N° %i"
 permadeath_fail_continue_1 = "RECOMMENCE TOUT :("
 permadeath_fail_continue_2 = "DETRUIT TA SAUVEGARDE :O"
@@ -59,13 +66,13 @@ permadeath_lives_screen_title = "NOMBRE DE VIES"
 
 ttfaf_money_earned = "Carrière complétée! $%i ont été ajoutés au porte-monnaie."
 
-beat_game_title = "\\c6YOU BEAT LOU ON \\c0%d\\c6 WITHOUT ANY MISSES!"
-beat_game_message_expert = "Wow. You've beaten Lou on expert without any misses! With the cash you found in Lou's Inferno, you now have the exact amount of cash to purchase \\c1Through the Fire and Flames\\c0!\\nWe love that song, don't we? Have at it, and maybe there'll be a reward after finishing all Bonus Songs..."
+beat_game_title = "\\c6TU AS BATTUS LOU EN DIFFICULTE \\c0%d\\c6 SANS RATER UNE SEULE NOTE!"
+beat_game_message_expert = "Wow. Tu as battus Lou en difficulté expert sans rater une seule note! Avec l'argent que tu as trouvé dans la caverne de Lou, tu as maintenant assez d'argent pour acheter \\c1Through the Fire and Flames\\c0! Tout le monde adore cette musique, n'est-ce pas? Tente ta chance, et peut-être qu'il y aura une récompense après avoir finit toutes les musiques Bonus..."
 
-beat_permadeath_title = "\\c6YOU BEAT PERMADEATH ON \\c0%d\\c6!\\c0"
-beat_permadeath_message_expert = "Wow. You've mastered Permadeath on expert -- That's a lot of notes that flew by! %i to be exact! Feel free to just \\c1%n\\c0 now..."
+beat_permadeath_title = "\\c6TU AS TERMINE LE MODE PERMADEATH EN DIFFICULTE \\c0%d\\c6!"
+beat_permadeath_message_expert = "Wow. Tu as perfectionné le mode Permadeath -- Ca fait beaucoup de notes dis donc! %i pour être exact! Tu peux aller \\c1%n\\c0 maintenant..."
 
-permadeath_disabled_text = "Lives will no longer decrease for this difficulty. Time to relive your glory, you champ!"
+permadeath_disabled_text = "Tu ne perdras désormais plus de vies avec cette difficulté. C'est le moment de se soulager, champion!"
 
 def_easy_text = "FACILE"
 def_medium_text = "MOYEN"
@@ -86,6 +93,9 @@ mm_xbox_live_text = "XBOX LIVE"
 mm_online_text = "EN LIGNE"
 mm_options_text = "OPTIONS"
 mm_debug_menu_text = "DEBUG MENU"
+band_legends_text_1 = "LES LÉGENDES"
+band_legends_text_2 = "DE LA TOURNÉE ROCK"
+band_sponsored_text = "SPONSORISÉ PAR :"
 
 choose_band_text = "CHOISIS GROUPE"
 new_band_name = "- NOUVEAU GROUPE -"

@@ -35,6 +35,14 @@ thrufireandflames_store_text = "I Dragonforce sono conosciuti per i loro cori ep
 permadeath_startup_text = "Benvenuti in GH3 Permadeath! Perdete una nota e tornerete all'inizio del gioco. Il salvataggio è disabilitato. Buona fortuna!"
 permadeath_start = "SOFFRI"
 permadeath_title = "PERMADEATH"
+
+songs_practiced_title = "Canzoni praticate:"
+permadeath_title_random = "PERMADEATH (RANDOMIZZATO)" // This is the title that shows up on the warning once randomized mode is active
+setlist_randomized_text = "SETLIST RANDOMIZZATA" // This is the title that displays on the main menu letting you know you're playing in randomized mode
+randomize_setlist_text = "RANDOMIZZA SETLIST" // This is the command to randomize your setlist
+randomize_word_text = "RANDOMIZZA"	
+randomize_warning_text = "Stai per randomizzare la tua setlist principale! Una volta randomizzata, non potrai annullare l'operazione a meno che tu non riavvii il gioco. La setlist randomizzata persisterà per tutti i tentativi di questa sessione."
+
 permadeath_fail_text = "Oh oh! Hai esaurito le vite! Sfortunatamente questo significa che i tuoi progressi sono stati azzerati. Ecco il tentativo n. %i"
 permadeath_fail_continue_1 = "RESETTA TUTTO :("
 permadeath_fail_continue_2 = "ELIMINA IL TUO SALVATAGGIO :O"
@@ -60,7 +68,7 @@ permadeath_lives_screen_title = "NUMERO DI VITE"
 ttfaf_money_earned = "Carriera Completata! $%i aggiunti al portafoglio."
 
 beat_game_title = "\\c6HAI SCONFITTO LOU IN \\c0%d\\c6 SENZA SBAGLIARE!"  
-beat_game_message_expert = "Wow. Hai sconfitto Lou in esperto senza commettere errori! Con i soldi trovati nel Lou's Inferno, ora hai esattamente la somma necessaria per acquistare \\c1Through the Fire and Flames\\c0!\\nAdoriamo quella canzone, vero? Vai e giocatela, magari ci sarà una ricompensa dopo aver completato tutte le Canzoni Bonus..."
+beat_game_message_expert = "Wow. Hai sconfitto Lou in esperto senza commettere errori! Con i soldi trovati nel Lou's Inferno, ora hai esattamente la somma necessaria per acquistare \\c1Through the Fire and Flames\\c0! Adoriamo quella canzone, vero? Vai e giocatela, magari ci sarà una ricompensa dopo aver completato tutte le Canzoni Bonus..."
 
 beat_permadeath_title = "\\c6HAI COMPLETATO PERMADEATH IN \\c0%d\\c6!\\c0"  
 beat_permadeath_message_expert = "Wow. Hai dominato permadeath in esperto -- Sono molte le note che hai suonato! Per l'esattezza %i! Ora sentiti libero di \\c1%n\\c0..."  
@@ -90,6 +98,9 @@ mm_debug_menu_text = "DEBUG MENU"
 choose_band_text = "CHOOSE BAND"
 new_band_name = "- NUOVO GRUPPO -"
 manage_band_text = "GEST. GRUPPO"
+band_legends_text_1 = "LE LEGGENDE"
+band_legends_text_2 = "DEL ROCK IN TOUR"
+band_sponsored_text = "SPONSORIZZATO DA:"
 
 pause_paused_text = "IN PAUSA"
 pause_player_paused_text = "G%d-PAUSA"

@@ -15,12 +15,89 @@ permadeath_disabled_hard = 0
 permadeath_disabled_expert = 0
 lose_a_life = TRUE
 
+permadeath_title_offset = (-361.5, 260.5)
+songs_practiced_offset = (670.0, 360.0)
+
+text_scale_game = 1
+
 max_streaks = { 
 
 }
 
-songs_fcd = [
+songs_practiced = [
+
 ]
+
+script create_songs_practiced_text 
+	destroy_songs_practiced_scroll
+	GetArraySize \{$songs_practiced}
+	if (<array_size> = 0)
+		return
+	endif
+	curr_array = ($songs_practiced)
+	CreateScreenElement {
+		type = windowelement
+		parent = user_control_container
+		id = songs_practiced_window
+		Pos = ($songs_practiced_offset + (0.0, 50.0))
+		dims = (480.0, 250.0)
+		allow_expansion
+	}
+	CreateScreenElement {
+		type = ContainerElement
+		id = songs_practiced
+		parent = songs_practiced_window
+		Pos = (0.0, 0.0)
+		just = [left top]
+		z_priority = 10000
+		Scale = 1.0
+	}
+	text_pos = (0.0, 0.0)
+	i = 0
+	begin
+		curr_song = (<curr_array> [<i>])
+		get_song_title song = <curr_song>
+		FormatText checksumname = text_id '%s_title' s = (<curr_song>)
+		displayText parent = songs_practiced Scale = 1 text = <song_title>  rgba = [255 255 255 255] Pos = <text_pos> z = 50
+		<text_pos> = (<text_pos> + (0.0, 40.0))
+		<i> = (<i> + 1)
+	repeat <array_size>
+	printf "Running Script"
+	spawnscriptnow scroll_songs_practiced params = {text_size = <array_size> to_scroll = songs_practiced}
+	//printf "%s" s = <all_songs>
+endscript
+
+script scroll_songs_practiced \{text_size = 1}
+	printf "Getting Height"
+	text_height = (<text_size> * 40.0)
+	printf "Height = %s" s = <text_height>
+	<to_scroll> :getparentid
+	printf "Got Parent ID: %d" d = <parent_id>
+	GetScreenElementDims id = <parent_id>
+	printf "Got Parent Dims"
+	compare_height = <height>
+	printf "Set Parent Height %s" s = <compare_height>
+	diff = (<text_height> - <compare_height> + 20.0)
+	printf "Set Diff %s" s = <diff>
+	if (<text_height> > <compare_height>)
+		<to_scroll> :DoMorph alpha = 0
+		<to_scroll> :DoMorph Pos = (0.0, 0.0)
+		begin
+		<to_scroll> :DoMorph alpha = 1 time = 1.5
+		<to_scroll> :DoMorph Pos = (<diff> * (0.0, -1.0)) time = 8.0
+		wait 2 seconds
+		<to_scroll> :DoMorph alpha = 0 time = 1.5
+		<to_scroll> :DoMorph Pos = (0.0, 0.0)
+		repeat
+	endif
+endscript
+
+script destroy_songs_practiced_scroll
+	KillSpawnedScript \{name = scroll_songs_practiced}
+	if ScreenElementExists \{id = songs_practiced_window}
+		DestroyScreenElement \{id = songs_practiced_window}
+	endif
+endscript
 
 0x84f7dd08 = {
 	create = create_download_scan_menu
@@ -45,6 +122,13 @@ script calculate_max_streak_song
 		AddParam name = <song_checksum> structure_name = max_streak_temp value = <p1_note_streak>
 	endif
 	change max_streaks = <max_streak_temp>
+endscript
+
+script get_song_formatted \{song_checksum = invalid}
+	get_difficulty_text_nl { difficulty = ($current_difficulty) }
+	get_song_prefix song = <song_checksum>
+	FormatText checksumname = songname '%s_%d' s = <song_prefix> d = <difficulty_text_nl>
+	return songname = <songname>
 endscript
 
 script calculate_max_streak_total

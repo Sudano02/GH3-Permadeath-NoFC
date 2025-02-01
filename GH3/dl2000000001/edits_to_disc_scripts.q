@@ -4,6 +4,9 @@ bunny_flame_index = 1
 g_anim_flame = 1
 main_menu_movie_first_time = 1
 
+p2_scroll_time_factor = 0.9
+p2_game_speed_factor = 0.9
+
 health_change_bad_easy = -5.0
 health_change_good_easy = 0.029
 health_change_star_easy = 0
@@ -657,7 +660,7 @@ script set_song_icon
 	if (<song> = None && $current_tab = tab_setlist)
 		return
 	endif
-	if ($current_tab = tab_downloads)
+	if ($current_tab = tab_downloads || ($randomizer_toggle = 1))
 		return
 	endif
 	if ($current_tab = tab_setlist)
@@ -809,6 +812,8 @@ script create_signin_changed_menu
 		permadeath_popup_text = <text>
 		permadeath_continue = Random (@ ($permadeath_fail_continue_1) @ ($permadeath_fail_continue_2) @ ($permadeath_fail_continue_3) )
 		permadeath_title = Random (@ ($permadeath_fail_title_1) @ ($permadeath_fail_title_2) @ ($permadeath_fail_title_3) @ ($permadeath_fail_title_4) )
+	elseif ($randomizer_toggle = 1)
+		permadeath_title = ($permadeath_title_random)
 	endif
 	destroy_popup_warning_menu
 	create_popup_warning_menu {
@@ -838,6 +843,7 @@ script setlist_show_helperbar \{text_option1 = "BONUS"
 	if NOT English
 		change \{pill_helper_max_width = 65}
 	endif
+	destroy_songs_practiced_scroll
 	text_options = [
 		"UP/DOWN"
 		"SELECT"
@@ -937,11 +943,13 @@ script setlist_show_helperbar \{text_option1 = "BONUS"
 	if ($current_tab = tab_downloads)
 		<tab_text_pos> = (<download_text_positions> [<i>])
 		FormatText textname = text ($permadeath_attempt_stat) i = ($permadeath_fails + 1)
-		displayText parent = user_control_container Scale = 1 text = <text>  rgba = [255 255 255 255] Pos = (330.0, 360.0) z = 50
+		displayText parent = user_control_container Scale = ($text_scale_game) text = <text>  rgba = [255 255 255 255] Pos = (260.0, 360.0) z = 50
 		FormatText textname = text ($permadeath_max_streak_stat) i = $permadeath_max_streak usecommas
-		displayText parent = user_control_container Scale = 1 text = <text>  rgba = [255 255 255 255] Pos = (330.0, 400.0) z = 50
+		displayText parent = user_control_container Scale = ($text_scale_game) text = <text>  rgba = [255 255 255 255] Pos = (260.0, 400.0) z = 50
 		FormatText textname = text ($permadeath_max_fc_count_stat) i = $permadeath_max_song_count
-		displayText parent = user_control_container Scale = 1 text = <text>  rgba = [255 255 255 255] Pos = (330.0, 440.0) z = 50
+		displayText parent = user_control_container Scale = ($text_scale_game) text = <text>  rgba = [255 255 255 255] Pos = (260.0, 440.0) z = 50
+		displayText parent = user_control_container Scale = 1 text = ($songs_practiced_title)  rgba = [255 255 255 255] Pos = ($songs_practiced_offset) z = 50
+		create_songs_practiced_text
 	endif
 	displayText parent = setlist_menu Scale = 1 text = (<tabs_text> [<i>]) rgba = [0 0 0 255] Pos = <tab_text_pos> z = 50 noshadow
 	<i> = (<i> + 1)
@@ -975,6 +983,49 @@ script setlist_show_helperbar \{text_option1 = "BONUS"
 		FormatText textname = text ($permadeath_lives_stat) i = $permadeath_lives
 		displayText parent = user_control_container Scale = 1 text = <text>  rgba = <colour_array> Pos = (870.0, 80.0) z = 50
 	endif
+endscript
+
+script destroy_setlist_menu 
+	KillSpawnedScript \{name = net_match_download_songs}
+	destroy_songs_practiced_scroll
+	destroy_setlist_songpreview_monitor
+	change setlist_previous_tier = ($setlist_selection_tier)
+	change setlist_previous_song = ($setlist_selection_song)
+	change setlist_previous_tab = ($current_tab)
+	change \{target_setlist_songpreview = None}
+	destroy_menu \{menu_id = setlist_original_artist}
+	destroy_menu \{menu_id = scrolling_setlist}
+	destroy_menu \{menu_id = setlist_menu}
+	destroy_menu \{menu_id = setlist_loops_menu}
+	destroy_menu \{menu_id = setlist_bg_container}
+	reset_vars \{del}
+	clean_up_user_control_helpers
+	if ($is_network_game = 1)
+		destroy_setlist_popup
+	endif
+endscript
+
+script practice_start_song \{device_num = 0}
+	change \{game_mode = training}
+	change \{current_transition = practice}
+	change \{current_level = load_z_soundcheck}
+	if NOT ArrayContains array = ($songs_practiced) contains = ($current_song)
+		songs_practiced_temp = ($songs_practiced)
+		AddArrayElement array = (<songs_practiced_temp>) element = ($current_song)
+		<songs_practiced_temp> = (<array>)
+		change songs_practiced = <songs_practiced_temp>
+	endif
+	start_song starttime = ($practice_start_time) device_num = <device_num> practice_intro = 1 endtime = ($practice_end_time)
+	change \{practice_audio_muted = 0}
+	if ($current_speedfactor = 1.0)
+		menu_audio_settings_update_band_volume \{vol = 7}
+	else
+		menu_audio_settings_update_band_volume \{vol = 0}
+	endif
+	setsoundbussparams \{crowd = {
+			vol = -100.0
+		}}
+	spawnscriptnow \{practice_update}
 endscript
 
 script create_sl_assets 
@@ -1205,6 +1256,9 @@ script create_sl_assets
 							<star_pos> = (<star_pos> - <star_space>)
 							displaySprite parent = setlist_menu tex = <star> rgba = [233 205 166 255] z = $setlist_text_z Pos = <star_pos>
 							repeat <stars>
+						elseif ($randomizer_toggle = 1 && (GotParam tab_setlist))
+							<textid> :setprops text = ($randomizer_title)
+							<song_artist> = ($randomizer_artist + $randomizer_year)
 						endif
 						GetGlobalTags <song_checksum> param = Score
 						if ($game_mode = p1_quickplay)
@@ -1302,23 +1356,18 @@ script create_sl_assets
 			left
 			top
 		]}
-	if ($current_tab = tab_downloads)
-		if ScreenElementExists \{sl_clipart}
-			DestroyScreenElement \{sl_clipart}
+	clip_alpha = 1
+	if ($current_tab = tab_downloads || ($randomizer_toggle = 1))
+		if not ($current_tab = tab_bonus)
+			<clip_alpha> = 0
 		endif
-		if ScreenElementExists \{sl_clipart_shadow}
-			DestroyScreenElement \{sl_clipart_shadow}
-		endif
-		if ScreenElementExists \{sl_clip}
-			DestroyScreenElement \{sl_clip}
-		endif
-	else
-		<clip_pos> = (160.0, 390.0)
-		displaySprite id = sl_clipart parent = sl_fixed Pos = <clip_pos> dims = (160.0, 160.0) z = ($setlist_text_z + 0.1) rgba = [200 200 200 255]
-		displaySprite id = sl_clipart_shadow parent = sl_fixed Pos = (<clip_pos> + (3.0, 3.0)) dims = (160.0, 160.0) z = ($setlist_text_z) rgba = [0 0 0 128]
-		<clip_pos> = (<clip_pos> + (15.0, 50.0))
-		displaySprite id = sl_clip parent = sl_fixed tex = Setlist_Clip just = [-0.5 -0.9] Pos = <clip_pos> dims = (141.0, 102.0) z = ($setlist_text_z + 0.2)
 	endif
+	<clip_pos> = (160.0, 390.0)
+	displaySprite id = sl_clipart parent = sl_fixed Pos = <clip_pos> dims = (160.0, 160.0) z = ($setlist_text_z + 0.1) rgba = [200 200 200 255] alpha = <clip_alpha>
+	displaySprite id = sl_clipart_shadow parent = sl_fixed Pos = (<clip_pos> + (3.0, 3.0)) dims = (160.0, 160.0) z = ($setlist_text_z) rgba = [0 0 0 128] alpha = <clip_alpha>
+	<clip_pos> = (<clip_pos> + (15.0, 50.0))
+	displaySprite id = sl_clip parent = sl_fixed tex = Setlist_Clip just = [-0.5 -0.9] Pos = <clip_pos> dims = (141.0, 102.0) z = ($setlist_text_z + 0.2) alpha = <clip_alpha>
+
 	if ($current_tab = tab_setlist)
 		hilite_dims = (737.0, 80.0)
 
@@ -1574,6 +1623,7 @@ script create_main_menu
 	else
 		demo_mode_disable = {rgba = [80 80 80 255] not_focusable}
 	endif
+
 	DeRegisterAtoms
 	RegisterAtoms \{name = achievement
 		$Achievement_Atoms}
@@ -1615,6 +1665,13 @@ script create_main_menu
 	leaderboards_text_scale = (1.1, 1.0)
 	debug_menu_text_off = (<leaderboards_text_off> + (-30.0, 160.0))
 	debug_menu_text_scale = 0.8
+	if ($randomizer_toggle = 1)
+		disable_randomize = {rgba = [200 0 0 0] shadow_rgba = [0 0 0 0] not_focusable}
+		randomize_text = ($setlist_randomized_text)
+	else
+		disable_randomize = { shadow_rgba = [0 0 0 255] }
+		randomize_text = ($randomize_setlist_text)
+	endif
 	createscreenelement {
 		type = textelement
 		id = main_menu_career_text
@@ -1704,13 +1761,29 @@ script create_main_menu
 	createscreenelement {
 		type = textelement
 		text = "PERMADEATH"
-		pos = (-361.5, 260.5)
+		pos = ($permadeath_title_offset)
 		parent = main_menu_text_container
 		rgba = [200 0 0 255]
 		font = text_a6
 		just = [center top]
 		scale = (1.0, 1.0)
 	}
+	if ($randomizer_toggle = 1)
+		randomized_title_offset = ($permadeath_title_offset + (0.0, 48.0))
+		createscreenelement {
+			type = textelement
+			text = <randomize_text>
+			pos = <randomized_title_offset>
+			parent = main_menu_text_container
+			rgba = [200 0 0 255]
+			font = text_a6
+			just = [center top]
+			scale = (<leaderboards_text_scale>)
+			shadow
+			shadow_offs = (3.0, 3.0)
+			shadow_rgba = [0 0 0 255]
+		}
+	endif
 	createscreenelement {
 		type = textelement
 		id = main_menu_training_text
@@ -1745,7 +1818,7 @@ script create_main_menu
 			id = main_menu_leaderboards_text
 			parent = main_menu_text_container
 			font = <main_menu_font>
-			text = "XBOX LIVE"
+			text = <randomize_text>
 			font_spacing = 0
 			pos = {(<leaderboards_text_off>) relative}
 			scale = (<leaderboards_text_scale>)
@@ -1755,7 +1828,7 @@ script create_main_menu
 			shadow_offs = (3.0, 3.0)
 			shadow_rgba = [0 0 0 255]
 			z_priority = 60
-			<demo_mode_disable>
+			<disable_randomize>
 		}
 		getScreenElementDims id = <id>
 		if (<width> > 360)
@@ -1768,7 +1841,7 @@ script create_main_menu
 			id = main_menu_leaderboards_text
 			parent = main_menu_text_container
 			font = <main_menu_font>
-			text = ($mm_online_text)
+			text = <randomize_text>
 			font_spacing = 0
 			pos = {(<leaderboards_text_off>) relative}
 			scale = (<leaderboards_text_scale>)
@@ -1778,7 +1851,7 @@ script create_main_menu
 			shadow_offs = (3.0, 3.0)
 			shadow_rgba = [0 0 0 255]
 			z_priority = 60
-			<demo_mode_disable>
+			<disable_randomize>
 		}
 		getScreenElementDims id = <id>
 		if (<width> > 360)
@@ -2064,9 +2137,10 @@ script create_main_menu
 			}
 			{unfocus SetScreenElementProps params = {id = main_menu_leaderboards_text shadow shadow_offs = (3.0, 3.0) shadow_rgba = [0 0 0 255]}}
 			{unfocus retail_menu_unfocus params = {id = main_menu_leaderboards_text}}
+			{pad_choose ui_flow_manager_respond_to_action params = {action = select_xbox_live}}
 		]
 		z_priority = -1
-		<demo_mode_disable>
+		<disable_randomize>
 	}
 	if ($enable_button_cheats = 1)
 		createscreenelement {
@@ -3399,7 +3473,7 @@ script create_enter_band_name_menu
 		type = TextElement
 		parent = ebn_container
 		font = text_a3
-		text = "THE LEGENDS"
+		text = ($band_legends_text_1)
 		id = ebn_tour_text
 		Pos = (($enter_band_name_big_vals).tour_pos)
 		rot_angle = <rotation_angle>
@@ -3411,7 +3485,7 @@ script create_enter_band_name_menu
 		type = TextElement
 		parent = ebn_container
 		font = text_a3
-		text = "OF ROCK TOUR"
+		text = ($band_legends_text_2)
 		id = ebn_address_text
 		Pos = (($enter_band_name_big_vals).address_pos)
 		rot_angle = <rotation_angle>
@@ -3443,7 +3517,7 @@ script create_enter_band_name_menu
 		type = TextElement
 		parent = ebn_container
 		font = text_a3
-		text = "SPONSORED BY:"
+		text = ($band_sponsored_text)
 		id = ebn_sponsor_text
 		Pos = (($enter_band_name_big_vals).sponsor_pos)
 		rot_angle = <rotation_angle>

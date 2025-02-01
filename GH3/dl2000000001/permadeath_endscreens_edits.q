@@ -1282,7 +1282,13 @@ script create_setlist_menu
 			'tier%s'
 			s = $setlist_selection_tier}
 		song = ($g_gh3_setlist.<tier_checksum>.songs [$setlist_selection_song])
-		change target_setlist_songpreview = <song>
+		get_song_formatted song_checksum = <song>
+		GetGlobalTags <songname>
+		if (<achievement_gold_star> = 1 || ($randomizer_toggle = 0) || ($current_tab = tab_bonus))
+			change target_setlist_songpreview = <song>
+		else
+			change target_setlist_songpreview = None
+		endif
 	else
 		change \{target_setlist_songpreview = None}
 	endif
