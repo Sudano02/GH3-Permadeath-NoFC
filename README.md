@@ -14,6 +14,11 @@ Simply place the patch in your DLC folder (`/Hdd1/Content/0000000000000000/41560
 ### PS3/RPCS3
 Grab your region's PKG file (NTSC or PAL) and install the permadeath patch. Any DLC or customs currently installed will be ignored by the patch. To play them again, simply delete or move the Permadeath patch.
 
+### PC
+For PC, you need to install the GH3ML mod by Vultu ([link](https://github.com/nsneverhax/gh3ml)). You can install gh3ml by simply placing all files from the GitHub release into your Guitar Hero III PC folder (the same folder where your exe file is). Once that’s installed, grab the Permadeath PC file zip folder and place the contents into the same folder.
+This will place the mod into your mods folder and installs the Permadeath mod
+
+
 ## Compilation Instructions
 
 If you want to edit the permadeath scripts and make your own version. Do the following steps:
