@@ -1666,11 +1666,9 @@ script create_main_menu
 	debug_menu_text_off = (<leaderboards_text_off> + (-30.0, 160.0))
 	debug_menu_text_scale = 0.8
 	if ($randomizer_toggle = 1)
-		disable_randomize = {rgba = [200 0 0 0] shadow_rgba = [0 0 0 0] not_focusable}
-		randomize_text = ($setlist_randomized_text)
+		disable_randomize = { shadow_rgba = [0 0 0 255] }
 	else
 		disable_randomize = { shadow_rgba = [0 0 0 255] }
-		randomize_text = ($randomize_setlist_text)
 	endif
 	createscreenelement {
 		type = textelement
@@ -1772,7 +1770,7 @@ script create_main_menu
 		randomized_title_offset = ($permadeath_title_offset + (0.0, 48.0))
 		createscreenelement {
 			type = textelement
-			text = <randomize_text>
+			text = ($setlist_randomized_text)
 			pos = <randomized_title_offset>
 			parent = main_menu_text_container
 			rgba = [200 0 0 255]
@@ -1818,7 +1816,7 @@ script create_main_menu
 			id = main_menu_leaderboards_text
 			parent = main_menu_text_container
 			font = <main_menu_font>
-			text = <randomize_text>
+			text = ($randomize_setlist_text)
 			font_spacing = 0
 			pos = {(<leaderboards_text_off>) relative}
 			scale = (<leaderboards_text_scale>)
@@ -1841,7 +1839,7 @@ script create_main_menu
 			id = main_menu_leaderboards_text
 			parent = main_menu_text_container
 			font = <main_menu_font>
-			text = <randomize_text>
+			text = ($randomize_setlist_text)
 			font_spacing = 0
 			pos = {(<leaderboards_text_off>) relative}
 			scale = (<leaderboards_text_scale>)

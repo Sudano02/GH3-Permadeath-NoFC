@@ -15,78 +15,9 @@ randomizer_text = [
 randomizer_artist = "???????????"
 randomizer_year = ", ????"
 
-GH3_Randomizer_Songs = {
-	prefix = 'career'
-	num_tiers = 8
-	initial_movie = 'singleplayer_01'
-	tier1 = {
-		Title = "1. Starting out small"
-		songs = [ ]
-		encorep1
-		level = load_z_party
-		defaultunlocked = 4
-		completion_movie = 'singleplayer_02'
-		setlist_icon = setlist_icon_BACKYARD
-	}
-	tier2 = {
-		Title = "2. Your first real gig"
-		songs = [ ]
-		encorep1
-		boss
-		level = load_z_dive
-		completion_movie = 'singleplayer_03'
-		setlist_icon = setlist_icon_BAR
-	}
-	tier3 = {
-		Title = "3. Making the video"
-		songs = [ ]
-		encorep1
-		level = load_z_video
-		completion_movie = 'singleplayer_04'
-		setlist_icon = setlist_icon_VIDEOSHOOT
-	}
-	tier4 = {
-		Title = "4. European Invasion"
-		songs = [ ]
-		encorep1
-		level = load_z_artdeco
-		completion_movie = 'singleplayer_05'
-		setlist_icon = setlist_icon_ODEON
-	}
-	tier5 = {
-		Title = "5. Bighouse blues"
-		songs = [ ]
-		encorep1
-		boss
-		level = load_z_prison
-		completion_movie = 'singleplayer_06'
-		setlist_icon = setlist_icon_PRISON
-	}
-	tier6 = {
-		Title = "6. The Hottest band on Earth"
-		songs = [ ]
-		encorep1
-		level = load_z_wikker
-		completion_movie = 'singleplayer_07'
-		setlist_icon = setlist_icon_DESERT
-	}
-	tier7 = {
-		Title = "7. Live in Japan"
-		songs = [ ]
-		encorep1
-		level = load_z_budokan
-		completion_movie = 'singleplayer_08'
-		setlist_icon = setlist_icon_MEGADOME
-	}
-	tier8 = {
-		Title = "8. Battle for your soul"
-		songs = [ ]
-		boss
-		level = load_z_hell
-		completion_movie = 'singleplayer_end'
-		setlist_icon = setlist_icon_HELL
-	}
-}
+number_randomized = 0
+
+normal_setlist = { }
 
 Randomizer_Main_Setlist_Songs = [
 	slowride
@@ -152,6 +83,12 @@ script randomize_main_setlist
 		num_tiers = 8
 		initial_movie = 'singleplayer_01'
 	}
+	num_random = ($number_randomized)
+	if (<num_random> = 0)
+		change normal_setlist = ($GH3_Career_Songs)
+	endif
+	<num_random> = <num_random> + 1
+	change number_randomized = <num_random>
 	random_career = ($GH3_Career_Songs)
 	<i> = 0
 	tier_num = 1

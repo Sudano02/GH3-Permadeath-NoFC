@@ -36,12 +36,12 @@ permadeath_startup_text = "Willkommen bei GH3 Permadeath!  Ein Fehler und das ko
 permadeath_start = "LEIDEN"
 permadeath_title = "PERMADEATH"
 
-songs_practiced_title = "Songs practiced:"
-permadeath_title_random = "PERMADEATH (RANDOMISIERT)"
-setlist_randomized_text = "SETLISTE RANDOMISIERT"
+songs_practiced_title = "Geübte Songs:"
+permadeath_title_random = "PERMADEATH (ZUFÄLLIG)"
+setlist_randomized_text = "ZUFÄLLIGE SETLIST"
 randomize_setlist_text = "SETLISTE RANDOMISIEREN"
 randomize_word_text = "RANDOMISIEREN"
-randomize_warning_text = "You are about to randomize your main setlist! Once randomized, you cannot revert unless you restart the game. The randomized setlist will persist through all attempts this session."
+randomize_warning_text = "Du bist kurz davor deine Setlist zu randomisieren! Du kannst dies nicht rückgängig machen sobald du sie randomisiert hast, außer du startest dein Spiel neu. Die Setlist bleibt erhalten bei allen deiner Versuche."
 
 permadeath_fail_text = "Meine Güte!  Dir sind die Leben ausgegangen!  Das bedeutet leider, dass dein Fortschritt zurückgesetzt wurde.  Macht nichts, alle guten Dinge sind %i"
 permadeath_fail_continue_1 = "ALLES ZURÜCKSETZEN :("

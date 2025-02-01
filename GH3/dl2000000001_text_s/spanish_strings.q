@@ -35,6 +35,14 @@ thrufireandflames_store_text = "Dragonforce es una banda conocida por sus coros 
 permadeath_startup_text = "¡Bienvenido a GH3 Permadeath! Si no clavas una nota, el juego borrará tu partida. Igualmente, no podrás guardar. ¡Buena suerte!"
 permadeath_start = "SUFRIR"
 permadeath_title = "PERMADEATH"
+
+songs_practiced_title = "Temas practicados:"
+permadeath_title_random = "PERMADEATH (ALEATORIO)" // This is the title that shows up on the warning once randomized mode is active
+setlist_randomized_text = "REPERTORIO ALEATORIO" // This is the title that displays on the main menu letting you know you're playing in randomized mode
+randomize_setlist_text = "ALEATORIZAR REPERTORIO" // This is the command to randomize your setlist
+randomize_word_text = "ALEATORIZAR"
+randomize_warning_text = "¡Estás a punto de aleatorizar el repertorio principal! Al hacer esto, no podrás revertirlo hasta que reinicies el juego. Se mantendrá aleatorizado en todos los intentos de esta sesión."
+
 permadeath_fail_text = "¡Oh no! ¡Te quedaste sin vidas! Tu progreso se va a borrar. ¿Listo para el intento #%i?"
 permadeath_fail_continue_1 = "BORRAR TODO :("
 permadeath_fail_continue_2 = "DESINTEGRAR TU PARTIDA :O"
@@ -90,6 +98,9 @@ mm_debug_menu_text = "DEBUG MENU"
 choose_band_text = "ELEGIR GRUPO"
 new_band_name = "- NUEVO GRUPO -"
 manage_band_text = "GEST. GRUPO"
+band_legends_text_1 = "THE LEGENDS"
+band_legends_text_2 = "OF ROCK TOUR"
+band_sponsored_text = "PATROCINADO POR:"
 
 pause_paused_text = "EN PAUSA"
 pause_player_paused_text = "J%d PAUSA"

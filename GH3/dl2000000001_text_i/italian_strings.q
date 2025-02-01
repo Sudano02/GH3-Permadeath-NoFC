@@ -40,7 +40,7 @@ songs_practiced_title = "Canzoni praticate:"
 permadeath_title_random = "PERMADEATH (RANDOMIZZATO)" // This is the title that shows up on the warning once randomized mode is active
 setlist_randomized_text = "SETLIST RANDOMIZZATA" // This is the title that displays on the main menu letting you know you're playing in randomized mode
 randomize_setlist_text = "RANDOMIZZA SETLIST" // This is the command to randomize your setlist
-randomize_word_text = "RANDOMIZZA"	
+randomize_word_text = "RANDOMIZZA"
 randomize_warning_text = "Stai per randomizzare la tua setlist principale! Una volta randomizzata, non potrai annullare l'operazione a meno che tu non riavvii il gioco. La setlist randomizzata persisterà per tutti i tentativi di questa sessione."
 
 permadeath_fail_text = "Oh oh! Hai esaurito le vite! Sfortunatamente questo significa che i tuoi progressi sono stati azzerati. Ecco il tentativo n. %i"
