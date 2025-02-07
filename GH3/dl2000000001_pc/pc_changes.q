@@ -166,11 +166,9 @@ script create_main_menu
 	debug_menu_text_off = (<exit_text_off> + (0.0, 160.0))
 	debug_menu_text_scale = 0.8
 	if ($randomizer_toggle = 1)
-		disable_randomize = {rgba = [200 0 0 0] shadow_rgba = [0 0 0 0] not_focusable}
-		randomize_text = ($setlist_randomized_text)
+		disable_randomize = { shadow_rgba = [0 0 0 255] }
 	else
 		disable_randomize = { shadow_rgba = [0 0 0 255] }
-		randomize_text = ($randomize_setlist_text)
 	endif
 	CreateScreenElement {
 		Type = TextElement
@@ -261,7 +259,7 @@ script create_main_menu
 	CreateScreenElement {
 		Type = TextElement
 		text = "PERMADEATH"
-		pos = (-361.5, 260.5)
+		pos = ($permadeath_title_offset)
 		parent = main_menu_text_container
 		rgba = [200 0 0 255]
 		font = text_a6
@@ -272,7 +270,7 @@ script create_main_menu
 		randomized_title_offset = ($permadeath_title_offset + (0.0, 48.0))
 		createscreenelement {
 			type = textelement
-			text = <randomize_text>
+			text = ($setlist_randomized_text)
 			pos = <randomized_title_offset>
 			parent = main_menu_text_container
 			rgba = [200 0 0 255]
@@ -318,7 +316,7 @@ script create_main_menu
 			Id = main_menu_leaderboards_text
 			PARENT = main_menu_text_container
 			font = <main_menu_font>
-			Text = <randomize_text>
+			Text = ($randomize_setlist_text)
 			font_spacing = 0
 			Pos = {(<leaderboards_text_off>) Relative}
 			Scale = (<leaderboards_text_scale>)
@@ -341,7 +339,7 @@ script create_main_menu
 			Id = main_menu_leaderboards_text
 			PARENT = main_menu_text_container
 			font = <main_menu_font>
-			Text = <randomize_text>
+			Text = ($randomize_setlist_text)
 			font_spacing = 0
 			Pos = {(<leaderboards_text_off>) Relative}
 			Scale = (<leaderboards_text_scale>)
@@ -731,6 +729,16 @@ script create_main_menu
 			180
 			255
 		]}
+	if ($hs_first_time = 1)
+		/*
+		setglobaltags \{user_options
+			params = {
+				lag_calibration = $calibration_val
+			}} */
+		new_hs = ($hyperspeed_setting_val)
+		change cheat_hyperspeed = <new_hs>
+		change \{hs_first_time = 0}
+	endif
 	add_user_control_helper \{Text = $text_button_select
 		button = Green
 		Z = 100}

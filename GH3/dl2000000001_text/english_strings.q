@@ -34,14 +34,30 @@ thrufireandflames_store_text = "Dragonforce are known for their epic choral sing
 
 permadeath_startup_text = "Welcome to GH3 Permadeath!  Miss a note and reset to the very start of the game.  Saving is disabled.  Good Luck!"
 
+cash_deduction_1 = "CARS, SET FIRE TO"
+cash_deduction_2 = "WALL ART, STOLEN"
+cash_deduction_3 = "GREEN ROOM, TRASHED"
+cash_deduction_4 = "NOISE VIOLATIONS, PAID"
+cash_deduction_5 = "HOTEL ROOM, TRASHED"
+cash_deduction_6 = "DRINKS, CONSUMED"
+cash_deduction_7 = "ADDYMILLS DEV FEE"
+cash_deduction_8 = "FREG'S VEGEMITE FUND"
+
+career_pay_text = "PAY"
+career_minus_deductions_text = "MINUS DEDUCTIONS"
+
 permadeath_start = "SUFFER"
 permadeath_title = "PERMADEATH"
 songs_practiced_title = "Songs practiced:"
 permadeath_title_random = "PERMADEATH (RANDOMIZED)"
 setlist_randomized_text = "SETLIST RANDOMIZED"
 randomize_setlist_text = "RANDOMIZE SETLIST"
-randomize_word_text = "RANDOMIZE"
-randomize_warning_text = "You are about to randomize your main setlist! Once randomized, you cannot revert unless you restart the game. The randomized setlist will persist through all attempts this session."
+randomize_word_text = "RANDOMIZE CAREER SETLIST"
+randomize_no_ttfaf_word_text = "RANDOMIZE ALL (NO TTFAF)"
+randomize_ttfaf_word_text = "RANDOMIZE ALL"
+revert_setlist_text = "REVERT SETLIST"
+
+randomize_warning_text = "Please select what you want to do!"
 
 permadeath_fail_text = "Uh oh!  You have run out of lives!  Unfortunately that means your progress has been reset.  Here's to attempt #%i"
 permadeath_fail_continue_1 = "RESET EVERYTHING :("
@@ -64,6 +80,7 @@ permadeath_boss_splash_3 = "Use POWER-UPS strategically to gain the upper hand."
 permadeath_boss_splash_4 = "Lose all your lives, and it's GAME OVER!"
 permadeath_boss_splash_5 = "Good luck!"
 permadeath_lives_screen_title = "NUMBER OF LIVES"
+cheats_lives_shield_text = "lives = note shield"
 
 ttfaf_money_earned = "Career Complete! $%i added to your wallet."
 

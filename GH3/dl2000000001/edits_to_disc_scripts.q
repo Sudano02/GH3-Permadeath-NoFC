@@ -534,8 +534,6 @@ default_band_characters = [
 	"100"
 ]
 
-
-
 Default_SongLost_Transition = {
 	time = 500
 	ScriptTable = [
@@ -623,6 +621,38 @@ bootup_download_scan_fs = {
 	]
 }
 
+script GuitarEvent_SongFailed 
+	if ($game_mode = training || $game_mode = tutorial)
+		return
+	endif
+	if ($is_network_game)
+		spawnscriptnow \{online_fail_song}
+		return
+	endif
+	printf \{"Check for failure state"}
+	if (($boss_battle = 1) || ($lives_are_missed_notes_shield != 1))
+		printf \{"Do nothing"}
+	elseif ($game_mode = p1_career)
+		if ($permadeath_lives > 1)
+			change permadeath_lives = ($permadeath_lives - 1)
+			change structurename = player1_status current_health = 1.0
+			return
+		endif
+	elseif ($game_mode = p2_career)
+		if ($permadeath_lives > 1)
+			change permadeath_lives = ($permadeath_lives - 1)
+			change structurename = player1_status current_health = 1.0
+			return
+		endif
+	endif
+
+	if ($game_mode = p2_battle)
+		GuitarEvent_SongWon \{battle_win = 1}
+	else
+		KillSpawnedScript \{name = GuitarEvent_SongWon_Spawned}
+		spawnscriptnow \{GuitarEvent_SongFailed_Spawned}
+	endif
+endscript
 
 script create_fail_song_menu 
 	difficulty = ($current_difficulty)
@@ -643,6 +673,7 @@ script create_fail_song_menu
 	if ($permadeath_lives > 0)
 		fail_song_menu_select_new_song
 	else
+		save_hs_and_lag_settings
 		change permadeath_lives = 3
 		change permadeath_fails = ($permadeath_fails + 1)
 		handle_signin_changed
@@ -657,10 +688,19 @@ script set_song_icon
 	if NOT GotParam \{song}
 		<song> = ($target_setlist_songpreview)
 	endif
-	if (<song> = None && $current_tab = tab_setlist)
+	if (<song> = None && $randomizer_toggle = 1)
+		if ScreenElementExists \{id = sl_clipart}
+			SetScreenElementProps \{id = sl_clipart alpha = 0}
+		endif
+		if ScreenElementExists \{id = sl_clipart_shadow}
+			SetScreenElementProps \{id = sl_clipart_shadow alpha = 0}
+		endif
+		if ScreenElementExists \{id = sl_clip}
+			SetScreenElementProps \{id = sl_clip alpha = 0}
+		endif
 		return
 	endif
-	if ($current_tab = tab_downloads || ($randomizer_toggle = 1))
+	if ($current_tab = tab_downloads)
 		return
 	endif
 	if ($current_tab = tab_setlist)
@@ -1238,6 +1278,15 @@ script create_sl_assets
 					if NOT ($game_mode = training || $game_mode = p2_faceoff || $game_mode = p2_pro_faceoff || $game_mode = p2_battle)
 						if Progression_IsBossSong tier_global = $g_gh3_setlist tier = <tier> song = ($g_gh3_setlist.<tier_checksum>.songs [<song_count>])
 							stars = 0
+							hide_data = FALSE
+						elseif (($g_gh3_setlist.<tier_checksum>.songs [<song_count>]) = slowridefull)
+							hide_data = FALSE
+						elseif ($randomizer_toggle = 1 && (GotParam tab_setlist))
+							hide_data = TRUE
+						elseif ((<song> = thrufireandflames) && ($randomizer_ttfaf = 0))
+							hide_data = FALSE
+						elseif ($randomizer_all = 1)
+							hide_data = TRUE
 						endif
 						if ($game_mode = p1_quickplay)
 							GetGlobalTags <songname> param = percent100
@@ -1256,7 +1305,7 @@ script create_sl_assets
 							<star_pos> = (<star_pos> - <star_space>)
 							displaySprite parent = setlist_menu tex = <star> rgba = [233 205 166 255] z = $setlist_text_z Pos = <star_pos>
 							repeat <stars>
-						elseif ($randomizer_toggle = 1 && (GotParam tab_setlist))
+						elseif (<hide_data> = TRUE)
 							<textid> :setprops text = ($randomizer_title)
 							<song_artist> = ($randomizer_artist + $randomizer_year)
 						endif
@@ -1357,10 +1406,8 @@ script create_sl_assets
 			top
 		]}
 	clip_alpha = 1
-	if ($current_tab = tab_downloads || ($randomizer_toggle = 1))
-		if not ($current_tab = tab_bonus)
-			<clip_alpha> = 0
-		endif
+	if ($current_tab = tab_downloads)
+		<clip_alpha> = 0
 	endif
 	<clip_pos> = (160.0, 390.0)
 	displaySprite id = sl_clipart parent = sl_fixed Pos = <clip_pos> dims = (160.0, 160.0) z = ($setlist_text_z + 0.1) rgba = [200 200 200 255] alpha = <clip_alpha>
@@ -1370,7 +1417,6 @@ script create_sl_assets
 
 	if ($current_tab = tab_setlist)
 		hilite_dims = (737.0, 80.0)
-
 	elseif ($current_tab = tab_bonus)
 		hilite_dims = (690.0, 80.0)
 	endif
@@ -2178,6 +2224,16 @@ script create_main_menu
 			180
 			255
 		]}
+	if ($hs_first_time = 1)
+		setglobaltags {user_options
+			params = {
+				lag_calibration = ($calibration_val)
+			}
+		}
+		new_hs = ($hyperspeed_setting_val)
+		change cheat_hyperspeed = <new_hs>
+		change \{hs_first_time = 0}
+	endif
 	add_user_control_helper \{text = $text_button_select
 		button = green
 		z = 100}
@@ -3029,6 +3085,23 @@ script shutdown_game_for_signin_change \{unloadcontent = 1
 	printf \{"shutdown_game_for_signin_change end"}
 endscript
 
+script toggle_cheat_note_shield 
+	if ($lives_are_missed_notes_shield > 0)
+		if ($lives_are_missed_notes_shield = 1)
+			change \{lives_are_missed_notes_shield = 2}
+			FormatText textname = text ($cheats_turned_off) c = ($cheats_lives_shield_text)
+			SetScreenElementProps id = <id> text = <text>
+		else
+			change \{lives_are_missed_notes_shield = 1}
+			FormatText textname = text ($cheats_turned_on) c = ($cheats_lives_shield_text)
+			SetScreenElementProps id = <id> text = <text>
+		endif
+	else
+		SetScreenElementProps id = <id> text = "locked"
+	endif
+endscript
+
+
 script create_cheats_menu 
 	disable_pause
 	if ($entering_cheat = 0)
@@ -3189,23 +3262,23 @@ script create_cheats_menu
 	text_params2 = {parent = cheats_vmenu type = textelement font = text_a5 rgba = [255 245 225 255] z_priority = 50 rot_angle = 0 scale = 0.63}
 	GetGlobalTags \{user_options}
 	<text> = ($cheats_locked)
-	if (<unlock_Cheat_NoFail> > 0)
-		if ($cheat_nofail = 1)
-			formattext textname = text ($cheats_turned_on) c = ($guitar_hero_cheats [3].name_text)
-		else
-			if ($cheat_nofail < 0)
-				change \{cheat_nofail = 2}
-			endif
-			formattext textname = text ($cheats_turned_off) c = ($guitar_hero_cheats [3].name_text)
+
+	if ($lives_are_missed_notes_shield = 1)
+		formattext textname = text ($cheats_turned_on) c = ($cheats_lives_shield_text)
+	else
+		if ($lives_are_missed_notes_shield < 0)
+			change \{lives_are_missed_notes_shield = 2}
 		endif
+		formattext textname = text ($cheats_turned_off) c = ($cheats_lives_shield_text)
 	endif
+
 	createscreenelement {
 		<text_params2>
 		text = <text>
-		id = Cheat_NoFail_Text
+		id = Cheat_Shield_Guardian
 		event_handlers = [
-			{focus cheats_morph_hilite params = {pos = (349.0, 206.0) id = Cheat_NoFail_Text}}
-			{pad_choose toggle_cheat params = {cheat = cheat_nofail id = Cheat_NoFail_Text index = 3}}
+			{focus cheats_morph_hilite params = {pos = (349.0, 206.0) id = Cheat_Shield_Guardian}}
+			{pad_choose toggle_cheat_note_shield params = {id = Cheat_Shield_Guardian}}
 		]
 	}
 	<text> = ($cheats_locked)

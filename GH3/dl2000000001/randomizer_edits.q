@@ -153,7 +153,8 @@ script setlist_scroll \{dir = down}
 	song = ($g_gh3_setlist.<tier_checksum>.songs [$setlist_selection_song])
 	get_song_formatted song_checksum = <song>
 	GetGlobalTags <songname>
-	if (<achievement_gold_star> = 1 || ($randomizer_toggle = 0) || ($current_tab = tab_bonus))
+	is_not_randomized song = <song>
+	if (<achievement_gold_star> = 1 || (<not_randomized> = TRUE))
 		change target_setlist_songpreview = <song>
 	else
 		change target_setlist_songpreview = None
@@ -387,7 +388,8 @@ script change_tab \{tab = tab_setlist
 		song = ($g_gh3_setlist.<tier_checksum>.songs [$setlist_selection_song])
 		get_song_formatted song_checksum = <song>
 		GetGlobalTags <songname>
-		if (<achievement_gold_star> = 1 || ($randomizer_toggle = 0) || <tab> = tab_bonus)
+		is_not_randomized song = <song>
+		if (<achievement_gold_star> = 1 || (<not_randomized> = TRUE))
 			change target_setlist_songpreview = <song>
 		else
 			change target_setlist_songpreview = None
@@ -412,4 +414,154 @@ script change_tab \{tab = tab_setlist
 	change \{changing_tab = 0}
 endscript
 
+script create_popup_warning_menu player_device = ($primary_controller)
+	printstruct <...>
+	<menu_pos> = (640.0, 510.0)
+	<menu_bg_offset> = (0.0, -28.0)
+	<event_handlers> = {}
+	if GotParam \{options}
+		GetArraySize <options>
+		if (<array_size> > 1)
+			y_pos = (510.0 - ((<array_size> - 1) * 20.0))
+			<event_handlers> = ($popup_event_handlers_options)
+			<menu_pos> = ((640.0 * (1.0, 0.0)) + (<y_pos> * (0.0, 1.0)))
+			<menu_bg_offset> = (0.0, -8.0)
+		endif
+	endif
+	new_menu {
+		scrollid = pu_warning_scroll
+		vmenuid = pu_warning_vmenu
+		menu_pos = <menu_pos>
+		spacing = -45
+		internal_just = [center center]
+		event_handlers = <event_handlers>
+		exclusive_device = <player_device>
+	}
+	set_focus_color \{rgba = [
+			130
+			0
+			0
+			250
+		]}
+	set_unfocus_color \{rgba = [
+			0
+			0
+			0
+			255
+		]}
+	CreateScreenElement \{type = ContainerElement
+		parent = root_window
+		id = popup_warning_container
+		Pos = (0.0, 0.0)
+		just = [
+			left
+			top
+		]}
+	if NOT (GotParam no_background)
+		displaySprite \{parent = popup_warning_container
+			tex = brick_bg
+			Pos = (640.0, 360.0)
+			dims = (1280.0, 720.0)
+			just = [
+				center
+				center
+			]
+			z = 96}
+	endif
+	offwhite = [223 223 223 255]
+	z = 100
+	displaySprite parent = popup_warning_container tex = Dialog_Title_BG flip_v Pos = (416.0, 100.0) dims = (224.0, 224.0) z = <z>
+	displaySprite parent = popup_warning_container tex = Dialog_Title_BG Pos = (640.0, 100.0) dims = (224.0, 224.0) z = <z>
+	if GotParam \{options}
+		sprite_scale = (1.0, 1.0)
+		GetArraySize <options>
+		<choice_x_scale> = 1.0
+		<choice_y_scale> = 0.4375
+		if (<array_size> > 2)
+			<choice_y_scale> = (<choice_y_scale> * <array_size>)
+			<sprite_scale> = ((<choice_x_scale> * (1.0, 0.0)) + (<choice_y_scale> * (0.0, 1.0)))
+		endif
+		CreateScreenElement {
+			type = vmenu
+			parent = popup_warning_container
+			id = options_bg_id
+			Pos = (<menu_pos> + <menu_bg_offset>)
+			just = [center top]
+			internal_just = [center center]
+		}
+		displaySprite parent = options_bg_id tex = dialog_bg scale = <sprite_scale> z = <z>
+		displaySprite parent = options_bg_id tex = dialog_bg flip_h scale = <sprite_scale> z = <z>
+	endif
+	create_pause_menu_frame z = (<z> - 4)
+	create_popup_warning_text <...>
+	if GotParam \{options}
+		create_popup_warning_menu_options <...>
+	endif
+endscript
+
+script set_store_song_title \{index = 0}
+	store_hide_already_owned
+	get_progression_globals game_mode = ($game_mode) bonus
+	store_song_artist :settags song_index = <index>
+	song_checksum = ($<tier_global>.tier1.songs [<index>])
+	find_bonus_info item_checksum = <song_checksum> song
+	song_description = ($randomizer_store_text)
+	if (($randomizer_all = 1) && (<song_checksum> != thrufireandflames))
+		hide_data = TRUE
+	elseif ($randomizer_ttfaf = 1)
+		hide_data = TRUE
+	else
+		hide_data = FALSE
+		<song_description> = ($Bonus_Songs_Info [<info_index>].text)
+	endif
+	select_guitar_change_blurb_text text = <song_description> x_dims = 430 Pos = (-115.0, 375.0) z = 50
+	album_texture = ($Bonus_Songs_Info [<info_index>].album_cover)
+	if ((<album_texture> = store_song_default) || <hide_data> = TRUE)
+		if English
+			<album_texture> = store_song_default
+		elseif French
+			<album_texture> = store_song_default_FR
+		elseif German
+			<album_texture> = store_song_default_DE
+		elseif Italian
+			<album_texture> = store_song_default_IT
+		elseif Spanish
+			<album_texture> = store_song_default_SP
+		endif
+	endif
+	store_songs_album_cover :setprops texture = <album_texture>
+	get_song_title song = (<song_checksum>)
+	get_song_artist song = (<song_checksum>) with_year = 0
+	if (<hide_data> = TRUE)
+		<song_title> = ($randomizer_title)
+		<song_artist> = ($randomizer_artist)
+	endif
+	printf "%r %s %t" r = <song_checksum> s = <song_title> t = <song_artist>
+	SetScreenElementProps {
+		id = store_song_title
+		text = (<song_title>)
+	}
+	SetScreenElementProps {
+		id = store_song_artist
+		text = (<song_artist>)
+	}
+	store_song_artist :setprops \{Scale = (1.0, 1.0)
+		relative_scale}
+	GetScreenElementDims \{id = store_song_artist}
+	if (<width> >= 280.0)
+		new_scale = ((280.0 / <width>) * (1.0, 0.0) + (0.0, 1.0))
+		store_song_artist :setprops Scale = <new_scale> relative_scale
+	endif
+	song_price = ($store_song_data.<song_checksum>.price)
+	set_store_purchase_price price = (<song_price>)
+	FormatText checksumname = bonus_song_checksum '%p_song%i_tier%s' p = 'bonus' i = (<index> + 1) s = 1
+	GetGlobalTags <song_checksum>
+	if (<unlocked> = 1)
+		store_show_already_owned
+	endif
+	if (<hide_data> = TRUE)
+		<song_checksum> = None
+	endif
+	change target_setlist_songpreview = <song_checksum>
+endscript
 

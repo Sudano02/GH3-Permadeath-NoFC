@@ -31,11 +31,11 @@ script get_song_covered_by \{song = invalid}
 	if StructureContains structure = $gh3_songlist_props <song>
 		if StructureContains structure = ($gh3_songlist_props.<song>) covered_by
 			return covered_by = ($gh3_songlist_props.<song>.covered_by) TRUE
-		elseif StructureContains structure = $song_covers_wavegroup <song>
+		elseif StructureContains structure = $song_covers_wavegroup ($gh3_songlist_props.<song>.checksum)
 			return covered_by = "WaveGroup" TRUE
-		elseif StructureContains structure = $song_covers_steve <song>
+		elseif StructureContains structure = $song_covers_steve ($gh3_songlist_props.<song>.checksum)
 			return covered_by = "Steve Ouimette" TRUE
-		elseif StructureContains structure = $song_covers_line6 <song>
+		elseif StructureContains structure = $song_covers_line6 ($gh3_songlist_props.<song>.checksum)
 			return covered_by = "Line 6" TRUE
 		else
 			return \{FALSE}

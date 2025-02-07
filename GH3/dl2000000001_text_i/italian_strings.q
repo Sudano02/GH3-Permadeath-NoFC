@@ -33,15 +33,31 @@ thewayitends_store_text = "I Prototype si sono formati nel 1994 a Los Angeles da
 thrufireandflames_store_text = "I Dragonforce sono conosciuti per i loro cori epici e le chitarre armonizzate ultra-veloci. Compra questa canzone solo se non hai paura che le tue mani diventino intorpidite dopo aver provato a suonarla!"
 
 permadeath_startup_text = "Benvenuti in GH3 Permadeath! Perdete una nota e tornerete all'inizio del gioco. Il salvataggio è disabilitato. Buona fortuna!"
+
+cash_deduction_1 = "AUTO INCENDIATE"
+cash_deduction_2 = "LOCANDINE RUBATE"
+cash_deduction_3 = "CAMERINI DISTRUTTI"
+cash_deduction_4 = "MULTE PER IL RUMORE"
+cash_deduction_5 = "STANZA D'ALBERGO, IN DISORDINE"
+cash_deduction_6 = "DRINK BEVUTI"
+cash_deduction_7 = "LA TARIFFA DI SVILUPPO DI ADDY"
+cash_deduction_8 = "VEGEMITE PER FREG"
+
+career_pay_text = "PAGA"
+career_minus_deductions_text = "MENO LE DETRAZIONI"
+
 permadeath_start = "SOFFRI"
 permadeath_title = "PERMADEATH"
-
 songs_practiced_title = "Canzoni praticate:"
 permadeath_title_random = "PERMADEATH (RANDOMIZZATO)" // This is the title that shows up on the warning once randomized mode is active
 setlist_randomized_text = "SETLIST RANDOMIZZATA" // This is the title that displays on the main menu letting you know you're playing in randomized mode
 randomize_setlist_text = "RANDOMIZZA SETLIST" // This is the command to randomize your setlist
-randomize_word_text = "RANDOMIZZA"
-randomize_warning_text = "Stai per randomizzare la tua setlist principale! Una volta randomizzata, non potrai annullare l'operazione a meno che tu non riavvii il gioco. La setlist randomizzata persisterà per tutti i tentativi di questa sessione."
+randomize_word_text = "RANDOMIZZA SETLIST CARRIERA"
+randomize_no_ttfaf_word_text = "RANDOMIZZA TUTTO (SENZA TTFAF)"
+randomize_ttfaf_word_text = "RANDOMIZE TUTTO"
+revert_setlist_text = "RIPRISTINA SCALETTA"
+
+randomize_warning_text = "Seleziona quello che vuoi fare!"
 
 permadeath_fail_text = "Oh oh! Hai esaurito le vite! Sfortunatamente questo significa che i tuoi progressi sono stati azzerati. Ecco il tentativo n. %i"
 permadeath_fail_continue_1 = "RESETTA TUTTO :("
@@ -64,6 +80,7 @@ permadeath_boss_splash_3 = "Usa i POWER-UP in modo strategico per ottenere un va
 permadeath_boss_splash_4 = "Perdi tutte le tue vite, e sarà GAME OVER!"
 permadeath_boss_splash_5 = "Buona fortuna!"
 permadeath_lives_screen_title = "NUMERO DI VITE"
+cheats_lives_shield_text = "vite = guardiano delle serie"
 
 ttfaf_money_earned = "Carriera Completata! $%i aggiunti al portafoglio."
 

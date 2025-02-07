@@ -15,6 +15,8 @@ permadeath_disabled_hard = 0
 permadeath_disabled_expert = 0
 lose_a_life = TRUE
 
+lives_are_missed_notes_shield = 2
+
 permadeath_title_offset = (-361.5, 260.5)
 songs_practiced_offset = (670.0, 360.0)
 
@@ -27,6 +29,17 @@ max_streaks = {
 songs_practiced = [
 
 ]
+
+calibration_val = 0
+hyperspeed_setting_val = 0
+hs_first_time = 0
+
+script save_hs_and_lag_settings
+		GetGlobalTags \{user_options}
+		change calibration_val = <lag_calibration>
+		change hyperspeed_setting_val = ($cheat_hyperspeed)
+		change \{hs_first_time = 1}
+endscript
 
 script create_songs_practiced_text 
 	destroy_songs_practiced_scroll
@@ -80,11 +93,12 @@ script scroll_songs_practiced \{text_size = 1}
 	diff = (<text_height> - <compare_height> + 20.0)
 	printf "Set Diff %s" s = <diff>
 	if (<text_height> > <compare_height>)
+		scroll_time = ((<text_height> - <compare_height>) / 40.0)
 		<to_scroll> :DoMorph alpha = 0
 		<to_scroll> :DoMorph Pos = (0.0, 0.0)
 		begin
 		<to_scroll> :DoMorph alpha = 1 time = 1.5
-		<to_scroll> :DoMorph Pos = (<diff> * (0.0, -1.0)) time = 8.0
+		<to_scroll> :DoMorph Pos = (<diff> * (0.0, -1.0)) time = <scroll_time>
 		wait 2 seconds
 		<to_scroll> :DoMorph alpha = 0 time = 1.5
 		<to_scroll> :DoMorph Pos = (0.0, 0.0)

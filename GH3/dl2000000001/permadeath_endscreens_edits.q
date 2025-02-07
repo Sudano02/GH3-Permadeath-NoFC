@@ -1284,7 +1284,9 @@ script create_setlist_menu
 		song = ($g_gh3_setlist.<tier_checksum>.songs [$setlist_selection_song])
 		get_song_formatted song_checksum = <song>
 		GetGlobalTags <songname>
-		if (<achievement_gold_star> = 1 || ($randomizer_toggle = 0) || ($current_tab = tab_bonus))
+		is_not_randomized song = <song>
+		printf "not_randomized = %b" b = <not_randomized>
+		if (<achievement_gold_star> = 1 || (<not_randomized> = TRUE))
 			change target_setlist_songpreview = <song>
 		else
 			change target_setlist_songpreview = None

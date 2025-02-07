@@ -33,14 +33,31 @@ thewayitends_store_text = "Prototype a été formé en 1994 à partir des ancien
 thrufireandflames_store_text = "DragonForce sont connus pour leur chant épique et leurs solos hyper rapides et harmonisés. Achète cette musique seulement si tu n'as pas peur que tes mains tombent après avoir joué cette musique!"
 
 permadeath_startup_text = "Bienvenue dans le mode Permadeath de GH3! Rate une note et tu recommenceras ta partie au tout début. La sauvegarde est désactivée. Bonne chance!"
+
+cash_deduction_1 = "VOITURES INCENDIÉES"
+cash_deduction_2 = "AFFICHES VOLÉES"
+cash_deduction_3 = "LOGE, SACCAGÉE"
+cash_deduction_4 = "AMENDES PAYÉES"
+cash_deduction_5 = "CHAMBRE D'HOTEL SACCAGÉE"
+cash_deduction_6 = "BOISSONS CONSOMMÉES"
+cash_deduction_7 = "FRAIS DE DÉVELOPPEMENT D'ADDY"
+cash_deduction_8 = "VEGEMITE POUR FREG"
+
+career_pay_text = "CACHET"
+career_minus_deductions_text = "FRAIS"
+
 permadeath_start = "SOUFFRE"
 permadeath_title = "PERMADEATH"
 songs_practiced_title = "Chansons pratiquées:"
 permadeath_title_random = "PERMADEATH (ALÉATOIRE)"
 setlist_randomized_text = "SETLIST ALÉATOIRE"
 randomize_setlist_text = "MÉLANGER LA SETLIST"
-randomize_word_text = "MÉLANGER"
-randomize_warning_text = "Tu t'apprêtes à mélanger la setlist! Une fois mélangée, tu ne pourras pas revenir en arrière, à moins que tu redémarres le jeu. La setlist aléatoire sera la même pour toutes tes tentatives durant cette session."
+randomize_word_text = "MÉLANGER LA SETLIST CARRIÈRE"
+randomize_no_ttfaf_word_text = "MÉLANGER TOUT (SANS TTFAF)"
+randomize_ttfaf_word_text = "MÉLANGER TOUT"
+revert_setlist_text = "RETABLIR LA SETLIST"
+
+randomize_warning_text = "Sélectionne ce que tu veux faire!"
 
 permadeath_fail_text = "Mince!  Tu n'as plus de vies! Malheureusement, cela veut dire que ta progression a été supprimée.  Bon courage pour la tentative N° %i"
 permadeath_fail_continue_1 = "RECOMMENCE TOUT :("
@@ -63,6 +80,7 @@ permadeath_boss_splash_3 = "Utilise les POWER-UPS de manière stratégique pour 
 permadeath_boss_splash_4 = "Perds toutes tes vies, et c'est GAME OVER!"
 permadeath_boss_splash_5 = "Bonne chance!"
 permadeath_lives_screen_title = "NOMBRE DE VIES"
+cheats_lives_shield_text = "vies = gardien de série"
 
 ttfaf_money_earned = "Carrière complétée! $%i ont été ajoutés au porte-monnaie."
 

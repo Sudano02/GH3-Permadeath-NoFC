@@ -33,15 +33,31 @@ thewayitends_store_text = "Prototype wurde 1994 aus den verbliebenen Mitgliedern
 thrufireandflames_store_text = "Dragonforce sind bekannt für deren epischen Chorgesang und ultraschnellen Doppel Gitarrenharmonien. Kaufe den Song nur, wenn du glaubst, dass deine Hände nicht taub werden, nachdem du ihn spielst!"
 
 permadeath_startup_text = "Willkommen bei GH3 Permadeath!  Ein Fehler und das komplette Spiel wird zurückgesetzt.  Speichern ist deaktiviert.  Viel Glück!"
+
+cash_deduction_1 = "AUTOS, ANGEZÜNDET"
+cash_deduction_2 = "KUNSTWERKE, GEKLAUT"
+cash_deduction_3 = "UMKLEIDE, ZERTRÜMMERT"
+cash_deduction_4 = "LÄRM-BUSSGELDER, BEZAHLT"
+cash_deduction_5 = "HOTELZIMMER, VERWÜSTET"
+cash_deduction_6 = "DRINKS, KONSUMIERT"
+cash_deduction_7 = "ENTWICKLERGEBÜHR FÜR ADDY"
+cash_deduction_8 = "VEGEMITE FÜR FREG"
+
+career_pay_text = "BEZAHLUNG"
+career_minus_deductions_text = "ABZÜGE"
+
 permadeath_start = "LEIDEN"
 permadeath_title = "PERMADEATH"
-
 songs_practiced_title = "Geübte Songs:"
 permadeath_title_random = "PERMADEATH (ZUFÄLLIG)"
 setlist_randomized_text = "ZUFÄLLIGE SETLIST"
 randomize_setlist_text = "SETLISTE RANDOMISIEREN"
-randomize_word_text = "RANDOMISIEREN"
-randomize_warning_text = "Du bist kurz davor deine Setlist zu randomisieren! Du kannst dies nicht rückgängig machen sobald du sie randomisiert hast, außer du startest dein Spiel neu. Die Setlist bleibt erhalten bei allen deiner Versuche."
+randomize_word_text = "KARRIERE-SETLISTE RANDOMISIEREN"
+randomize_no_ttfaf_word_text = "ALLES RANDOMISIEREN (OHNE TTFAF)"
+randomize_ttfaf_word_text = "ALLES RANDOMISIEREN"
+revert_setlist_text = "SETLIST ZURÜCKSETZEN"
+
+randomize_warning_text = "Bitte wähle aus was du machen möchtest!"
 
 permadeath_fail_text = "Meine Güte!  Dir sind die Leben ausgegangen!  Das bedeutet leider, dass dein Fortschritt zurückgesetzt wurde.  Macht nichts, alle guten Dinge sind %i"
 permadeath_fail_continue_1 = "ALLES ZURÜCKSETZEN :("
@@ -64,6 +80,7 @@ permadeath_boss_splash_3 = "Setze die POWER-UPS strategisch ein, um dir einen Vo
 permadeath_boss_splash_4 = "Verlierst du alle deine Leben, heißt es GAME OVER!"
 permadeath_boss_splash_5 = "Frohes Schaffen!"
 permadeath_lives_screen_title = "ANZAHL DER LEBEN"
+cheats_lives_shield_text = "lebens = serienhüter"
 
 ttfaf_money_earned = "Karriere Abgeschlossen! $%i wurden zu deinem Konto hinzugefügt."
 
