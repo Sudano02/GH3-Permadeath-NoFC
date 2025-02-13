@@ -26,7 +26,8 @@ max_streaks = {
 
 }
 
-songs_practiced = [
+empty_array = [
+]
 
 songs_practiced = [
 ]
@@ -43,6 +44,7 @@ star_power_pos_2 = -1.0
 
 
 script save_hs_and_lag_settings
+		change songs_practiced = ($empty_array)
 		GetGlobalTags \{user_options}
 		change calibration_val = <lag_calibration>
 		change lefty_flip_p1_val = <lefty_flip_p1>
