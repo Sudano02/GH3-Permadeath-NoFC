@@ -28,17 +28,32 @@ max_streaks = {
 
 songs_practiced = [
 
+songs_practiced = [
 ]
 
 calibration_val = 0
 hyperspeed_setting_val = 0
 hs_first_time = 0
+lefty_flip_p1_val = 0
+lefty_flip_p2_val = 0
+whammy_cal_val_1 = -0.76
+whammy_cal_val_2 = -0.76
+star_power_pos_1 = -1.0
+star_power_pos_2 = -1.0
+
 
 script save_hs_and_lag_settings
 		GetGlobalTags \{user_options}
 		change calibration_val = <lag_calibration>
+		change lefty_flip_p1_val = <lefty_flip_p1>
+		change lefty_flip_p2_val = <lefty_flip_p2>
 		change hyperspeed_setting_val = ($cheat_hyperspeed)
+		change whammy_cal_val_1 = ($player1_status.resting_whammy_position)
+		change whammy_cal_val_2 = ($player2_status.resting_whammy_position)
+		change star_power_pos_1 = ($player1_status.star_tilt_threshold)
+		change star_power_pos_2 = ($player2_status.star_tilt_threshold)
 		change \{hs_first_time = 1}
+		change \{progression_pop_count = 0}
 endscript
 
 script create_songs_practiced_text 

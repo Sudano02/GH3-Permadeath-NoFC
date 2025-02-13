@@ -36,6 +36,7 @@ health_change_good_battle_expert = 0.012
 health_change_bad_boss_expert = -0.0374
 health_change_good_boss_expert = 0.015
 
+
 GH3_Bonus_Songs = {
 	prefix = 'bonus'
 	num_tiers = 1
@@ -2236,10 +2237,16 @@ script create_main_menu
 		setglobaltags {user_options
 			params = {
 				lag_calibration = ($calibration_val)
+				lefty_flip_p1 = ($lefty_flip_p1_val)
+				lefty_flip_p2 = ($lefty_flip_p2_val)
 			}
 		}
 		new_hs = ($hyperspeed_setting_val)
 		change cheat_hyperspeed = <new_hs>
+		change structurename = player1_status resting_whammy_position = ($whammy_cal_val_1)
+		change structurename = player2_status resting_whammy_position = ($whammy_cal_val_2)
+		change structurename = player1_status star_tilt_threshold = ($star_power_pos_1)
+		change structurename = player2_status star_tilt_threshold = ($star_power_pos_2)
 		change \{hs_first_time = 0}
 	endif
 	add_user_control_helper \{text = $text_button_select
