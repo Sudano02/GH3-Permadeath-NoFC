@@ -166,7 +166,7 @@ script create_main_menu
 	debug_menu_text_off = (<exit_text_off> + (0.0, 160.0))
 	debug_menu_text_scale = 0.8
 	if ($randomizer_toggle = 1)
-		disable_randomize = { shadow_rgba = [0 0 0 255] }
+		disable_randomize = { rgba = [80 80 80 255] not_focusable }
 	else
 		disable_randomize = { shadow_rgba = [0 0 0 255] }
 	endif
@@ -297,6 +297,7 @@ script create_main_menu
 		shadow_offs = (3.0, 3.0)
 		shadow_rgba = [0 0 0 255]
 		z_priority = 60
+		<disable_randomize>
 	}
 	GetScreenElementDims Id = <Id>
 	if (<width> > 345)
@@ -326,7 +327,6 @@ script create_main_menu
 			shadow_offs = (3.0, 3.0)
 			shadow_rgba = [0 0 0 255]
 			z_priority = 60
-			<disable_randomize>
 		}
 		GetScreenElementDims Id = <Id>
 		if (<width> > 360)
@@ -349,7 +349,6 @@ script create_main_menu
 			shadow_offs = (3.0, 3.0)
 			shadow_rgba = [0 0 0 255]
 			z_priority = 60
-			<disable_randomize>
 		}
 		GetScreenElementDims Id = <Id>
 		if (<width> > 360)
@@ -620,6 +619,7 @@ script create_main_menu
 			{pad_choose main_menu_select_training}
 		]
 		z_priority = -1
+		<disable_randomize>
 	}
 	CreateScreenElement {
 		Type = TextElement
@@ -666,7 +666,6 @@ script create_main_menu
 			{pad_choose ui_flow_manager_respond_to_action params = {action = select_xbox_live}}
 		]
 		z_priority = -1
-		<disable_randomize>
 	}
 	CreateScreenElement {
 		Type = TextElement
@@ -730,13 +729,19 @@ script create_main_menu
 			255
 		]}
 	if ($hs_first_time = 1)
-		/*
-		setglobaltags \{user_options
+		setglobaltags {user_options
 			params = {
-				lag_calibration = $calibration_val
-			}} */
+				lag_calibration = ($calibration_val)
+				lefty_flip_p1 = ($lefty_flip_p1_val)
+				lefty_flip_p2 = ($lefty_flip_p2_val)
+			}
+		}
 		new_hs = ($hyperspeed_setting_val)
 		change cheat_hyperspeed = <new_hs>
+		change structurename = player1_status resting_whammy_position = ($whammy_cal_val_1)
+		change structurename = player2_status resting_whammy_position = ($whammy_cal_val_2)
+		change structurename = player1_status star_tilt_threshold = ($star_power_pos_1)
+		change structurename = player2_status star_tilt_threshold = ($star_power_pos_2)
 		change \{hs_first_time = 0}
 	endif
 	add_user_control_helper \{Text = $text_button_select
