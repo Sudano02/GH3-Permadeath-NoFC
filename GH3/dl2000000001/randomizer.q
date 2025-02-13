@@ -1,6 +1,7 @@
 randomizer_toggle = 0
 randomizer_all = 0
 randomizer_ttfaf = 0
+went_into_song = 0
 hide_store_data = 0
 
 randomizer_title = "???????????"

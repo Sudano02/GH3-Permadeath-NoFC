@@ -674,7 +674,8 @@ script create_fail_song_menu
 		fail_song_menu_select_new_song
 	else
 		save_hs_and_lag_settings
-		change permadeath_lives = 3
+		change \{went_into_song = 0}
+		change \{permadeath_lives = 3}
 		change permadeath_fails = ($permadeath_fails + 1)
 		handle_signin_changed
 	endif
@@ -1712,9 +1713,14 @@ script create_main_menu
 	debug_menu_text_off = (<leaderboards_text_off> + (-30.0, 160.0))
 	debug_menu_text_scale = 0.8
 	if ($randomizer_toggle = 1)
-		disable_randomize = { shadow_rgba = [0 0 0 255] }
+		disable_randomize = { rgba = [80 80 80 255] not_focusable }
 	else
 		disable_randomize = { shadow_rgba = [0 0 0 255] }
+	endif
+	if ($went_into_song = 1)
+		disable_due_to_crash = { rgba = [80 80 80 255] not_focusable }
+	else
+		disable_due_to_crash = { shadow_rgba = [0 0 0 255] }
 	endif
 	createscreenelement {
 		type = textelement
@@ -1843,6 +1849,7 @@ script create_main_menu
 		shadow_offs = (3.0, 3.0)
 		shadow_rgba = [0 0 0 255]
 		z_priority = 60
+		<disable_randomize>
 	}
 	getScreenElementDims id = <id>
 	if (<width> > 345)
@@ -1872,7 +1879,7 @@ script create_main_menu
 			shadow_offs = (3.0, 3.0)
 			shadow_rgba = [0 0 0 255]
 			z_priority = 60
-			<disable_randomize>
+			<disable_due_to_crash>
 		}
 		getScreenElementDims id = <id>
 		if (<width> > 360)
@@ -1895,7 +1902,7 @@ script create_main_menu
 			shadow_offs = (3.0, 3.0)
 			shadow_rgba = [0 0 0 255]
 			z_priority = 60
-			<disable_randomize>
+			<disable_due_to_crash>
 		}
 		getScreenElementDims id = <id>
 		if (<width> > 360)
@@ -2138,6 +2145,7 @@ script create_main_menu
 			{pad_choose main_menu_select_training}
 		]
 		z_priority = -1
+		<disable_randomize>
 	}
 	createscreenelement {
 		type = textelement
@@ -2184,7 +2192,7 @@ script create_main_menu
 			{pad_choose ui_flow_manager_respond_to_action params = {action = select_xbox_live}}
 		]
 		z_priority = -1
-		<disable_randomize>
+		<disable_due_to_crash>
 	}
 	if ($enable_button_cheats = 1)
 		createscreenelement {

@@ -43,6 +43,35 @@ main_menu_fs = {
 	]
 }
 
+script setlist_choose_song \{device_num = 0}
+	change \{went_into_song = 1}
+	if GotParam \{song_count}
+		if ($is_network_game = 1)
+			net_request_song tier = <tier> song_count = <song_count>
+		else
+			if ($transitions_locked = 0)
+				LaunchEvent \{type = unfocus
+					target = vmenu_setlist}
+			endif
+			FormatText checksumname = tier_checksum 'tier%s' s = <tier>
+			change current_song = ($g_gh3_setlist.<tier_checksum>.songs [<song_count>])
+			SetGlobalTags progression params = {current_tier = <tier>}
+			SetGlobalTags progression params = {current_song_count = <song_count>}
+			change \{current_level = $g_last_venue_selected}
+			get_song_struct song = ($current_song)
+			if ((StructureContains structure = <song_struct> boss) || $game_mode = p2_battle)
+				get_current_battle_first_play
+				if (<first_battle_play> = 1 || (StructureContains structure = <song_struct> boss))
+					ui_flow_manager_respond_to_action action = show_help device_num = (<device_num>) create_params = {boss = (<song_struct>.checksum)}
+					return
+				endif
+			endif
+			enable_pause
+			ui_flow_manager_respond_to_action action = continue device_num = (<device_num>)
+		endif
+	endif
+endscript
+
 script setlist_scroll \{dir = down}
 	if ($setlist_num_songs = 0)
 		return
