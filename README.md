@@ -1,5 +1,5 @@
 # GH3-Permadeath-NoFC
-GH3 Permadeath mod made by AddyMills and FregRB, but it does not requires to Full Combo to complete.
+It's the GH3 Permadeath mod made by AddyMills and FregRB, but it does not requires Full Combo to complete.
 There are two versions of this mod, one that restores and uses the vanilla Health Regen when hitting notes, and the other that cuts the health regen by somewhat half of it if you want a little more of a challenge or want to warm up for the FC version.
 
 ## What is Permadeath?
